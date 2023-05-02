@@ -1,0 +1,28 @@
+{
+  "name": "recipe-me",
+  "version": "1.0.0",
+  "description": "recipe social",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simplerer/recipe-me.git"
+  },
+  "keywords": [
+    "food",
+    "recipe"
+  ],
+  "author": "Scott Stone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Simplerer/recipe-me/issues"
+  },
+  "homepage": "https://github.com/Simplerer/recipe-me#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "concurrently": "^8.0.1"
+  }
+}
