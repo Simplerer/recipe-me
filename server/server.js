@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+
 // const session = require('express-session');
 
 const app = express();
@@ -9,7 +10,7 @@ const sequelize = require('./config/connection');
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // const sess = {
-//   secret: 'Super secret secret',
+//   secret: process.env.SESS_SECRET,
 //   cookie: {
 //     maxAge: 300000,
 //     httpOnly: true,
@@ -43,6 +44,18 @@ app.use(cors);
 
 app.get('/try', async (req, res) => {
   res.json({papa: 'rainy', mama: 'thunder', baby: 'lightening'}) 
+})
+
+const axios = require('axios')
+
+app.get('/fetch/:search', async (req, res) => {
+  const param = req.params['search']
+  const data = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${param}&app_id=a0a65abe&app_key=92e94dbd904f4be5c7afef9fdd0f8415&ingr=8&cuisineType=Italian&mealType=Dinner&random=true`)
+  .then((res) => {
+    
+    return res.data.hits
+  })
+    res.json({data})
 })
 
 sequelize.sync({ force: false }).then(() => {

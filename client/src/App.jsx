@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
 // import { QueryClientProvider, QueryClient } from 'react-query';
 import './App.css'
-import { NewFetch } from './components/NewFetch';
+import NewFetch from './components/NewFetch';
 
 
 
