@@ -4,8 +4,9 @@
   "description": "recipe social",
   "main": "server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cd server && nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"cd server && nodemon\" \"cd client && npm run dev\""
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,6 @@
   },
   "homepage": "https://github.com/Simplerer/recipe-me#readme",
   "dependencies": {
-    "bcrypt": "^5.1.0",
     "concurrently": "^8.0.1"
   }
 }
