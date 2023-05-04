@@ -10,7 +10,7 @@ function Search({ setData, isLoading }) {
     e.preventDefault()
     isLoading(true)
     console.log(search)
-    axios.get(`http://localhost:3001/fetch/${search}`).then((res) => {
+    axios.get(`http://localhost:3001/axios/${search}`).then((res) => {
       setData(res.data.data)
       isLoading(false)
     })
