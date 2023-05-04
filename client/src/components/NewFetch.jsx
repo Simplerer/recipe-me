@@ -42,19 +42,6 @@ function NewFetch() {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
-  // useEffect(() => {
-
-  //   axios.get('http://localhost:3001/fetch').then((res) => {
-  //     setData(res.data.data)
-  //     setIsLoading(false)
-
-  //   })
-
-  // }, [])
-// const showMe = (e) => {
-//   console.log(`right over ${e.target.name}`)
-// }
-
   console?.log(data)
 
   if (isLoading) {
@@ -68,8 +55,25 @@ function NewFetch() {
       <Search isLoading={setIsLoading} setData={setData} />
       {data.map((item, index) => {
         return (
-          <div key={item.index}>
+          <div key={index}>
             <h3>{item.recipe.label}</h3>
+            <ul>
+              <li>{item.recipe.calories}</li>
+              <li>{item.recipe.cuisineType[0]}</li>
+              <li>{item.recipe.dishType[0]}</li>
+              <li>{item.recipe.mealType[0]}</li>
+              <li>{item.recipe.yield}</li>
+              <li>{item.recipe.uri.split('_').pop()}</li>
+            </ul>
+            <h2>Ingredients</h2>
+            <ul>
+            {item.recipe.ingredientLines.map((item, index) => {
+              return (
+                <li key={index}>{item}</li>
+              )
+            })}
+            </ul>
+            <img src={item.recipe.image}></img>
             {/* <iframe 
             src={item.recipe.url}
             onMouseEnter={showMe}></iframe> */}
