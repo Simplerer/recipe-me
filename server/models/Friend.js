@@ -19,6 +19,14 @@ Friend.init(
           key: 'id',
       }
   },
+    friend_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+          model: 'user',
+          key: 'id',
+      }
+  },
   },
   {
      sequelize,
