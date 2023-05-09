@@ -1,7 +1,10 @@
 const router = require('express').Router()
 const { User, Recipe, Friend } = require('../models/');
 
-router.get('/user', async (req,res) => {
+
+// --------- User Routes ------------------------- //
+
+router.get('/user', async (_req,res) => {
   try {
     const userData = await User.findAll({
       include: [{model: Recipe}]
@@ -26,7 +29,7 @@ router.get('/user/:id', async (req, res) => {
 });
 
 router.post('/user', async (req, res) => {
-try {
+  try {
     const userData = await User.create(req.body);
     res.json(userData);
   } catch (err) {
@@ -40,12 +43,16 @@ router.delete('/user/:id', async (req, res) => {
     const userData = await User.destroy({
       where: { id: req.params.id } });
       res.json(userData);
-
-  } catch (err) {
-    console.error(err);
-    res.json(err);    
+      
+    } catch (err) {
+      console.error(err);
+      res.json(err);    
   }
 });
+
+
+// --------- Recipe Routes ------------------------- //
+
 
 router.get('/recipe', async (_req,res) => {
   try {

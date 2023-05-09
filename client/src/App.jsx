@@ -3,18 +3,34 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 // import { QueryClientProvider, QueryClient } from 'react-query';
 import './App.css'
 import NewFetch from './components/NewFetch';
-
+import API from './components/API';
 
 
 
 function Fetch() {
+  useEffect(() => {
+    // axios.get('http://localhost:3001/axios/dish/abf78d5552e83878f5badbc935bfa567').then((res) => {
+    //     console.log(res)
+    //   })
+
+    console.log('This is the useEffect that searches for one recipe using an ID')
+
+  }, [])
   return (
     <>
       <h1>Hey!</h1>
-      <h3>I am the outer fetch component!</h3>
-      <NavLink to='/one'> 
-      <button>Click it</button>
+      <div>
+        <h3>I am the recipe fetch!</h3>
+        <NavLink to='/one'>
+          <button>Click it</button>
         </NavLink>
+      </div>
+      <div>
+        <h3>I am the api fetch!</h3>
+        <NavLink to='/two'>
+          <button>Click it</button>
+        </NavLink>
+      </div>
     </>
   )
 
@@ -27,6 +43,7 @@ function App() {
         <Fetch />
         <Routes>
           <Route path='/one' element={<NewFetch />} />
+          <Route path='/two' element={<API />} />
         </Routes>
       </Router>
     </>

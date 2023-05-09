@@ -1,22 +1,35 @@
-import React, { useEffect, useState } from "react"
-import axios from 'axios'
+import React, { useState } from "react";
+import Dropdowns from "./Dropdowns";
+import axios from 'axios';
 
 
 function Search({ setData, isLoading }) {
 
-  const [search, setSearch] = useState(null)
+  const [search, setSearch] = useState({
+    query: null,
+    ingAmount: null,
+    cuisineType: null,
+    mealType: null
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault()
     isLoading(true)
-    console.log(search)
-    axios.get(`http://localhost:3001/axios/${search}`).then((res) => {
+
+    axios.post(`http://localhost:3001/axios/dish`, { ...search }).then((res) => {
       setData(res.data.data)
       isLoading(false)
+      setSearch({
+        query: null,
+        ingAmount: null,
+        cuisineType: null,
+        mealType: null
+      })
     })
   }
   const handleOnChange = (e) => {
-    setSearch(e.target.value)
+    const { name, value } = e.target;
+    setSearch({ ...search, [name]: value })
   }
 
   return (
@@ -24,12 +37,18 @@ function Search({ setData, isLoading }) {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Recipe Search"
-          name="search"
+          placeholder="Query Parameter"
+          name="query"
           onChange={handleOnChange} />
+        <input
+          type="text"
+          placeholder="Ingredient Amounts"
+          name="ingAmount"
+          onChange={handleOnChange} />
+        <Dropdowns handleChange={handleOnChange}/>
         <button
           type="submit"
-          style={{ margin: '2%' }} >Search</button>
+          style={{ margin: '2%', backgroundColor: 'orange' }} >Search</button>
       </form>
     </div>
   )
@@ -67,11 +86,11 @@ function NewFetch() {
             </ul>
             <h2>Ingredients</h2>
             <ul>
-            {item.recipe.ingredientLines.map((item, index) => {
-              return (
-                <li key={index}>{item}</li>
-              )
-            })}
+              {item.recipe.ingredientLines.map((item, index) => {
+                return (
+                  <li key={index}>{item}</li>
+                )
+              })}
             </ul>
             <img src={item.recipe.image}></img>
             {/* <iframe 
