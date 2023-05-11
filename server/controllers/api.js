@@ -1,8 +1,10 @@
 const router = require('express').Router()
-const { User, Recipe, Friend } = require('../models/');
+const { User, Recipe, Friends } = require('../models/');
+const { Op } = require('sequelize');
 
 
 // --------- User Routes ------------------------- //
+
 
 router.get('/user', async (_req,res) => {
   try {
@@ -101,27 +103,57 @@ router.delete('/recipe/:id', async (req, res) => {
 });
 
 
+// --------- Friendship Routes ------------------------- //
+
+router.get('/friendship/:id', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id);
+    const friendData = await userData.getFriend({
+      include: [Recipe]
+    })
+    res.json(friendData);
+
+  } catch (err) {
+    console.error(err);
+    res.json(err);
+  }
+});
+
+router.post('/friendship', async (req, res) => {
+  try {
+    const { userId, friendId } = req.body 
+
+    const user = await User.findByPk(userId)
+    const friend = await User.findByPk(friendId)
+
+    user.addFriend(friend)
+    friend.addFriend(user)
+
+    res.json('Friendship established!');
+
+  } catch (err) {
+    console.error(err);
+    res.json(err);
+  };
+});
+
+router.delete('/friendship', async (req, res) => {
+  try { 
+
+    const {userId, friendId} = req.body
+
+    const friendshipData = await Friends.destroy({
+      where: {
+        [Op.and]: [{userId: userId}, { friendId: friendId }]
+       } });
+
+      res.json(friendshipData);
+
+  } catch (err) {
+    console.error(err);
+    res.json(err);    
+  }
+});
+
 
 module.exports = router;
-
-
-
-// router.get('/', async (req, res) => {
-//   try {
-//     const categoryData = await Category.findAll({
-//       include: [{
-//         model: Product,
-//         attributes: [
-//           'product_name',
-//           'price',
-//           'stock'
-//         ]
-//       }]
-//     });
-//     res.json(categoryData);
-
-//   } catch (err) {
-//     console.error(err);
-//     res.json(err);
-//   }
-// });

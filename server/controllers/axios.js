@@ -39,9 +39,3 @@ router.post('/dish', async (req, res) => {
 });
 
 module.exports = router;
-
-// https://www.youtube.com/watch?v=N4yUiQiTvwU
-
-// https://vitejs.dev/config/server-options.html
-
-// https://axios-http.com/docs/post_example

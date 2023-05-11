@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // https://enable-cors.org/server_expressjs.html
 //  This is a reference to the CORS Express.JS information
-const cors = function(req, res, next) {
+const cors = function(_req, res, next) {
   res.header('Access-Control-Allow-Origin', "http://127.0.0.1:5173");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
