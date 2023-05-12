@@ -16,7 +16,7 @@ function Search({ setData, isLoading }) {
     e.preventDefault()
     isLoading(true)
 
-    axios.post(`http://localhost:3001/axios/dish`, { ...search }).then((res) => {
+    axios.post(`api/dish`, { ...search }).then((res) => {
       setData(res.data.data)
       isLoading(false)
       setSearch({

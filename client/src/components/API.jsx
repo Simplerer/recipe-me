@@ -7,7 +7,7 @@ function API() {
   // const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/user').then((res) => {
+    axios.get('/api/user').then((res) => {
       console.log(res)
     })
   }, [])
@@ -16,9 +16,9 @@ function API() {
   // console?.log(data)
 
   const makeUser = () => {
-    axios.post('http://localhost:3001/api/user', {
-      username: 'hanky',
-      password: "panky1234"
+    axios.post('/api/user', {
+      username: 'richard nixon',
+      password: "boothtoooth"
     }).then((res) => console.log(res.status) )
   }
 
@@ -32,10 +32,6 @@ function API() {
 }
 
 export default API;
-
-
-
-// https://www.youtube.com/watch?v=N4yUiQiTvwU
 
 // https://vitejs.dev/config/server-options.html
 

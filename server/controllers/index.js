@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const axiosRoutes = require('./axios');
-const apiRoutes = require('./api');
+const apiRoutes = require('./users');
 
-router.use('/axios', axiosRoutes);
+router.use('/api', axiosRoutes);
 router.use('/api', apiRoutes);
 
 
