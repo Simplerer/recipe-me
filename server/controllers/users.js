@@ -30,15 +30,15 @@ router.get('/user/:id', async (req, res) => {
   }
 });
 
-router.post('/user', async (req, res) => {
-  try {
-    const userData = await User.create(req.body);
-    res.json(userData);
-  } catch (err) {
-    console.error(err);
-    res.json(err);
-  };
-});
+// router.post('/user', async (req, res) => {
+//   try {
+//     const userData = await User.create(req.body);
+//     res.json(userData);
+//   } catch (err) {
+//     console.error(err);
+//     res.json(err);
+//   };
+// });
 
 router.delete('/user/:id', async (req, res) => {
   try { 
