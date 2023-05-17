@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Dropdowns from "./Dropdowns";
 import axios from 'axios';
+import './recipe.css';
 
 
 function Search({ setData, isLoading }) {
@@ -33,7 +34,7 @@ function Search({ setData, isLoading }) {
   }
 
   return (
-    <div>
+    <div className="searchBar">
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -45,7 +46,7 @@ function Search({ setData, isLoading }) {
           placeholder="Ingredient Amounts"
           name="ingAmount"
           onChange={handleOnChange} />
-        <Dropdowns handleChange={handleOnChange}/>
+        <Dropdowns handleChange={handleOnChange} />
         <button
           type="submit"
           style={{ margin: '2%', backgroundColor: 'orange' }} >Search</button>
@@ -72,35 +73,44 @@ function NewFetch() {
     <>
       <h1>Hey</h1>
       <Search isLoading={setIsLoading} setData={setData} />
-      {data.map((item, index) => {
-        return (
-          <div key={index}>
-            <h3>{item.recipe.label}</h3>
-            <ul>
-              <li>{item.recipe.calories}</li>
-              <li>{item.recipe.cuisineType[0]}</li>
-              <li>{item.recipe.dishType[0]}</li>
-              <li>{item.recipe.mealType[0]}</li>
-              <li>{item.recipe.yield}</li>
-              <li>{item.recipe.uri.split('_').pop()}</li>
-            </ul>
-            <h2>Ingredients</h2>
-            <ul>
-              {item.recipe.ingredientLines.map((item, index) => {
-                return (
-                  <li key={index}>{item}</li>
-                )
-              })}
-            </ul>
-            <img src={item.recipe.image}></img>
-            {/* <iframe 
-            src={item.recipe.url}
-            onMouseEnter={showMe}></iframe> */}
-          </div>
-        )
-      })}
+      <section id="recipePage">
+        {data.map((item, index) => {
+          return (
+            <div key={index} className="outerBox">
+              <div className="recipeCard">
+                <h3 className="recipeTitle">{item.recipe.label}</h3>
+                <div className="imageHolder">
+                  <img className="recipeImage" src={item.recipe.image} />
+                </div>
+                <div className="cardBottom">
+                  <p>{(item.recipe.cuisineType[0].slice(0, 1).toUpperCase()) + item.recipe.cuisineType[0].slice(1)} cuisine</p>
+                  <p>Enjoy for {item.recipe.mealType[0]}</p>
+                  <p>Feeds up to {item.recipe.yield}</p>
+                  <div hidden
+                    name='recipeID'>
+                    {item.recipe.uri.split('_').pop()}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </section>
     </>
   )
 }
 
 export default NewFetch;
+
+//  calories, dishtype, 
+{/* <h2>Ingredients</h2>
+  <ul>
+  {item.recipe.ingredientLines.map((item, index) => {
+      return (
+        <li key={index}>{item}</li>
+      )
+    })}
+  </ul> */}
+{/* <iframe 
+  src={item.recipe.url}
+  onMouseEnter={showMe}></iframe> */}

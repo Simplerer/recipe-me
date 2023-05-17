@@ -1,0 +1,67 @@
+body {
+  background-color: #404139;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+.searchBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #484a36;
+}
+
+/* -------------------------------------------------------------------------------- */
+
+#recipePage {
+  max-width: 90%;
+  margin: auto;
+}
+
+.outerBox {
+  background-color: #6e7253;
+  padding: 10px;
+  margin: 8px;
+  border-radius: 16px;
+  max-width: 600px;
+}
+
+.recipeCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 6px solid #ac5040;
+  background: content-box radial-gradient(rgba(164, 206, 202, 80%), rgba(36, 88, 84, 80%));
+  border-radius: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.recipeTitle {
+  color: rgb(189, 194, 193);
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: 600;
+}
+
+.imageHolder{
+  max-width: 300px;
+}
+
+.recipeImage {
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.cardBottom {
+  color: rgb(189, 194, 193);
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 600;
+}

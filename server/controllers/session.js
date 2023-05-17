@@ -4,7 +4,6 @@ const { User } = require('../models');
 // Checking if logged in -> getting user data
 
 router.get('/session/data', (req, res) => {
-  console.log(req.session)
   res.json(req.session)
 })
 

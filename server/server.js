@@ -37,30 +37,30 @@ sequelize.sync({ force: false }).then(() => {
 });
 
 
-app.get('/', (req, res) => {
+// app.get('/', (req, res) => {
 
-  req.session.user = {
-    name: "Mr. Crowley",
-    occupation: "gangbang"
-  }
+//   req.session.user = {
+//     name: "Mr. Crowley",
+//     occupation: "gangbang"
+//   }
 
-  req.session.myass = 'mamma plz, eat a butt on my butt';
-  // this is now part of the session and lives here !!!
-  console.log(req.session)
-  res.send('hiya')
-})
-app.get('/lol', (req, res) => {
-  req.session.countIt = 'I want to see this somewhere';
-  // this is now part of the session and lives here !!!
-  console.log(req.session)
-  req.session.destroy(() => {
-    res.end()
-  })  
-})
-app.get('/aaa', (req, res) => {
-  console.log(req.session)
-  res.json(req.session)
-})
+//   req.session.myass = 'mamma plz, eat a butt on my butt';
+//   // this is now part of the session and lives here !!!
+//   console.log(req.session)
+//   res.send('hiya')
+// })
+// app.get('/lol', (req, res) => {
+//   req.session.countIt = 'I want to see this somewhere';
+//   // this is now part of the session and lives here !!!
+//   console.log(req.session)
+//   req.session.destroy(() => {
+//     res.end()
+//   })  
+// })
+// app.get('/aaa', (req, res) => {
+//   console.log(req.session)
+//   res.json(req.session)
+// })
 
 
 //   Notes   -   
