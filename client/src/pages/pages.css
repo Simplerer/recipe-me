@@ -1,14 +1,19 @@
-body {
-  background-color: #404139;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+
+
+#searchWelcome h1 {
+  font-size: 40px;
 }
 
+#searchWelcome p {
+  font-size: 30px;
+}
+
+#searchWelcome li {
+  font-size: 20px;
+}
 
 .searchBar {
+  display: none;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -21,6 +26,8 @@ body {
 #recipePage {
   max-width: 90%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .outerBox {

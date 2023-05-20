@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
 // import { QueryClientProvider, QueryClient } from 'react-query';
 import './App.css'
-import NewFetch from './components/NewFetch';
-import API from './components/API';
+import NewFetch from './pages/NewFetch';
+import API from './pages/API';
 import axios from 'axios';
+import Header from './components/Header';
 
 
 
@@ -75,15 +76,16 @@ function Fetch() {
 
 function App() {
   return (
-    <>
+    <main id='main'>
       <Router>
-        <Fetch />
+        <Header />
         <Routes>
+          <Route path='/' element={<Fetch />} />
           <Route path='/one' element={<NewFetch />} />
           <Route path='/two' element={<API />} />
         </Routes>
       </Router>
-    </>
+    </main>
   )
 
 }
