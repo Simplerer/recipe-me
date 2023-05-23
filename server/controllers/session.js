@@ -4,11 +4,23 @@ const { User } = require('../models');
 // Checking if logged in -> getting user data
 
 router.get('/session/data', (req, res) => {
+  console.log('hit it')
   res.json(req.session)
 })
 
 router.post('/session/create', async (req, res) => {
   try {
+    const user = await User.findOne({
+      where: {
+        username: req.body.username,
+      },
+    });
+
+    if (user) {
+      res.status(400).json({ message: 'User already exists'})
+      return
+    };
+
     const newUser = await User.create({
       username: req.body.username,
       password: req.body.password,
