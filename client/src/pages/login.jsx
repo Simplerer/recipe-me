@@ -1,94 +1,114 @@
 import { useState } from "react";
-import { redirect } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import './pages.css';
 
 
 
-function Login() {
-
-  // const [user, setUser] = useState(null)
-  const [formData, setFormData] = useState({username: '', password: ''});
+function Login({ setLoggedIn, setUser }) {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ username: '', password: '' });
 
   const login = async () => {
-    await axios.post('api/session/login', {
-      ...formData
-    })
-    .then(({data}) => {
-      console.log(data.user)
+    try {
+      const { data } = await axios.post('api/session/login', {
+        ...formData
+      })
 
-      return redirect('/')
-    })
+      const { user } = data
+      setUser(user)
+      setLoggedIn(true)
+      navigate('/one')
+    } catch {
+      res.error('problem logging in')
+    }
   };
 
   const createUser = async () => {
-
-    console.log(formData)
-    await axios.post('api/session/create', {
-      ...formData
-    })
-    .then((res) => {
-      console.log(res)
-
-      return redirect('/')
-    })
+    try {
+      await axios.post('api/session/create', {
+        ...formData
+      })
+        .then((res) => {
+          console.log(res)
+          setUser(user)
+          setLoggedIn(true)
+          navigate('/one')
+        })
+    } catch {
+      res.error('problem creating a User!')
+    }
   };
 
   const handleChange = (event) => {
-    console.log(event)
     const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value
     })
-    console.log(formData)
   };
 
   const handleSubmit = async (event) => {
-      event.preventDefault();
+    event.preventDefault();
+    await login(formData)
+    console.log('Success!')
+  }
 
-      try {
-        await login(formData)
-      } catch {
-        console.error(error)
-      }
+  const byeLabel = (e) => {
+    let box = e.target.closest('.inputBox').querySelector('.label');
+    box.style.display = 'none';
+  }
+
+  const hiLabel = (e) => {
+    if (e.target.value == '') {
+      let box = e.target.closest('.inputBox').querySelector('.label');
+      box.style.display = 'block';
+    }
   }
 
 
   return (
-    <section id="Login">
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor='username'>Username</label>
-            <input 
-            type="text"  
-            placeholder="useruser"
-            name="username" 
-            onChange={handleChange} 
-            value={formData.username}/>
-            <label htmlFor='password'>Password</label>
-            <input 
-            type="password"
-            placeholder="********" 
-            name="password" 
-            onChange={handleChange} 
-            value={formData.password}/>
-          </div>
-          <div>
-            <button 
-            className="formBtn" 
-            id="createBtn" 
-            type="button"
-            onClick={createUser}>Create an Account</button>
-            <button 
-            className="formBtn" 
-            id="loginBtn" 
-            type="submit">Login</button>
-          </div>
-        </form>
-      </div>
-
-    </section>
+    <>
+    <h1 id="loginTitle">Login</h1>
+      <section id="login">
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="inputBox">
+              <label className="label" htmlFor='username'>Username</label>
+              <input
+                type="text"
+                name="username"
+                className="input"
+                onChange={handleChange}
+                onFocus={byeLabel}
+                onBlur={hiLabel}
+                value={formData.username} />
+            </div>
+            <div className="inputBox">
+              <label className="label" htmlFor='password'>Password</label>
+              <input
+                type="password"
+                className="input"
+                name="password"
+                onChange={handleChange}
+                onFocus={byeLabel}
+                onBlur={hiLabel}
+                value={formData.password} />
+            </div>
+            <div id="btnBox">
+              <button
+                id="loginBtn"
+                type="submit">Login</button>
+              <h2>If not Signed Up</h2>
+              <button
+                id="createBtn"
+                type="button"
+                onClick={createUser}>Create an Account</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </>
   )
 }
 

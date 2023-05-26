@@ -3,10 +3,9 @@ import { NavLink } from "react-router-dom";
 import axios from 'axios';
 import './components.css';
 
-function Header() {
+function Header({ loggedIn, setLoggedIn }) {
 
   const [open, setOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false)
 
   const openMenu = () => {
     setOpen(!open)
@@ -19,15 +18,6 @@ function Header() {
       setLoggedIn(false)
     })
   }
-
-  useEffect(() => {
-
-    axios.get('api/session/data')
-      .then(({data})=> {
-        setLoggedIn(data.loggedIn)
-      })
-    
-  }, []);
 
   return (
 

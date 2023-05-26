@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Dropdowns from "./Dropdowns";
+import Dropdowns from "../components/Dropdowns";
 import axios from 'axios';
 import './pages.css';
 
@@ -57,7 +57,7 @@ function Search({ setData, isLoading }) {
 
 }
 
-function NewFetch() {
+function NewFetch({ user, loggedIn }) {
 
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -91,6 +91,8 @@ function NewFetch() {
         </ul>
         </section>
       }
+      {loggedIn &&
+      <h1>{ user.username }</h1>}
       <section id="recipePage">
         <div>
           {data.map((item, index) => {

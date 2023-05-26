@@ -13,8 +13,8 @@
 }
 
 .searchBar {
-  display: none;
-  position: absolute;
+  /* display: none; */
+  position: block;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -71,4 +71,90 @@
   font-size: 20px;
   line-height: 22px;
   font-weight: 600;
+}
+
+
+/*---------------------   Login   ---------------- */
+
+#loginTitle {
+  font-size: 60px;
+}
+
+#login {
+  border-bottom: solid 2px #a1ac53;
+  border-top: solid 2px #a1ac53;
+  height: 400px;
+  width: 400px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  width: 200px;
+  height: 52px;
+  text-align: center;
+  color: #a1ac53;
+  font-size: 24px;
+  font-weight: 600;
+  background-color:rgba(231, 112, 206, 0.1);
+  margin: 20px 0;
+  border: none;
+  border-radius: 12px;
+}
+
+.label {
+  position: absolute;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#btnBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#btnBox h2 {
+  font-size: 30px;
+  margin: 10px;
+}
+
+#createBtn, #loginBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(161, 172, 83, .4);
+  font-size: 24px;
+  font-weight: 600;
+  color:#8eafae;
+  width: 300px;
+  height: 40px;
+  cursor: pointer;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 4px 4px 20px;
+  transition: all ease .3s;
+  padding: 12px 0;
+}
+
+#loginBtn {
+  width: 200px;
+}
+
+#loginBtn:hover, #createBtn:hover {
+  transform: scale(1.02);
+  color: #d7f5f5;
 }
