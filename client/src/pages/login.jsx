@@ -8,35 +8,54 @@ import './pages.css';
 function Login({ setLoggedIn, setUser }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: '', password: '' });
+  const [tryAgain, setTryAgain] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const login = async () => {
+
+    if (Object.values(formData).includes('')) {
+      setTryAgain(true);
+      return
+    }
+
     try {
       const { data } = await axios.post('api/session/login', {
         ...formData
       })
 
       const { user } = data
-      setUser(user)
-      setLoggedIn(true)
-      navigate('/one')
+      setUser(user);
+      setLoggedIn(true);
+      navigate('/peruse');
     } catch {
-      res.error('problem logging in')
+      setErrorMessage(true);
     }
   };
 
   const createUser = async () => {
+
+    if (Object.values(formData).includes('')) {
+      setTryAgain(true);
+      return
+    }
+
+    if (formData.password.length < 8) {
+      setErrorMessage(true)
+      return
+    }
+
     try {
       await axios.post('api/session/create', {
         ...formData
       })
         .then((res) => {
-          console.log(res)
-          setUser(user)
-          setLoggedIn(true)
-          navigate('/one')
+          console.log(res);
+          setUser(user);
+          setLoggedIn(true);
+          navigate('/peruse');
         })
     } catch {
-      res.error('problem creating a User!')
+      setErrorMessage(true);
     }
   };
 
@@ -51,10 +70,11 @@ function Login({ setLoggedIn, setUser }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await login(formData)
-    console.log('Success!')
   }
 
   const byeLabel = (e) => {
+    setTryAgain(false);
+    setErrorMessage(false);
     let box = e.target.closest('.inputBox').querySelector('.label');
     box.style.display = 'none';
   }
@@ -108,6 +128,22 @@ function Login({ setLoggedIn, setUser }) {
           </form>
         </div>
       </section>
+      {tryAgain && 
+      <div id="errorMessage">
+        <p 
+        onClick={() => setTryAgain(false)}
+        id="errorExit">| X |</p>
+        <p id="errorMessage">Fill out all the fields please!</p>
+        </div>
+        }
+      {errorMessage && 
+      <div id="errorMessage">
+        <p 
+        onClick={() => setErrorMessage(false)}
+        id="errorExit">| X |</p>
+        <p>There seems to have been a problem</p>
+        </div>
+        }
     </>
   )
 }

@@ -1,4 +1,9 @@
 
+/* -------Search Element -------------- */
+
+#searchWelcome {
+  display: none;
+}
 
 #searchWelcome h1 {
   font-size: 40px;
@@ -21,7 +26,7 @@
   background-color: #484a36;
 }
 
-/* -------------------------------------------------------------------------------- */
+/* -------------------Recipe Cards------------------ */
 
 #recipePage {
   max-width: 90%;
@@ -116,6 +121,7 @@
   position: absolute;
   font-size: 24px;
   font-weight: 600;
+  pointer-events: none;
 }
 
 #btnBox {
@@ -155,6 +161,25 @@
 }
 
 #loginBtn:hover, #createBtn:hover {
+  transform: scale(1.02);
+  color: #d7f5f5;
+}
+
+#errorMessage {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  font-size: 30px;
+  margin-top: 5px;
+}
+
+#errorExit {
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all ease .3s;
+}
+
+#errorExit:hover {
   transform: scale(1.02);
   color: #d7f5f5;
 }

@@ -13,10 +13,10 @@ function Header({ loggedIn, setLoggedIn }) {
 
   const logout = async () => {
     await axios.post('api/session/logout')
-    .then((res)=> {
-      console.log(res)
-      setLoggedIn(false)
-    })
+      .then((res) => {
+        console.log(res)
+        setLoggedIn(false)
+      })
   }
 
   return (
@@ -37,12 +37,19 @@ function Header({ loggedIn, setLoggedIn }) {
         <div id="menuDropdown">
           <div className={open ? "openDropdown" : "closeDropdown"}>
             <ul id="menuDropdownList">
-              {loggedIn 
-              ? <li onClick={logout}>Logout</li>
-              : <NavLink to='/login'><li>Login</li></NavLink>
+              {loggedIn
+                ?
+                <>
+                  <li onClick={logout}>Logout</li>
+                  <li>Profile</li>
+                  <li>Share</li>
+                </>
+                :
+                <>
+                  <NavLink to='/login'><li>Login</li></NavLink>
+                  <NavLink to='/peruse'><li>Just Search</li></NavLink>
+                </>
               }
-              <li>Profile</li>
-              <li>Share</li>
             </ul>
           </div>
         </div>

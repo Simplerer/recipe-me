@@ -1,3 +1,9 @@
+/* ---------------------------    Header   ------------------------------------ */
+
+a {
+  text-decoration: none;
+}
+
 #header {
   position: fixed;
   top: 0;
@@ -5,7 +11,8 @@
   left: 0;
   height: 8%;
   width: 100%;
-  border-bottom: 2px solid #a1ac53;;
+  border-bottom: 2px solid #a1ac53;
+  ;
 }
 
 #headerItems {
@@ -53,7 +60,7 @@
   position: absolute;
   right: 10%;
   bottom: 0;
-  width: 20%;
+  /* width: 20%; */
   cursor: pointer;
   font-size: 150%;
 }
@@ -68,6 +75,8 @@
   padding: 10px 10px 0;
   transition: background-color .8s ease, color 1.2s ease;
   border-radius: 20px 20px 0 0;
+  color: rgb(245, 203, 149);
+  text-decoration: none;
 }
 
 #menuDropdownList li:hover {
@@ -78,20 +87,19 @@
 
 @media (max-width: 1080px) {
 
-#mainItems {
-  width: 50%;
-}
-
-#menuDropdown {
-  width: 25%;
-}
+  #mainItems {
+    width: 50%;
+  }
 
 }
 
 @media (max-width: 900px) {
 
-#menuDropdown {
-  right: 15%;
-}
+  #menuDropdown {
+    right: 15%;
+  }
 
 }
+
+/* --------------  Search Bar  --------------------- */
+
