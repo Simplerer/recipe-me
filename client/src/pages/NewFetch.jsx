@@ -17,28 +17,8 @@ function NewFetch({ user, loggedIn }) {
 
   return (
     <>
-      {data.length < 2 &&
-      <section id="searchWelcome">
-        <h1>Have a Search!</h1>
-        <p>Things you can search by:</p>
-        <ul> 
-          <li>
-            General Search
-          </li>
-          <li>
-            # of ingredients
-          </li>
-          <li>
-            Type of cusine
-          </li>
-          <li>
-            What meal is it?
-          </li>
-        </ul>
-        </section>
-      }
       {loggedIn &&
-      <h1>{ user.username }</h1>}
+        <h1>{user.username}</h1>}
       <section id="recipePage">
         <div>
           {data.map((item, index) => {
@@ -62,9 +42,9 @@ function NewFetch({ user, loggedIn }) {
               </div>
             )
           })}
-          <Search isLoading={setIsLoading} setData={setData} />
         </div>
       </section>
+      <Search isLoading={setIsLoading} setData={setData} />
     </>
   )
 }
@@ -89,3 +69,7 @@ export default NewFetch;
   // data is loaded and ready
   // like swiper.js but build my way
   // load data[0] --
+
+
+  //    left and right buttons
+  // keep and save tender recipes!!!

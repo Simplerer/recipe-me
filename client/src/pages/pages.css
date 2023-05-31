@@ -1,30 +1,7 @@
 
 /* -------Search Element -------------- */
 
-#searchWelcome {
-  display: none;
-}
 
-#searchWelcome h1 {
-  font-size: 40px;
-}
-
-#searchWelcome p {
-  font-size: 30px;
-}
-
-#searchWelcome li {
-  font-size: 20px;
-}
-
-.searchBar {
-  /* display: none; */
-  position: block;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #484a36;
-}
 
 /* -------------------Recipe Cards------------------ */
 
@@ -81,7 +58,7 @@
 
 /*---------------------   Login   ---------------- */
 
-#loginTitle {
+.sectionTitle {
   font-size: 60px;
 }
 

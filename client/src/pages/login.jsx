@@ -89,7 +89,7 @@ function Login({ setLoggedIn, setUser }) {
 
   return (
     <>
-    <h1 id="loginTitle">Login</h1>
+    <h1 className="sectionTitle">Login</h1>
       <section id="login">
         <div>
           <form onSubmit={handleSubmit}>

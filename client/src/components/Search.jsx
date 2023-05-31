@@ -34,25 +34,33 @@ function Search({ setData, isLoading }) {
   }
 
   return (
-    <div className="searchBar">
-      <form onSubmit={handleSubmit}>
-      <label className="label" htmlFor='se'>Password</label>
-        <input
-          type="text"
-          id="searchField"
-          name="query"
-          onChange={handleOnChange} />
-        <input
-          type="text"
-          id="ingredientField"
-          name="ingAmount"
-          onChange={handleOnChange} />
-        <Dropdowns handleChange={handleOnChange} />
-        <button
-          type="submit"
-          style={{ margin: '2%', backgroundColor: 'orange' }} >Search</button>
-      </form>
-    </div>
+    <>
+      <h1 className="sectionTitle">Search</h1>
+      <div className="searchBar">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="input"
+            id="searchField"
+            name="query"
+            placeholder="Recipe Query"
+            onChange={handleOnChange} />
+            <div id="middleSearch">
+          <input
+            type="text"
+            className="input"
+            id="ingredientField"
+            name="ingAmount"
+            placeholder="# of Ingredients"
+            onChange={handleOnChange} />
+          <Dropdowns handleChange={handleOnChange} />
+            </div>
+            <h2 id="optional">Optionals</h2>
+          <button
+            type="submit">Search</button>
+        </form>
+      </div>
+    </>
   )
 };
 
