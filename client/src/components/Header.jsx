@@ -47,7 +47,7 @@ function Header({ loggedIn, setLoggedIn }) {
                 :
                 <>
                   <NavLink to='/login'><li>Login</li></NavLink>
-                  <NavLink to='/peruse'><li>Just Search</li></NavLink>
+                  <NavLink to='/search'><li>Just Search</li></NavLink>
                 </>
               }
             </ul>

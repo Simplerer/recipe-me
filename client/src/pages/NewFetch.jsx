@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import Search from '../components/Search';
 import './pages.css';
 
 
-function NewFetch({ user, loggedIn }) {
+function NewFetch({ user, loggedIn, data, isLoading }) {
 
-  const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [index, setIndex] = useState(0);
 
   console?.log(data)
 
@@ -14,37 +12,35 @@ function NewFetch({ user, loggedIn }) {
     return <h2>Loading...</h2>
   }
 
-
   return (
     <>
       {loggedIn &&
-        <h1>{user.username}</h1>}
+        <h1 id="usernameSearch">{user.username} let's</h1>}
       <section id="recipePage">
-        <div>
-          {data.map((item, index) => {
-            return (
-              <div key={index} className="outerBox">
+        {data.length > 0 &&
+        
+              <div className="outerBox">
                 <div className="recipeCard">
-                  <h3 className="recipeTitle">{item.recipe.label}</h3>
+                  <h3 className="recipeTitle">{data[index].recipe.label}</h3>
                   <div className="imageHolder">
-                    <img className="recipeImage" src={item.recipe.image} />
+                    <img className="recipeImage" src={data[index].recipe.image} />
                   </div>
                   <div className="cardBottom">
-                    <p>{(item.recipe.cuisineType[0].slice(0, 1).toUpperCase()) + item.recipe.cuisineType[0].slice(1)} cuisine</p>
-                    <p>Enjoy for {item.recipe.mealType[0]}</p>
-                    <p>Feeds up to {item.recipe.yield}</p>
+                    <p>{(data[index].recipe.cuisineType[0].slice(0, 1).toUpperCase()) + data[index].recipe.cuisineType[0].slice(1)} cuisine</p>
+                    <p>Enjoy for {data[index].recipe.mealType[0]}</p>
+                    <p>Feeds up to {data[index].recipe.yield}</p>
                     <div hidden
                       name='recipeID'>
-                      {item.recipe.uri.split('_').pop()}
+                      {data[index].recipe.uri.split('_').pop()}
                     </div>
                   </div>
                 </div>
               </div>
-            )
-          })}
-        </div>
+        }
+        {data.length > 0 && index < data.length - 1 && (
+        <button onClick={() => setIndex(index + 1)}>Another PLease!!</button>
+        )}
       </section>
-      <Search isLoading={setIsLoading} setData={setData} />
     </>
   )
 }

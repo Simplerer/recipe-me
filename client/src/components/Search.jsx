@@ -2,10 +2,12 @@ import { useState } from "react";
 import Dropdowns from "./Dropdowns";
 import axios from 'axios';
 import './components.css';
+import { useNavigate } from "react-router-dom";
 
 
 function Search({ setData, isLoading }) {
 
+  const navigate = useNavigate();
   const [search, setSearch] = useState({
     query: null,
     ingAmount: null,
@@ -13,11 +15,11 @@ function Search({ setData, isLoading }) {
     mealType: null
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     isLoading(true)
 
-    axios.post(`api/dish`, { ...search }).then((res) => {
+    await axios.post(`api/dish`, { ...search }).then((res) => {
       setData(res.data.data)
       isLoading(false)
       setSearch({
@@ -26,6 +28,7 @@ function Search({ setData, isLoading }) {
         cuisineType: null,
         mealType: null
       })
+      navigate('/peruse')
     })
   }
   const handleOnChange = (e) => {
@@ -35,7 +38,7 @@ function Search({ setData, isLoading }) {
 
   return (
     <>
-      <h1 className="sectionTitle">Search</h1>
+      <h1 className="sectionTitle">Retrieve Recipes</h1>
       <div className="searchBar">
         <form onSubmit={handleSubmit}>
           <input
@@ -43,7 +46,7 @@ function Search({ setData, isLoading }) {
             className="input"
             id="searchField"
             name="query"
-            placeholder="Recipe Query"
+            placeholder="Query"
             onChange={handleOnChange} />
             <div id="middleSearch">
           <input

@@ -1,5 +1,7 @@
 
-/* ---------------------------    Header   ------------------------------------ */
+/* --------------
+    Header   
+------------------ */
 
 a {
   text-decoration: none;
@@ -44,38 +46,6 @@ a {
   font-size: 150%;
 }
 
-.openDropdown {
-  display: block;
-  opacity: 1;
-}
-
-.closeDropdown {
-  display: none;
-  opacity: 0;
-}
-
-#menuDropdown div[openDropdown] {
-  animation: fade-in 500ms forwards
-}
-
-@keyframes dissapear {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 #menuDropdown {
   position: absolute;
   right: 10%;
@@ -88,20 +58,43 @@ a {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
 
-#menuDropdownList li {
-  padding: 10px 10px 0;
-  transition: background-color .8s ease, color 1.2s ease;
-  border-radius: 20px 20px 0 0;
-  color: rgb(245, 203, 149);
-  text-decoration: none;
 }
 
 #menuDropdownList li:hover {
   color: rgb(42, 42, 199);
   background-color: rgba(181, 202, 19, 0.5);
   border-radius: 20px 20px 0 0;
+}
+
+.openDropdown {
+  z-index: 100;
+  opacity: 1;
+}
+
+.openDropdown li {
+  padding: 10px 10px 0;
+  transition: background-color .8s ease, color 1.2s ease;
+  border-radius: 20px 20px 0 0;
+  color: rgb(245, 203, 149);
+  text-decoration: none;
+  animation: fade-in 800ms ease-in forwards;
+}
+
+.closeDropdown {
+  display: none;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    z-index: -100;
+  }
+
+  100% {
+    opacity: 1;
+    z-index: 1;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -120,7 +113,9 @@ a {
 
 }
 
-/* --------------  Search Bar  --------------------- */
+/* --------------  
+    Search Bar  
+------------------- */
 
 .searchBar {
   border-bottom: solid 2px #a1ac53;
@@ -130,6 +125,7 @@ a {
   display: flex;
   flex-direction: column;
   padding: 50px 0;
+  max-width: 600px;
 }
 
 .searchBar button {
@@ -162,6 +158,11 @@ a {
 #searchField {
   width: 40vw;
   height: 50px;
+  max-width: 500px;
+}
+
+#searchField::placeholder, #ingredientField::placeholder {
+  color:#a1ac53
 }
 
 #middleSearch {
@@ -186,6 +187,11 @@ a {
   background-color:rgba(231, 112, 206, 0.1);
   margin: 4px;
   border-radius: 8px;
+  box-shadow: 4px 4px 20px black;
+  
+  &:focus {
+    scale: 1.02;
+  }
 }
 
 #optional {

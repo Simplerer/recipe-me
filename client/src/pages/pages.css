@@ -1,15 +1,20 @@
 
-/* -------Search Element -------------- */
-
-
-
-/* -------------------Recipe Cards------------------ */
+/* -------------------
+    Recipe Cards
+------------------ */
 
 #recipePage {
   max-width: 90%;
   margin: auto;
   display: flex;
   flex-direction: column;
+}
+
+#usernameSearch {
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: 700;
+  text-shadow: 3px 1px 8px rgb(155, 230, 121);
 }
 
 .outerBox {
@@ -55,8 +60,9 @@
   font-weight: 600;
 }
 
-
-/*---------------------   Login   ---------------- */
+/*----------------
+     Login   
+---------------- */
 
 .sectionTitle {
   font-size: 60px;
@@ -90,8 +96,13 @@
   font-weight: 600;
   background-color:rgba(231, 112, 206, 0.1);
   margin: 20px 0;
-  border: none;
+  border: solid 1px  #a1ac53;
+  box-shadow: 2px 2px 15px  #0d0e05;
   border-radius: 12px;
+
+  &:focus {
+    scale: 1.02;
+  }
 }
 
 .label {

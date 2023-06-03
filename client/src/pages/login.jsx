@@ -6,6 +6,7 @@ import './pages.css';
 
 
 function Login({ setLoggedIn, setUser }) {
+  
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [tryAgain, setTryAgain] = useState(false);
@@ -26,7 +27,7 @@ function Login({ setLoggedIn, setUser }) {
       const { user } = data
       setUser(user);
       setLoggedIn(true);
-      navigate('/peruse');
+      navigate('/search');
     } catch {
       setErrorMessage(true);
     }
@@ -52,7 +53,7 @@ function Login({ setLoggedIn, setUser }) {
           console.log(res);
           setUser(user);
           setLoggedIn(true);
-          navigate('/peruse');
+          navigate('/search');
         })
     } catch {
       setErrorMessage(true);
