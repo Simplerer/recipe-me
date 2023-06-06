@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import './pages.css';
 
 
-function NewFetch({ user, loggedIn, data, isLoading }) {
+function NewFetch({ data, isLoading }) {
+
+  const [recipes, setRecipes] = useState(true);
 
   const [index, setIndex] = useState(0);
 
@@ -14,32 +17,51 @@ function NewFetch({ user, loggedIn, data, isLoading }) {
 
   return (
     <>
-      {loggedIn &&
-        <h1 id="usernameSearch">{user.username} let's</h1>}
       <section id="recipePage">
-        {data.length > 0 &&
-        
-              <div className="outerBox">
-                <div className="recipeCard">
-                  <h3 className="recipeTitle">{data[index].recipe.label}</h3>
-                  <div className="imageHolder">
-                    <img className="recipeImage" src={data[index].recipe.image} />
-                  </div>
-                  <div className="cardBottom">
-                    <p>{(data[index].recipe.cuisineType[0].slice(0, 1).toUpperCase()) + data[index].recipe.cuisineType[0].slice(1)} cuisine</p>
-                    <p>Enjoy for {data[index].recipe.mealType[0]}</p>
-                    <p>Feeds up to {data[index].recipe.yield}</p>
-                    <div hidden
-                      name='recipeID'>
-                      {data[index].recipe.uri.split('_').pop()}
-                    </div>
-                  </div>
+        <div style={{ display: recipes ? 'block' : 'none'}}>
+    {data.length > 0 &&
+    
+          <div className="outerBox">
+            <div className="recipeCard">
+              <h3 className="recipeTitle">{data[index].recipe.label}</h3>
+              <div className="imageHolder">
+                <img className="recipeImage" src={data[index].recipe.image} />
+              </div>
+              <div className="cardBottom">
+                <p>{(data[index].recipe.cuisineType[0].slice(0, 1).toUpperCase()) + data[index].recipe.cuisineType[0].slice(1)} cuisine</p>
+                <p>Enjoy for {data[index].recipe.mealType[0]}</p>
+                <p>Feeds up to {data[index].recipe.yield}</p>
+                <div hidden
+                  name='recipeID'>
+                  {data[index].recipe.uri.split('_').pop()}
                 </div>
               </div>
-        }
-        {data.length > 0 && index < data.length - 1 && (
-        <button onClick={() => setIndex(index + 1)}>Another PLease!!</button>
-        )}
+            </div>
+          </div>
+    }
+    {data.length > 0 && index < data.length - 1 
+    ? (
+      <>
+      <div className="nextBtnBox"></div>
+    <button onClick={() => setIndex(index + 1)}
+    className="nextBtn"></button>
+      
+    <p className="nextBtnText">Another!</p>
+    </>
+    )
+    :
+    (
+      <>
+      <div className="nextBtnBox"></div>
+      <NavLink to='/search'>
+      <button className="nextBtn"></button>
+      </NavLink>
+      <p className="nextBtnText">Search Again?</p>
+      </>
+    )}
+          
+        </div>
+        <div></div>
       </section>
     </>
   )

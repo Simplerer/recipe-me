@@ -8,13 +8,7 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-}
-
-#usernameSearch {
-  font-size: 28px;
-  line-height: 30px;
-  font-weight: 700;
-  text-shadow: 3px 1px 8px rgb(155, 230, 121);
+  position: relative;
 }
 
 .outerBox {
@@ -22,13 +16,24 @@
   padding: 10px;
   margin: 8px;
   border-radius: 16px;
-  max-width: 600px;
+  width: 600px;
+  cursor: pointer;
+  transition: 300ms ease-out;
+  &:hover {
+    scale: 1.01;
+  }
+}
+
+.outerBox h3,p {
+  transition: color .8s ease, color 1.2s ease;
+  &:hover {
+    color: rgb(245, 203, 149);
+  }
 }
 
 .recipeCard {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 10px;
   border: 6px solid #ac5040;
@@ -42,15 +47,28 @@
   font-size: 28px;
   line-height: 30px;
   font-weight: 600;
+  margin: 20px 0;
 }
 
 .imageHolder{
   max-width: 300px;
+  border: 4px solid #ac5040;
+  padding: 4px;
+  border-radius: 16px;
+  transition: 300ms ease-out;
+  &:hover {
+    transform: rotate(1deg);
+  }
 }
 
 .recipeImage {
   object-fit: cover;
   border-radius: 16px;
+  transition: 300ms ease-out;
+  &:hover {
+    transform: rotate(.5deg);
+    scale: 1.03;
+  }
 }
 
 .cardBottom {
@@ -58,6 +76,58 @@
   font-size: 20px;
   line-height: 22px;
   font-weight: 600;
+  margin: 10px 0 20px;
+}
+
+.cardBottom p {
+  margin: 6px ;
+  font-size: 110%;
+}
+
+.nextBtnBox {
+  position: absolute;
+  right: -156px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(161, 172, 83, .4);
+  box-shadow: 4px 4px 10px #8eafae;
+  height: 138px;
+  width: 80px;
+  border-radius: 8px;
+}
+
+.nextBtn {
+  position: absolute;
+  right: -160px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent ;
+  border-bottom: 60px solid transparent ;
+  border-left: 60px solid #a1ac53;
+  border-right: #404139;
+  background-color: #404139;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    scale: 1.02;
+    border-left: 60px solid #bbc56e;
+  }
+
+  &:active {
+    translate: 1px -1px;
+  }
+}
+
+.nextBtnText {
+  position: absolute;
+  right: -160px;
+  top: 66%;
+  font-size: 130%;
+  max-width: 80px;
+  word-wrap: break-word;
 }
 
 /*----------------
