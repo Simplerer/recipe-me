@@ -7,6 +7,7 @@
   max-width: 90%;
   margin: auto;
   display: flex;
+  align-items: center;
   flex-direction: column;
   position: relative;
 }
@@ -19,6 +20,7 @@
   width: 600px;
   cursor: pointer;
   transition: 300ms ease-out;
+  box-shadow: var(--shadow);
   &:hover {
     scale: 1.01;
   }
@@ -33,6 +35,7 @@
 
 .recipeCard {
   display: flex;
+  margin: auto;
   flex-direction: column;
   align-items: center;
   padding: 10px;
@@ -84,50 +87,109 @@
   font-size: 110%;
 }
 
-.nextBtnBox {
+.nextBtnBox, .lastBtnBox, .saveBtnBox {
   position: absolute;
-  right: -156px;
-  top: 50%;
   transform: translateY(-50%);
   background-color: rgba(161, 172, 83, .4);
-  box-shadow: 4px 4px 10px #8eafae;
-  height: 138px;
-  width: 80px;
+  box-shadow: 4px 4px 20px #8eafae;
   border-radius: 8px;
 }
 
-.nextBtn {
-  position: absolute;
-  right: -160px;
+.nextBtnBox {
+  right: -156px;
   top: 50%;
+  height: 138px;
+  width: 80px;
+}
+
+.lastBtnBox {
+  left: -156px;
+  top: 50%;
+  height: 138px;
+  width: 80px;
+}
+
+.saveBtnBox {
+  bottom: -160px;
+  width: 138px;
+  height: 80px;
+}
+
+.nextBtn, .lastBtn, .saveBtn {
+  position: absolute;
   transform: translateY(-50%);
   width: 0;
   height: 0;
-  border-top: 60px solid transparent ;
-  border-bottom: 60px solid transparent ;
-  border-left: 60px solid #a1ac53;
-  border-right: #404139;
-  background-color: #404139;
+  background-color: var(--body);
   background: transparent;
   cursor: pointer;
-
-  &:hover {
-    scale: 1.02;
-    border-left: 60px solid #bbc56e;
-  }
-
   &:active {
     translate: 1px -1px;
   }
 }
 
-.nextBtnText {
-  position: absolute;
+.nextBtn {
   right: -160px;
-  top: 66%;
+  top: 50%;
+  border-top: 60px solid transparent ;
+  border-right: var(--body);
+  border-bottom: 60px solid transparent ;
+  border-left: 60px solid var(--recipeBtn); 
+  transition: border-left ease 1s;
+  &:hover {
+    scale: 1.02;
+    border-left: 60px solid #bbc56e;
+  }
+}
+
+.lastBtn {
+  top: 50%;
+  left: -160px;
+  border-top: 60px solid transparent ;
+  border-right: 60px solid var(--recipeBtn);
+  border-bottom: 60px solid transparent ;
+  border-left: var(--body);
+  transition: border-right ease 1s;
+  &:hover {
+    scale: 1.02;
+    border-right: 60px solid #bbc56e;
+  }
+}
+
+.saveBtn {
+  bottom: -145px;
+  border-top: 60px solid var(--recipeBtn);
+  border-right: 60px solid transparent ;
+  border-bottom: var(--body);
+  border-left: 60px solid transparent ;
+  transition: border-top ease 1s;
+  &:hover {
+    scale: 1.02;
+    border-top: 60px solid #bbc56e;
+  }
+}
+
+.nextBtnText, .lastBtnText, .saveBtnText {
+  position: absolute;
   font-size: 130%;
   max-width: 80px;
   word-wrap: break-word;
+}
+
+.nextBtnText {
+  right: -160px;
+  top: 66%;
+}
+
+.lastBtnText {
+  left: -140px;
+  top: 66%;
+}
+
+.saveBtnText {
+  right: unset;
+  top: unset;
+  bottom: -5%;
 }
 
 /*----------------
@@ -169,7 +231,6 @@
   border: solid 1px  #a1ac53;
   box-shadow: 2px 2px 15px  #0d0e05;
   border-radius: 12px;
-
   &:focus {
     scale: 1.02;
   }

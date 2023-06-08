@@ -3,13 +3,24 @@ import { NavLink } from "react-router-dom";
 import './pages.css';
 
 
-function NewFetch({ data, isLoading }) {
-
-  const [recipes, setRecipes] = useState(true);
+function NewFetch({ data, isLoading, holder, setHolder }) {
 
   const [index, setIndex] = useState(0);
+  const [basketNum, setBasketNum] = useState(0)
 
   console?.log(data)
+
+  const basket = async () => {
+    let x = data[index];
+      const recipe = {
+        name: x.recipe.label,
+        id: x.recipe.uri.split('_').pop()
+      }
+
+      await holder ? setHolder([...holder, recipe]) : setHolder([recipe])
+      setBasketNum(basketNum++)
+  }
+
 
   if (isLoading) {
     return <h2>Loading...</h2>
@@ -18,9 +29,8 @@ function NewFetch({ data, isLoading }) {
   return (
     <>
       <section id="recipePage">
-        <div style={{ display: recipes ? 'block' : 'none'}}>
-    {data.length > 0 &&
-    
+        {data.length > 0 &&
+
           <div className="outerBox">
             <div className="recipeCard">
               <h3 className="recipeTitle">{data[index].recipe.label}</h3>
@@ -38,30 +48,47 @@ function NewFetch({ data, isLoading }) {
               </div>
             </div>
           </div>
-    }
-    {data.length > 0 && index < data.length - 1 
-    ? (
-      <>
-      <div className="nextBtnBox"></div>
-    <button onClick={() => setIndex(index + 1)}
-    className="nextBtn"></button>
-      
-    <p className="nextBtnText">Another!</p>
-    </>
-    )
-    :
-    (
-      <>
-      <div className="nextBtnBox"></div>
-      <NavLink to='/search'>
-      <button className="nextBtn"></button>
-      </NavLink>
-      <p className="nextBtnText">Search Again?</p>
-      </>
-    )}
-          
-        </div>
-        <div></div>
+        }
+        {data.length > 0 && index < data.length - 1
+          ? (
+            <>
+              <div className="nextBtnBox"></div>
+              <button onClick={() => setIndex(index + 1)}
+                className="nextBtn"></button>
+
+              <p className="nextBtnText">Another!</p>
+            </>
+          )
+          :
+          (
+            <>
+              <div className="nextBtnBox"></div>
+              <NavLink to='/search'>
+                <button className="nextBtn"></button>
+              </NavLink>
+              <p className="nextBtnText">Search Again?</p>
+            </>
+          )}
+        {data.length > 0 && index > 0
+        ?
+          <>
+            <div className="lastBtnBox"></div>
+            <button onClick={() => setIndex(index - 1)}
+              className="lastBtn"></button>
+
+            <p className="lastBtnText">Back!</p>
+          </>
+          :
+          <></>
+        }
+        {data.length > 0 &&
+          <>
+            <div className="saveBtnBox"></div>
+            <button onClick={basket} className="saveBtn"></button>
+
+            <p className="saveBtnText">Save It!</p>
+          </>
+        }
       </section>
     </>
   )

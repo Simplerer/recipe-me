@@ -15,6 +15,7 @@ function App() {
   const [user, setUser] = useState({})
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [holder, setHolder] = useState([])
 
   return (
     <main id='main'>
@@ -37,7 +38,9 @@ function App() {
               user={user}
               loggedIn={loggedIn}
               data={data}
-              isLoading={isLoading}/>} />
+              isLoading={isLoading}
+              holder={holder}
+              setHolder={setHolder} />} />
 
               <Route
               path='/search'
