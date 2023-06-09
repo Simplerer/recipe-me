@@ -11,14 +11,20 @@ function NewFetch({ data, isLoading, holder, setHolder }) {
   console?.log(data)
 
   const basket = async () => {
-    let x = data[index];
-      const recipe = {
-        name: x.recipe.label,
-        id: x.recipe.uri.split('_').pop()
-      }
 
-      await holder ? setHolder([...holder, recipe]) : setHolder([recipe])
-      setBasketNum(basketNum++)
+    document.querySelector('.holderCan').classList.add('shake')
+
+    let x = data[index];
+    const recipe = {
+      name: x.recipe.label,
+      id: x.recipe.uri.split('_').pop()
+    }
+
+    await holder ? setHolder([...holder, recipe]) : setHolder([recipe])
+    setBasketNum(basketNum + 1)
+    setTimeout(() => {
+      document.querySelector('.holderCan').classList.remove('shake')
+    }, 1000);
   }
 
 
@@ -70,7 +76,7 @@ function NewFetch({ data, isLoading, holder, setHolder }) {
             </>
           )}
         {data.length > 0 && index > 0
-        ?
+          ?
           <>
             <div className="lastBtnBox"></div>
             <button onClick={() => setIndex(index - 1)}
@@ -86,8 +92,20 @@ function NewFetch({ data, isLoading, holder, setHolder }) {
             <div className="saveBtnBox"></div>
             <button onClick={basket} className="saveBtn"></button>
 
-            <p className="saveBtnText">Save It!</p>
+            <p className="saveBtnText">Hold It!</p>
           </>
+        }
+        {holder.length > 1 &&
+          (
+            <div className="holder">
+              <div className="holderCan">
+                <h3 id="holderName">Holder</h3>
+                <h3 id="holderAmt">{holder.length}</h3>
+                <div id="holderTop"></div>
+                <div id="holderBottom"></div>
+              </div>
+            </div>
+          )
         }
       </section>
     </>

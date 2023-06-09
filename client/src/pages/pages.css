@@ -160,7 +160,7 @@
   bottom: -145px;
   border-top: 60px solid var(--recipeBtn);
   border-right: 60px solid transparent ;
-  border-bottom: var(--body);
+  border-bottom: 0 var(--body);
   border-left: 60px solid transparent ;
   transition: border-top ease 1s;
   &:hover {
@@ -191,6 +191,107 @@
   top: unset;
   bottom: -5%;
 }
+
+/*----------------
+     Holder Can   
+---------------- */
+
+.holder {
+  position: absolute;
+  bottom: -40%;
+  left: -50%;
+  animation: holder 2s ease-in 200ms;
+}
+
+@keyframes holder {
+  0% {
+    opacity: 0;
+    z-index: -100;
+  }
+
+  100% {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+.shake {
+  animation: shake 1s ease;
+}
+
+@keyframes shake {
+
+  0% {
+    translate: 0;
+  }
+
+  20% {
+    translate: -5px 0;
+  }
+
+  40% {
+    translate: 4px 0;
+  }
+
+  65% {
+    translate: -2px 0;
+  }
+
+  90% {
+    translate: 1px 0;
+  }
+
+  100% {
+    translate: 0;
+  }
+
+}
+
+#holderName {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text);
+  font-size: 20px;
+}
+
+#holderAmt {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text);
+  font-size: 20px;
+}
+
+.holderCan {
+  position: relative;
+  background-color: hsla(180, 60%, 90%, 0.562);
+  width: 80px;
+  height: 100px;
+}
+
+#holderTop, #holderBottom {
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  border-radius: 50%;
+  border-bottom: solid 2px #2a6464;
+}
+
+#holderTop {
+  top: -15%;
+  background-color: #d7f5f5;
+  border-bottom: solid 2px #2a6464;
+}
+
+#holderBottom {
+  bottom: -15%;
+  background-color: #d7f5f5;
+}
+
+
 
 /*----------------
      Login   
