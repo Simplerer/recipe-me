@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
 // import { QueryClientProvider, QueryClient } from 'react-query';
 import './App.css'
-import NewFetch from './pages/NewFetch';
+import Peruse from './pages/Peruse';
 import API from './pages/API';
 import Header from './components/Header';
 import Login from './pages/login';
 import Search from './components/Search';
+import Recipe from './pages/Recipe';
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
 
           <Route
             path='/peruse'
-            element={<NewFetch
+            element={<Peruse
               user={user}
               loggedIn={loggedIn}
               data={data}
@@ -42,11 +43,15 @@ function App() {
               holder={holder}
               setHolder={setHolder} />} />
 
-              <Route
-              path='/search'
-              element={<Search 
-                isLoading={setIsLoading} 
-                setData={setData} />} />
+          <Route
+            path='/search'
+            element={<Search
+              isLoading={setIsLoading}
+              setData={setData} />} />
+
+          <Route
+            path='/recipe'
+            element={<Recipe />} />
 
           <Route path='/two' element={<API />} />
         </Routes>

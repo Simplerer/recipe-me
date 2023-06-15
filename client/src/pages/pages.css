@@ -201,6 +201,7 @@
   bottom: -40%;
   left: -50%;
   animation: holder 2s ease-in 200ms;
+  cursor: pointer;
 }
 
 @keyframes holder {
@@ -289,6 +290,25 @@
 #holderBottom {
   bottom: -15%;
   background-color: #d7f5f5;
+}
+
+/*----------------
+     Basket  
+---------------- */
+
+#basketBacking {
+  height: 100vh;
+  width: 100vw;
+  background-color: #a1ac53;
+  opacity: .4;
+  position: absolute;
+  z-index: 10000000;
+}
+
+#basket {
+  margin: auto;
+  translate: -50% -50%;
+  background: linear-gradient(to right, var(--text) 20%, var(--shadow) 80%);
 }
 
 

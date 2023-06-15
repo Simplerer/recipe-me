@@ -2,17 +2,35 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import './pages.css';
 
+function Basket({ holder }) {
+  return (
+    <div id="basketBacking">
+      <div id="basket">
+        {holder.map((item, index) => (
+          <>
+            <div key={index} className="basketItem">
+              <h2>{item.name}</h2>
+              <p>{item.id}</p>
+            </div>
+          </>
+        ))}
+      </div>
+    </div>
+  )
+}
 
-function NewFetch({ data, isLoading, holder, setHolder }) {
+
+function Peruse({ data, isLoading, holder, setHolder }) {
 
   const [index, setIndex] = useState(0);
   const [basketNum, setBasketNum] = useState(0)
+  const [modal, setModal] = useState(false)
 
   console?.log(data)
 
   const basket = async () => {
 
-    document.querySelector('.holderCan').classList.add('shake')
+    document.querySelector('.holderCan')?.classList.add('shake')
 
     let x = data[index];
     const recipe = {
@@ -23,7 +41,7 @@ function NewFetch({ data, isLoading, holder, setHolder }) {
     await holder ? setHolder([...holder, recipe]) : setHolder([recipe])
     setBasketNum(basketNum + 1)
     setTimeout(() => {
-      document.querySelector('.holderCan').classList.remove('shake')
+      document.querySelector('.holderCan')?.classList.remove('shake')
     }, 1000);
   }
 
@@ -36,24 +54,25 @@ function NewFetch({ data, isLoading, holder, setHolder }) {
     <>
       <section id="recipePage">
         {data.length > 0 &&
-
-          <div className="outerBox">
-            <div className="recipeCard">
-              <h3 className="recipeTitle">{data[index].recipe.label}</h3>
-              <div className="imageHolder">
-                <img className="recipeImage" src={data[index].recipe.image} />
-              </div>
-              <div className="cardBottom">
-                <p>{(data[index].recipe.cuisineType[0].slice(0, 1).toUpperCase()) + data[index].recipe.cuisineType[0].slice(1)} cuisine</p>
-                <p>Enjoy for {data[index].recipe.mealType[0]}</p>
-                <p>Feeds up to {data[index].recipe.yield}</p>
-                <div hidden
-                  name='recipeID'>
-                  {data[index].recipe.uri.split('_').pop()}
+          <NavLink to='/recipe'>
+            <div className="outerBox">
+              <div className="recipeCard">
+                <h3 className="recipeTitle">{data[index].recipe.label}</h3>
+                <div className="imageHolder">
+                  <img className="recipeImage" src={data[index].recipe.image} />
+                </div>
+                <div className="cardBottom">
+                  <p>{(data[index].recipe.cuisineType[0].slice(0, 1).toUpperCase()) + data[index].recipe.cuisineType[0].slice(1)} cuisine</p>
+                  <p>Enjoy for {data[index].recipe.mealType[0]}</p>
+                  <p>Feeds up to {data[index].recipe.yield}</p>
+                  <div hidden
+                    name='recipeID'>
+                    {data[index].recipe.uri.split('_').pop()}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </NavLink>
         }
         {data.length > 0 && index < data.length - 1
           ? (
@@ -95,9 +114,9 @@ function NewFetch({ data, isLoading, holder, setHolder }) {
             <p className="saveBtnText">Hold It!</p>
           </>
         }
-        {holder.length > 1 &&
+        {holder.length > 0 &&
           (
-            <div className="holder">
+            <div className="holder" onClick={() => setModal(!modal)}>
               <div className="holderCan">
                 <h3 id="holderName">Holder</h3>
                 <h3 id="holderAmt">{holder.length}</h3>
@@ -107,12 +126,15 @@ function NewFetch({ data, isLoading, holder, setHolder }) {
             </div>
           )
         }
+      {modal &&
+        <Basket holder={holder} setModal={setModal} />
+      }
       </section>
     </>
   )
 }
 
-export default NewFetch;
+export default Peruse;
 
 //  calories, dishtype, 
 {/* <h2>Ingredients</h2>
