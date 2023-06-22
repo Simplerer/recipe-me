@@ -8,10 +8,11 @@ import Header from './components/Header';
 import Login from './pages/login';
 import Search from './components/Search';
 import Recipe from './pages/Recipe';
+import Home from './pages/Home';
 
 function App() {
 
-
+  const [onsite, setOnsite] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState({})
   const [data, setData] = useState([])
@@ -21,11 +22,16 @@ function App() {
   return (
     <main id='main'>
       <Router>
-        <Header
-          loggedIn={loggedIn}
-          setLoggedIn={setLoggedIn} />
+        {onsite &&
+          <Header
+            loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn} />
+        }
         <Routes>
-          <Route path='/' />
+          <Route path='/'
+            element={<Home
+              onsite={onsite}
+              setOnsite={setOnsite} />} />
 
           <Route
             path='/login'
