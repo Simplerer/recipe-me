@@ -336,10 +336,11 @@
 
 .holder {
   position: absolute;
-  bottom: -40%;
-  left: -50%;
-  animation: holder 2s ease-in 200ms;
+  bottom: -15%;
+  left: 10%;
+  animation: holder 2s ease-in 200ms forwards;
   cursor: pointer;
+  opacity: 0;
 }
 
 @keyframes holder {
@@ -386,29 +387,20 @@
 
 }
 
-#holderName {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--text);
-  font-size: 20px;
-}
-
 #holderAmt {
   position: absolute;
-  top: 55%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  translate: -50% -50%;
   color: var(--text);
   font-size: 20px;
 }
 
 .holderCan {
   position: relative;
-  background-color: hsla(180, 60%, 90%, 0.562);
-  width: 80px;
-  height: 100px;
+  background-color: hsla(180, 60%, 90%, 0.362);
+  width: 40px;
+  height: 40px;
 }
 
 #holderTop, #holderBottom {
@@ -428,6 +420,14 @@
 #holderBottom {
   bottom: -15%;
   background-color: #d7f5f5;
+}
+
+#holderClear {
+  cursor: pointer;
+  position: absolute;
+  bottom: -30%;
+  left: 50%;
+  translate: -50% 0;
 }
 
 /*----------------

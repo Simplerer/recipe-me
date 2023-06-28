@@ -111,24 +111,27 @@ function Peruse({ data, isLoading, holder, setHolder }) {
             <div className="saveBtnBox"></div>
             <button onClick={basket} className="saveBtn"></button>
 
-            <p className="saveBtnText">Hold It!</p>
+            <p className="saveBtnText">Basket</p>
           </>
         }
         {holder.length > 0 &&
           (
-            <div className="holder" onClick={() => setModal(!modal)}>
-              <div className="holderCan">
-                <h3 id="holderName">Holder</h3>
-                <h3 id="holderAmt">{holder.length}</h3>
-                <div id="holderTop"></div>
-                <div id="holderBottom"></div>
+            <>
+              <div className="holder" onClick={() => setModal(!modal)}>
+                <div className="holderCan">
+                  <h3 id="holderAmt">{holder.length}</h3>
+                  <div id="holderTop"></div>
+                  <div id="holderBottom"></div>
+                </div>
               </div>
-            </div>
+              <div>
+                <h3
+                  onClick={() => setHolder([])}
+                  id="holderClear">Clear</h3>
+              </div>
+            </>
           )
         }
-      {modal &&
-        <Basket holder={holder} setModal={setModal} />
-      }
       </section>
     </>
   )
