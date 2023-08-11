@@ -14,7 +14,7 @@ router.get('/user', async (_req,res) => {
     res.json(userData)
   } catch (e) {
     console.error(e)
-    res,json(e)
+    res.json(e)
   }
 });
 

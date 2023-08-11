@@ -20,7 +20,7 @@ function Basket({ holder }) {
 }
 
 
-function Peruse({ data, isLoading, holder, setHolder }) {
+function Peruse({ data, isLoading, holder, setHolder, setRecipe }) {
 
   const [index, setIndex] = useState(0);
   const [basketNum, setBasketNum] = useState(0)
@@ -54,7 +54,7 @@ function Peruse({ data, isLoading, holder, setHolder }) {
     <>
       <section id="recipePage">
         {data.length > 0 &&
-          <NavLink to='/recipe'>
+          <NavLink to='/recipe' onClick={setRecipe(data[index].recipe)}>
             <div className="outerBox">
               <div className="recipeCard">
                 <h3 className="recipeTitle">{data[index].recipe.label}</h3>

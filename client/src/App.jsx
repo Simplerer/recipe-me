@@ -12,12 +12,13 @@ import Home from './pages/Home';
 
 function App() {
 
-  const [onsite, setOnsite] = useState(false)
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [user, setUser] = useState({})
-  const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [holder, setHolder] = useState([])
+  const [onsite, setOnsite] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [holder, setHolder] = useState([]);
+  const [recipe, setRecipe] = useState([]);
 
   return (
     <main id='main'>
@@ -47,7 +48,8 @@ function App() {
               data={data}
               isLoading={isLoading}
               holder={holder}
-              setHolder={setHolder} />} />
+              setHolder={setHolder}
+              setRecipe={setRecipe} />} />
 
           <Route
             path='/search'
@@ -57,7 +59,8 @@ function App() {
 
           <Route
             path='/recipe'
-            element={<Recipe />} />
+            element={<Recipe
+              recipe={recipe} />} />
 
           <Route path='/two' element={<API />} />
         </Routes>

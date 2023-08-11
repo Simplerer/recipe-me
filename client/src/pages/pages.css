@@ -561,3 +561,70 @@
   transform: scale(1.02);
   color: #d7f5f5;
 }
+
+
+/* -------------------
+    Single Recipe
+------------------ */
+
+#singleRecipe {
+  display: flex;
+  flex-direction: column;
+  background-color: #46492e83;
+  padding: 20px;
+  background: var(--shadow);
+}
+
+#singleRecipeContentTop {
+  display: grid;
+  grid-template-columns: 30% 56%;
+  gap: 4%;
+  align-items: center;
+  padding: 20px 0;
+}
+
+#singleRecipeImage {
+  border-radius: 12px;
+}
+
+#singleRecipeTopRight,
+#singleRecipeContentBotom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#singleRecipeIngredients {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  row-gap: 10px;
+}
+
+#singleRecipe h1 {
+  font-size: 40px;
+  font-weight: 600;
+  color: #1de4e485;
+}
+
+#singleRecipe h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+#singleRecipe h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#singleRecipe p {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#singleRecipe ul {
+  list-style: none;
+}
+
