@@ -12,7 +12,6 @@ import Home from './pages/Home';
 
 function App() {
 
-  const [onsite, setOnsite] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
   const [data, setData] = useState([]);
@@ -23,16 +22,12 @@ function App() {
   return (
     <main id='main'>
       <Router>
-        {onsite &&
           <Header
             loggedIn={loggedIn}
             setLoggedIn={setLoggedIn} />
-        }
         <Routes>
           <Route path='/'
-            element={<Home
-              onsite={onsite}
-              setOnsite={setOnsite} />} />
+            element={<Home />} />
 
           <Route
             path='/login'

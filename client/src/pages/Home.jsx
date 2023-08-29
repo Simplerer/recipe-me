@@ -1,10 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function Home({ onsite, setOnsite }) {
-
-  function welcome () {
-    setOnsite(!onsite)
-  }
+function Home() {
 
   return (
     <section id="homebase">
@@ -22,10 +18,10 @@ function Home({ onsite, setOnsite }) {
         </h1>
       </div>
       <NavLink to='/login'>
-        <button id="homeLogin" onClick={welcome}>Login</button>
+        <button id="homeLogin">Login</button>
       </NavLink>
       <NavLink to='/search'>
-        <button id="homeSearch" onClick={welcome}>Just Search</button>
+        <button id="homeSearch">Just Search</button>
       </NavLink>
     </section>
   )

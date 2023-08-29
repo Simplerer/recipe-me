@@ -20,7 +20,7 @@ export default defineConfig({
 })
 
 
-// /api will connect any request sent starting with /api to the fornt end by trucking the browser into thinking it is coming from the server
+// /api will connect any request sent starting with /api to the fornt end by tricking the browser into thinking it is coming from the server
 
 // run build when ready to deploy. Should have dist folder ready. Take dist folder and copy whole folder into server folder.
 

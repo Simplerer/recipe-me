@@ -2,23 +2,6 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import './pages.css';
 
-function Basket({ holder }) {
-  return (
-    <div id="basketBacking">
-      <div id="basket">
-        {holder.map((item, index) => (
-          <>
-            <div key={index} className="basketItem">
-              <h2>{item.name}</h2>
-              <p>{item.id}</p>
-            </div>
-          </>
-        ))}
-      </div>
-    </div>
-  )
-}
-
 
 function Peruse({ data, isLoading, holder, setHolder, setRecipe }) {
 
@@ -30,7 +13,6 @@ function Peruse({ data, isLoading, holder, setHolder, setRecipe }) {
 
   const basket = async () => {
 
-    document.querySelector('.holderCan')?.classList.add('shake')
 
     let x = data[index];
     const recipe = {

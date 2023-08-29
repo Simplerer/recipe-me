@@ -3,10 +3,6 @@
     Header   
 ------------------ */
 
-a {
-  text-decoration: none;
-}
-
 #header {
   position: fixed;
   top: 0;
