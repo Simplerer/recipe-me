@@ -3,13 +3,43 @@ import { NavLink } from "react-router-dom";
 import './pages.css';
 
 
-function Peruse({ data, isLoading, holder, setHolder, setRecipe }) {
+function Peruse({ data, isLoading, holder, setHolder, setRecipe, recipe }) {
 
   const [index, setIndex] = useState(0);
   const [basketNum, setBasketNum] = useState(0)
   const [modal, setModal] = useState(false)
 
   console?.log(data)
+
+  const saveRecipe = async () => {
+
+    // this has all the data I need to create a recipe
+    // add logic to require logged in
+    // setRecipe should be its own button, a save button -> comes here
+    // after this is working, need a user page to see/delete all saved
+    // design recipe page too
+
+    //so far saveRecipe is the bottom button, send state to app.jsx
+    // that end point should get where it needs to go
+
+    let here = {...recipe}
+    debugger
+
+    try {
+      const { data } = await axios.post('api/recipe', {
+        ...recipe
+      })
+
+      console.log(data)
+
+      // const { user } = data
+      // navigate('/search');
+    } catch {
+      console.log('Error!');
+    }
+
+
+  }
 
   const basket = async () => {
 
@@ -36,7 +66,9 @@ function Peruse({ data, isLoading, holder, setHolder, setRecipe }) {
     <>
       <section id="recipePage">
         {data.length > 0 &&
-          <NavLink to='/recipe' onClick={setRecipe(data[index].recipe)}>
+          <NavLink
+           to='/recipe'
+           onClick={setRecipe(data[index].recipe)}>
             <div className="outerBox">
               <div className="recipeCard">
                 <h3 className="recipeTitle">{data[index].recipe.label}</h3>
@@ -59,10 +91,9 @@ function Peruse({ data, isLoading, holder, setHolder, setRecipe }) {
         {data.length > 0 && index < data.length - 1
           ? (
             <>
-              <div className="nextBtnBox"></div>
-              <button onClick={() => setIndex(index + 1)}
-                className="nextBtn"></button>
-
+              <div className="nextBtnBox" onClick={() => setIndex(index + 1)}>
+                <img src="/src/assets/images/arrow-right.ico" />
+              </div>
               <p className="nextBtnText">Another!</p>
             </>
           )
@@ -79,10 +110,9 @@ function Peruse({ data, isLoading, holder, setHolder, setRecipe }) {
         {data.length > 0 && index > 0
           ?
           <>
-            <div className="lastBtnBox"></div>
-            <button onClick={() => setIndex(index - 1)}
-              className="lastBtn"></button>
-
+            <div className="lastBtnBox"  onClick={() => setIndex(index - 1)}>
+              <img src="\src\assets\images\arrow-left.ico" />
+            </div>
             <p className="lastBtnText">Back!</p>
           </>
           :
@@ -90,8 +120,8 @@ function Peruse({ data, isLoading, holder, setHolder, setRecipe }) {
         }
         {data.length > 0 &&
           <>
-            <div className="saveBtnBox"></div>
-            <button onClick={basket} className="saveBtn"></button>
+            <div className="saveBtnBox" onClick={saveRecipe}></div>
+            {/* <button onClick={basket} className="saveBtn"></button> */}
 
             <p className="saveBtnText">Basket</p>
           </>

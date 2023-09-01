@@ -6,6 +6,7 @@ function Recipe({ recipe }) {
 
   return (
     <section id="singleRecipe">
+      <div id="singleRecipeBackground"></div>
       <div id="singleRecipeContentTop">
         <img src={recipe.image} id="singleRecipeImage" />
         <div id="singleRecipeTopRight">

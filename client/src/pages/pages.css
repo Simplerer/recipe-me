@@ -231,22 +231,24 @@
 .nextBtnBox, .lastBtnBox, .saveBtnBox {
   position: absolute;
   transform: translateY(-50%);
-  background-color: rgba(161, 172, 83, .4);
-  box-shadow: 4px 4px 20px #8eafae;
-  border-radius: 8px;
+  background-color: transparent;
+  box-shadow: -2px -2px 20px #8eafae;
+  border-radius: 50%;
+  cursor: pointer;
+  &:active {
+    translate: 1px -1px;
+  }
 }
 
 .nextBtnBox {
   right: -156px;
   top: 50%;
-  height: 138px;
   width: 80px;
 }
 
 .lastBtnBox {
   left: -156px;
   top: 50%;
-  height: 138px;
   width: 80px;
 }
 
@@ -256,7 +258,7 @@
   height: 80px;
 }
 
-.nextBtn, .lastBtn, .saveBtn {
+.saveBtn {
   position: absolute;
   transform: translateY(-50%);
   width: 0;
@@ -264,37 +266,7 @@
   background-color: var(--body);
   background: transparent;
   cursor: pointer;
-  &:active {
-    translate: 1px -1px;
-  }
-}
-
-.nextBtn {
-  right: -160px;
-  top: 50%;
-  border-top: 60px solid transparent ;
-  border-right: var(--body);
-  border-bottom: 60px solid transparent ;
-  border-left: 60px solid var(--recipeBtn); 
-  transition: border-left ease 1s;
-  &:hover {
-    scale: 1.02;
-    border-left: 60px solid #bbc56e;
-  }
-}
-
-.lastBtn {
-  top: 50%;
-  left: -160px;
-  border-top: 60px solid transparent ;
-  border-right: 60px solid var(--recipeBtn);
-  border-bottom: 60px solid transparent ;
-  border-left: var(--body);
-  transition: border-right ease 1s;
-  &:hover {
-    scale: 1.02;
-    border-right: 60px solid #bbc56e;
-  }
+  
 }
 
 .saveBtn {
@@ -573,9 +545,21 @@
 #singleRecipe {
   display: flex;
   flex-direction: column;
-  background-color: #46492e83;
+  /* background-color: #46492e83; */
   padding: 20px;
-  background: var(--shadow);
+  /* background: var(--shadow); */
+}
+
+#singleRecipeBackground {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #9cac2627;
+  backdrop-filter: blur(10px);
+  z-index: -1;
+  box-shadow: var(--shadow);
 }
 
 #singleRecipeContentTop {

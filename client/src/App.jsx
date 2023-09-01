@@ -44,7 +44,8 @@ function App() {
               isLoading={isLoading}
               holder={holder}
               setHolder={setHolder}
-              setRecipe={setRecipe} />} />
+              setRecipe={setRecipe}
+              recipe={recipe} />} />
 
           <Route
             path='/search'
