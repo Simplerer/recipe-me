@@ -31,6 +31,7 @@ function Search({ setData, isLoading }) {
       navigate('/peruse')
     })
   }
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setSearch({ ...search, [name]: value })

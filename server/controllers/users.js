@@ -85,6 +85,7 @@ router.post('/recipe', async (req, res) => {
     const recipeData = await Recipe.create(req.body);
     res.json(recipeData);
   } catch (err) {
+    console.log('\n\n ERRORROROR \n\n')
     console.error(err);
     res.json(err);
   };

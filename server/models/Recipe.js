@@ -20,7 +20,7 @@ Recipe.init(
       allowNull: false,
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2000),
       allowNull: false,
     },
     cuisineType: {
