@@ -32,6 +32,8 @@ router.post('/session/create', async (req, res) => {
       res.status(200).json(newUser);
     });
 
+    console.log('Success!')
+
   } catch (err) {
     res.status(500).json(err);
   }

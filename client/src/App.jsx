@@ -33,7 +33,8 @@ function App() {
             path='/login'
             element={<Login
               setUser={setUser}
-              setLoggedIn={setLoggedIn} />} />
+              setLoggedIn={setLoggedIn}
+              userData={user} />} />
 
           <Route
             path='/peruse'

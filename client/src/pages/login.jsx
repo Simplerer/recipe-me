@@ -5,7 +5,7 @@ import './pages.css';
 
 
 
-function Login({ setLoggedIn, setUser }) {
+function Login({ setLoggedIn, setUser, userData }) {
   
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: '', password: '' });
@@ -23,7 +23,7 @@ function Login({ setLoggedIn, setUser }) {
       const { data } = await axios.post('api/session/login', {
         ...formData
       })
-
+      
       const { user } = data
       setUser(user);
       setLoggedIn(true);
@@ -50,12 +50,14 @@ function Login({ setLoggedIn, setUser }) {
         ...formData
       })
         .then((res) => {
-          console.log(res);
-          setUser(user);
+          setUser(res.data);
+          console.log(userData)
+          console.log(res.data)
           setLoggedIn(true);
           navigate('/search');
         })
-    } catch {
+    } catch (err) {
+        console.error(err);
       setErrorMessage(true);
     }
   };
