@@ -18,6 +18,10 @@ img, button {
   width: 100%;
 }
 
+::selection {
+  color: #0e96cc;
+}
+
 #root {
   margin: 0 auto;
   text-align: center;

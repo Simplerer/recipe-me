@@ -1,8 +1,37 @@
 import { NavLink } from "react-router-dom";
+import axios from 'axios';
 
-function Recipe({ recipe }) {
+function Recipe({ recipe, user, loggedIn }) {
 
   console.log(recipe);
+
+  const saveRecipe = async () => {
+
+    let createRecipe = {
+      dishName: recipe.label,
+      dishId: recipe.uri.split('_').pop(),
+      image: recipe.image,
+      cuisineType: recipe.cuisineType[0],
+      dishType: recipe.dishType[0],
+      mealType: recipe.mealType[0],
+      user_id: user.id
+    }
+
+    try {
+debugger
+    const data =  await axios.post('api/recipe', { ...createRecipe })
+      console.log('Success!')
+
+      const { user } = data
+      console.log(user)
+
+      // navigate('/search');
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+
 
   return (
     <section id="singleRecipe">
@@ -26,9 +55,7 @@ function Recipe({ recipe }) {
         <h2>Major Ingredients</h2>
         <ul  id="singleRecipeIngredients">
           {recipe.ingredientLines.map((el, index) => (
-            <>
               <li key={index}>{el}</li>
-            </>
           ))}
         </ul>
         <div>
@@ -38,6 +65,9 @@ function Recipe({ recipe }) {
         </div>
       </div>
       <NavLink to="/search">Click ME!</NavLink>
+      {loggedIn && 
+      (<button onClick={saveRecipe}>Add to User File</button>)
+      }
     </section>
   )
 

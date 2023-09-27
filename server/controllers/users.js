@@ -42,6 +42,9 @@ router.get('/user/:id', async (req, res) => {
 
 router.delete('/user/:id', async (req, res) => {
   try { 
+
+    console.log('\n \n HEY!!!!! HIT THE DELETE   \n\n\n', 'req:  ', req)
+
     const userData = await User.destroy({
       where: { id: req.params.id } });
       res.json(userData);

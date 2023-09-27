@@ -9,6 +9,7 @@ import Login from './pages/login';
 import Search from './components/Search';
 import Recipe from './pages/Recipe';
 import Home from './pages/Home';
+import Admin from './pages/Admin';
 
 function App() {
 
@@ -28,6 +29,9 @@ function App() {
         <Routes>
           <Route path='/'
             element={<Home />} />
+
+          <Route path='/admin'
+          element={<Admin />} />
 
           <Route
             path='/login'
@@ -57,7 +61,9 @@ function App() {
           <Route
             path='/recipe'
             element={<Recipe
-              recipe={recipe} />} />
+              recipe={recipe}
+              loggedIn={loggedIn}
+              user={user} />} />
 
           <Route path='/two' element={<API />} />
         </Routes>
