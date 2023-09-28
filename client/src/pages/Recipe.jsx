@@ -18,7 +18,6 @@ function Recipe({ recipe, user, loggedIn }) {
     }
 
     try {
-debugger
     const data =  await axios.post('api/recipe', { ...createRecipe })
       console.log('Success!')
 
@@ -31,6 +30,9 @@ debugger
     }
   }
 
+  const goBack = () => {
+    window.history.back();
+  } 
 
 
   return (
@@ -62,6 +64,7 @@ debugger
           <h3>For the recipe</h3>
           <img src={recipe.images.THUMBNAIL.url} />
           <p>Click Me</p>
+          <button onClick={goBack}>Go bAaCKAKk</button>
         </div>
       </div>
       <NavLink to="/search">Click ME!</NavLink>
