@@ -350,26 +350,41 @@
 
 .searchBox {
   position: absolute;
-  bottom: 0;
-  border: var(--text) 2px solid;
-  padding: 8px;
-  border-radius: 16px;
+  left: 50%;
+  translate: -50% 80px;
+  border: var(--text) 3px solid;
+  padding: 16px;
+  border-radius: 22px;
   background-color: transparent;
-  backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  max-width: 220px;
+  width: 100%;
+  &:hover {
+    transform: scale(1.01);
+    backdrop-filter: none;
+  }
+}
+
+.searchBox.noResults {
+  width: 300px;
 }
 
 .searchBox img {
   width: 24px;
+  filter: brightness(0) invert(1);
 }
 
 .searchBox img:nth-child(1) {
   transform: rotate(180deg);
 }
 
-.searchBox {
+.searchBox p {
   color: var(--text);
-  font-size: 22px;
+  font-size: 24px;
 }
 
 /* -------------------

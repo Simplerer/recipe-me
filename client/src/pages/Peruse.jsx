@@ -22,7 +22,7 @@ function Peruse({ data, isLoading, setRecipe, user }) {
         {data.length > 0 &&
           <NavLink
             to='/recipe'
-            onClick={setRecipe(data[index].recipe)}>
+            onClick={() => setRecipe(data[index].recipe)}>
             <div className="outerBox">
               <div className="recipeCard">
                 <h3 className="recipeTitle">{data[index].recipe.label}</h3>
@@ -42,29 +42,42 @@ function Peruse({ data, isLoading, setRecipe, user }) {
             </div>
           </NavLink>
         }
-        {data.length > 0 && index < data.length - 1
-          ? (
-            <>
-              <div className="nextBtnBox" onClick={() => setIndex(index + 1)}>
-                <img src="/src/assets/images/arrow-right.ico" />
-              </div>
-            </>
-          )
-          :
-          (
-            <>
-              <div className="searchBox"></div>
-              <NavLink to='/search'>
-                <button className="searchButton"></button>
-              </NavLink>
-              <p className="nextBtnText">Search Again?</p>
-            </>
-          )}
         {data.length > 0
           ?
           <>
+            <NavLink to='/search'>
+              <div className="searchBox">
+                <img src="\src\assets\images\arrow.svg" alt="caret" />
+                <p>Search Again</p>
+                <img src="\src\assets\images\arrow.svg" alt="caret" />
+              </div>
+            </NavLink>
+          </>
+          :
+          <>
+            <NavLink to='/search'>
+              <div className="searchBox noResults">
+                <img src="\src\assets\images\arrow.svg" alt="caret" />
+                <p>No Results!</p>
+                <img src="\src\assets\images\arrow.svg" alt="caret" />
+              </div>
+            </NavLink></>
+        }
+        {data.length > 0 && index < data.length - 1
+          ?
+          <>
+            <div className="nextBtnBox" onClick={() => setIndex(index + 1)}>
+              <img src="/src/assets/images/arrow-right.ico" alt="navigation arrow" />
+            </div>
+          </>
+          :
+          <></>
+        }
+        {data.length > 0 && index > 0
+          ?
+          <>
             <div className="lastBtnBox" onClick={() => setIndex(index - 1)}>
-              <img src="\src\assets\images\arrow-left.ico" />
+              <img src="\src\assets\images\arrow-left.ico" alt="navigation arrow" />
             </div>
           </>
           :
@@ -76,16 +89,3 @@ function Peruse({ data, isLoading, setRecipe, user }) {
 }
 
 export default Peruse;
-
-//  calories, dishtype, 
-{/* <h2>Ingredients</h2>
-  <ul>
-  {item.recipe.ingredientLines.map((item, index) => {
-      return (
-        <li key={index}>{item}</li>
-      )
-    })}
-  </ul> */}
-{/* <iframe 
-  src={item.recipe.url}
-  onMouseEnter={showMe}></iframe> */}
