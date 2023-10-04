@@ -4,65 +4,12 @@ import axios from 'axios';
 import './pages.css';
 
 
-function Peruse({ data, isLoading, holder, setHolder, setRecipe, recipe, loggedIn, user }) {
+function Peruse({ data, isLoading, setRecipe, user }) {
 
   const [index, setIndex] = useState(0);
-  const [basketNum, setBasketNum] = useState(0)
-  const [modal, setModal] = useState(false)
 
   console?.log(data)
   console?.log(user)
-
-  const saveRecipe = async () => {
-
-    // this has all the data I need to create a recipe
-    // add logic to require logged in
-    // setRecipe should be its own button, a save button -> comes here
-    // after this is working, need a user page to see/delete all saved
-    // design recipe page too
-
-    //so far saveRecipe is the bottom button, send state to app.jsx
-    // that end point should get where it needs to go
-
-    // let search = {...recipe, id: user.id}
-
-    let createRecipe = {
-      dishName: recipe.label,
-      dishId: recipe.uri.split('_').pop(),
-      image: recipe.image,
-      cuisineType: recipe.cuisineType[0],
-      dishType: recipe.dishType[0],
-      mealType: recipe.mealType[0],
-      user_id: user.id
-    }
-
-    try {
-
-      await axios.post('api/recipe', { ...createRecipe })
-      console.log('Success!')
-
-      // const { user } = data
-      // navigate('/search');
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  const basket = async () => {
-
-
-    let x = data[index];
-    const recipe = {
-      name: x.recipe.label,
-      id: x.recipe.uri.split('_').pop()
-    }
-
-    await holder ? setHolder([...holder, recipe]) : setHolder([recipe])
-    setBasketNum(basketNum + 1)
-    setTimeout(() => {
-      document.querySelector('.holderCan')?.classList.remove('shake')
-    }, 1000);
-  }
 
 
   if (isLoading) {
@@ -101,55 +48,27 @@ function Peruse({ data, isLoading, holder, setHolder, setRecipe, recipe, loggedI
               <div className="nextBtnBox" onClick={() => setIndex(index + 1)}>
                 <img src="/src/assets/images/arrow-right.ico" />
               </div>
-              <p className="nextBtnText">Another!</p>
             </>
           )
           :
           (
             <>
-              <div className="nextBtnBox"></div>
+              <div className="searchBox"></div>
               <NavLink to='/search'>
-                <button className="nextBtn"></button>
+                <button className="searchButton"></button>
               </NavLink>
               <p className="nextBtnText">Search Again?</p>
             </>
           )}
-        {data.length > 0 && index > 0
+        {data.length > 0
           ?
           <>
             <div className="lastBtnBox" onClick={() => setIndex(index - 1)}>
               <img src="\src\assets\images\arrow-left.ico" />
             </div>
-            <p className="lastBtnText">Back!</p>
           </>
           :
           <></>
-        }
-        {(data.length > 0 && loggedIn) &&
-          <>
-            <div className="saveBtnBox" onClick={saveRecipe}></div>
-            {/* <button onClick={basket} className="saveBtn"></button> */}
-
-            <p className="saveBtnText">Basket</p>
-          </>
-        }
-        {holder.length > 0 &&
-          (
-            <>
-              <div className="holder" onClick={() => setModal(!modal)}>
-                <div className="holderCan">
-                  <h3 id="holderAmt">{holder.length}</h3>
-                  <div id="holderTop"></div>
-                  <div id="holderBottom"></div>
-                </div>
-              </div>
-              <div>
-                <h3
-                  onClick={() => setHolder([])}
-                  id="holderClear">Clear</h3>
-              </div>
-            </>
-          )
         }
       </section>
     </>
@@ -170,13 +89,3 @@ export default Peruse;
 {/* <iframe 
   src={item.recipe.url}
   onMouseEnter={showMe}></iframe> */}
-
-
-  // refer to array of objects to pull one recipe at a time when an arrow is clicked
-  // data is loaded and ready
-  // like swiper.js but build my way
-  // load data[0] --
-
-
-  //    left and right buttons
-  // keep and save tender recipes!!!

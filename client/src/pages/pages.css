@@ -27,7 +27,7 @@
 
 #homeRecipe {
   position: absolute;
-  top: -250px;
+  top: -190px;
   font-size: 120px;
   width: 400%;
 }
@@ -136,283 +136,6 @@
   }
   
 }
-
-/* -------------------
-    Recipe Cards
------------------- */
-
-#recipePage {
-  margin: auto;
-  position: relative;
-  padding: 50px;
-}
-
-.outerBox {
-  background-color: #6d7e92a1;
-  padding: 20px;
-  border-radius: 16px;
-  min-width: 600px;
-  cursor: pointer;
-  transition: 300ms ease-out;
-  box-shadow: var(--shadow);
-  &:hover {
-    scale: 1.01;
-  }
-}
-
-.outerBox h3,p {
-  transition: color .8s ease, color 1.2s ease;
-  &:hover {
-    color: rgb(245, 203, 149);
-  }
-}
-
-.recipeCard {
-  display: flex;
-  margin: 0 auto;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border-radius: 8px;
-  background: content-box radial-gradient(rgba(164, 206, 202, 80%),rgba(231, 112, 206, 0.1));
-  border-radius: 16px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.recipeTitle {
-  color: rgb(189, 194, 193);
-  font-size: 28px;
-  line-height: 30px;
-  font-weight: 600;
-  margin: 30px 0;
-  max-width: 400px;
-}
-
-.imageHolder{
-  max-width: 300px;
-  box-shadow: 0 0 30px 2px var(--text);
-  border-radius: 16px;
-}
-
-.recipeImage {
-  object-fit: cover;
-  border-radius: 16px;
-  transition: 300ms ease-out;
-  /* &:hover {
-    transform: rotate(.5deg);
-    scale: 1.03;
-  } */
-}
-
-.cardBottom {
-  color: rgb(189, 194, 193);
-  font-size: 20px;
-  line-height: 22px;
-  font-weight: 600;
-  margin: 10px 0 20px;
-}
-
-.cardBottom p {
-  margin: 6px ;
-  font-size: 110%;
-}
-
-.nextBtnBox, .lastBtnBox, .saveBtnBox {
-  position: absolute;
-  transform: translateY(-50%);
-  background-color: transparent;
-  box-shadow: -2px -2px 20px #8eafae;
-  border-radius: 50%;
-  cursor: pointer;
-  &:active {
-    translate: 1px -1px;
-  }
-}
-
-.nextBtnBox {
-  right: -156px;
-  top: 50%;
-  width: 80px;
-}
-
-.lastBtnBox {
-  left: -156px;
-  top: 50%;
-  width: 80px;
-}
-
-.saveBtnBox {
-  bottom: -160px;
-  width: 138px;
-  height: 80px;
-}
-
-.saveBtn {
-  position: absolute;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  background-color: var(--body);
-  background: transparent;
-  cursor: pointer;
-  
-}
-
-.saveBtn {
-  bottom: -145px;
-  border-top: 60px solid var(--recipeBtn);
-  border-right: 60px solid transparent ;
-  border-bottom: 0 var(--body);
-  border-left: 60px solid transparent ;
-  transition: border-top ease 1s;
-  &:hover {
-    scale: 1.02;
-    border-top: 60px solid #bbc56e;
-  }
-}
-
-.nextBtnText, .lastBtnText, .saveBtnText {
-  position: absolute;
-  font-size: 130%;
-  max-width: 80px;
-  word-wrap: break-word;
-}
-
-.nextBtnText {
-  right: -160px;
-  top: 66%;
-}
-
-.lastBtnText {
-  left: -140px;
-  top: 66%;
-}
-
-.saveBtnText {
-  right: unset;
-  top: unset;
-  bottom: -5%;
-}
-
-/*----------------
-     Holder Can   
----------------- */
-
-.holder {
-  position: absolute;
-  bottom: -15%;
-  left: 10%;
-  animation: holder 2s ease-in 200ms forwards;
-  cursor: pointer;
-  opacity: 0;
-}
-
-@keyframes holder {
-  0% {
-    opacity: 0;
-    z-index: -100;
-  }
-
-  100% {
-    opacity: 1;
-    z-index: 1;
-  }
-}
-
-.shake {
-  animation: shake 1s ease;
-}
-
-@keyframes shake {
-
-  0% {
-    translate: 0;
-  }
-
-  20% {
-    translate: -5px 0;
-  }
-
-  40% {
-    translate: 4px 0;
-  }
-
-  65% {
-    translate: -2px 0;
-  }
-
-  90% {
-    translate: 1px 0;
-  }
-
-  100% {
-    translate: 0;
-  }
-
-}
-
-#holderAmt {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  color: var(--text);
-  font-size: 20px;
-}
-
-.holderCan {
-  position: relative;
-  background-color: hsla(180, 60%, 90%, 0.362);
-  width: 40px;
-  height: 40px;
-}
-
-#holderTop, #holderBottom {
-  width: 100%;
-  height: 30%;
-  position: absolute;
-  border-radius: 50%;
-  border-bottom: solid 2px #2a6464;
-}
-
-#holderTop {
-  top: -15%;
-  background-color: #d7f5f5;
-  border-bottom: solid 2px #2a6464;
-}
-
-#holderBottom {
-  bottom: -15%;
-  background-color: #d7f5f5;
-}
-
-#holderClear {
-  cursor: pointer;
-  position: absolute;
-  bottom: -30%;
-  left: 50%;
-  translate: -50% 0;
-}
-
-/*----------------
-     Basket  
----------------- */
-
-#basketBacking {
-  height: 100vh;
-  width: 100vw;
-  background-color: #a1ac53;
-  opacity: .4;
-  position: absolute;
-  z-index: 10000000;
-}
-
-#basket {
-  margin: auto;
-  translate: -50% -50%;
-  background: linear-gradient(to right, var(--text) 20%, var(--shadow) 80%);
-}
-
 
 
 /*----------------
@@ -526,6 +249,128 @@
   color: #d7f5f5;
 }
 
+
+/* -------------------
+    Recipe Cards
+------------------ */
+
+#recipePage {
+  margin: auto;
+  position: relative;
+  padding: 50px;
+}
+
+.outerBox {
+  background-color: #6d7e92a1;
+  padding: 20px;
+  border-radius: 16px;
+  min-width: 600px;
+  cursor: pointer;
+  transition: 300ms ease-out;
+  box-shadow: var(--shadow);
+  &:hover {
+    scale: 1.01;
+  }
+}
+
+.outerBox h3,p {
+  transition: color .8s ease, color 1.2s ease;
+  &:hover {
+    color: rgb(245, 203, 149);
+  }
+}
+
+.recipeCard {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  background: content-box radial-gradient(rgba(164, 206, 202, 80%),rgba(231, 112, 206, 0.1));
+  border-radius: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.recipeTitle {
+  color: rgb(189, 194, 193);
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: 600;
+  margin: 30px 0;
+  max-width: 400px;
+}
+
+.imageHolder{
+  max-width: 300px;
+  box-shadow: 0 0 30px 2px var(--text);
+  border-radius: 16px;
+}
+
+.recipeImage {
+  object-fit: cover;
+  border-radius: 16px;
+  transition: 300ms ease-out;
+}
+
+.cardBottom {
+  color: rgb(189, 194, 193);
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 600;
+  margin: 10px 0 20px;
+}
+
+.cardBottom p {
+  margin: 6px ;
+  font-size: 110%;
+}
+
+.nextBtnBox, .lastBtnBox {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80px;
+  background-color: transparent;
+  box-shadow: -2px -2px 20px #8eafae;
+  border-radius: 50%;
+  cursor: pointer;
+  &:active {
+    translate: 1px -1px;
+  }
+}
+
+.nextBtnBox {
+  right: -80px;
+}
+
+.lastBtnBox {
+  left: -80px;
+}
+
+.searchBox {
+  position: absolute;
+  bottom: 0;
+  border: var(--text) 2px solid;
+  padding: 8px;
+  border-radius: 16px;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+.searchBox img {
+  width: 24px;
+}
+
+.searchBox img:nth-child(1) {
+  transform: rotate(180deg);
+}
+
+.searchBox {
+  color: var(--text);
+  font-size: 22px;
+}
 
 /* -------------------
     Single Recipe

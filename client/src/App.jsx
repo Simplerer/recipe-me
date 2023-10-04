@@ -17,16 +17,18 @@ function App() {
   const [user, setUser] = useState({});
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [holder, setHolder] = useState([]);
   const [recipe, setRecipe] = useState([]);
 
   return (
     <main id='main'>
       <Router>
+        
           <Header
             loggedIn={loggedIn}
             setLoggedIn={setLoggedIn} />
+
         <Routes>
+
           <Route path='/'
             element={<Home />} />
 
@@ -47,8 +49,6 @@ function App() {
               loggedIn={loggedIn}
               data={data}
               isLoading={isLoading}
-              holder={holder}
-              setHolder={setHolder}
               setRecipe={setRecipe}
               recipe={recipe} />} />
 
@@ -66,6 +66,7 @@ function App() {
               user={user} />} />
 
           <Route path='/two' element={<API />} />
+
         </Routes>
       </Router>
     </main>

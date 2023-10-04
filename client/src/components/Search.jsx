@@ -49,17 +49,17 @@ function Search({ setData, isLoading }) {
             name="query"
             placeholder="Query"
             onChange={handleOnChange} />
-            <div id="middleSearch">
-          <input
-            type="text"
-            className="input"
-            id="ingredientField"
-            name="ingAmount"
-            placeholder="# of Ingredients"
-            onChange={handleOnChange} />
-          <Dropdowns handleChange={handleOnChange} />
-            </div>
-            <h2 id="optional">Optionals</h2>
+          <div id="middleSearch">
+            <input
+              type="text"
+              className="input"
+              id="ingredientField"
+              name="ingAmount"
+              placeholder="# of Ingredients"
+              onChange={handleOnChange} />
+            <Dropdowns handleChange={handleOnChange} />
+          </div>
+          <h2 id="optional">Optionals</h2>
           <button
             type="submit">Search</button>
         </form>
