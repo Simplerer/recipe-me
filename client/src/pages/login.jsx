@@ -121,10 +121,12 @@ function Login({ setLoggedIn, setUser, userData }) {
             <div id="btnBox">
               <button
                 id="loginBtn"
+                className="button"
                 type="submit">Login</button>
               <h2>If not Signed Up</h2>
               <button
                 id="createBtn"
+                className="button"
                 type="button"
                 onClick={createUser}>Create an Account</button>
             </div>

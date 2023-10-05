@@ -115,6 +115,11 @@
     Search Bar  
 ------------------- */
 
+#search {
+  display: grid;
+  place-content: center;
+}
+
 .searchBar {
   border-bottom: solid 2px #a1ac53;
   border-top: solid 2px #a1ac53;
@@ -126,31 +131,9 @@
   max-width: 600px;
 }
 
-.searchBar button {
-  position: absolute;
-  bottom: 50%;
-  left: 50%;
-  translate: -150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(161, 172, 83, .4);
-  font-size: 24px;
-  font-weight: 600;
-  color: #8eafae;
-  width: 300px;
-  height: 40px;
-  cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 4px 4px 20px;
-  transition: all ease .3s;
-  padding: 12px 0;
-
-  &:hover {
-    transform: scale(1.02);
-    color: #d7f5f5;
-  }
+.searchBar .button {
+  margin: 0 auto;
+  translate: 0 100%;
 }
 
 #searchField {

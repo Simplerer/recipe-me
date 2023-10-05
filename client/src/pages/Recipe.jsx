@@ -1,9 +1,12 @@
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from 'axios';
 
 function Recipe({ recipe, user, loggedIn }) {
 
     console.log(recipe);
+
+    const [modal, setModal] = useState(null);
 
     const saveRecipe = async () => {
 
@@ -34,43 +37,66 @@ function Recipe({ recipe, user, loggedIn }) {
         window.history.back();
     }
 
+    const showModal = (modalName) => {
+        setModal(modalName);
+    }
+
+    const closeModal = () => {
+        setModal(null);
+    }
+
 
     return (
         <section id="singleRecipe">
-            <div id="singleRecipeBackground"></div>
-            <div id="singleRecipeContentTop">
-                <img src={recipe.image} id="singleRecipeImage" />
-                <div id="singleRecipeTopRight">
-                    <h1>{recipe.label}</h1>
-
-                    <h2>~Meal Details~</h2>
-                    <ul>
-                        <li>{recipe.calories} Calories</li>
-                        <li>Serves: {recipe.yield}</li>
-                        <li>A {recipe.cuisineType[0]} dish</li>
-                        <li>For {recipe.mealType[0]}</li>
+            <div id="singleRecipeInner">
+                <div id="singleRecipeImageContainer">
+                    <img src={recipe.image} id="singleRecipeImage" />
+                    <div id="singleRecipeImageCover"></div>
+                </div>
+                <div className="singleRecipeRight">
+                    <h2>{recipe.label}</h2>
+                    <div className="singleRecipeInformation">
+                        <button className="singleRecipeBtn button"
+                            onClick={() => {showModal('mealDetails')}}>Meal Details</button>
+                        <button className="singleRecipeBtn button"
+                            onClick={() => {showModal('ingredients')}}>Ingredient List</button>
+                        <button className="singleRecipeBtn button"
+                            onClick={() => {showModal('goTo')}}>Go To</button>
+                    </div>
+                </div>
+            </div>
+            <div id="singleRecipeBottom">
+                <button onClick={goBack} className="button">Back</button>
+                <NavLink to="/search"><button className="button">Just Search</button></NavLink>
+                {/* {loggedIn &&
+                    <button onClick={saveRecipe}>Add to User File</button>
+                } */}
+            </div>
+            {modal !== null && (
+                <div id="singleRecipeBackdrop" onClick={closeModal}></div>
+            )}
+            {modal === 'mealDetails' && (
+                <div className="singleRecipeModal mealDetails">
+                    <p>{recipe.calories} Calories</p>
+                    <p>Serves: {recipe.yield}</p>
+                    <p>A {recipe.cuisineType[0]} dish</p>
+                    <p>For {recipe.mealType[0]}</p>
+                </div>
+            )}
+            {modal === 'ingredients' && (
+                <div className="singleRecipeModal ingredients">
+                    <ul id="singleRecipeIngredients">
+                        {recipe.ingredientLines.map((el, index) => (
+                            <li key={index}>{el}</li>
+                        ))}
                     </ul>
-
                 </div>
-            </div>
-            <div id="singleRecipeContentBotom">
-                <h2>Major Ingredients</h2>
-                <ul id="singleRecipeIngredients">
-                    {recipe.ingredientLines.map((el, index) => (
-                        <li key={index}>{el}</li>
-                    ))}
-                </ul>
-                <div>
-                    <h3>For the recipe</h3>
-                    <img src={recipe.images.THUMBNAIL.url} />
-                    <p>Click Me</p>
-                    <button onClick={goBack}>Go bAaCKAKk</button>
+            )}
+            {modal === 'goTo' && (
+                <div className="singleRecipeModal goTo">
+                    <iframe src={recipe.url}></iframe>
                 </div>
-            </div>
-            <NavLink to="/search">Click ME!</NavLink>
-            {loggedIn &&
-                (<button onClick={saveRecipe}>Add to User File</button>)
-            }
+            )}
         </section>
     )
 
@@ -78,17 +104,6 @@ function Recipe({ recipe, user, loggedIn }) {
 
 export default Recipe;
 
-
-
-//  calories, dishtype, 
-{/* <h2>Ingredients</h2>
-  <ul>
-  {item.recipe.ingredientLines.map((item, index) => {
-      return (
-        <li key={index}>{item}</li>
-      )
-    })}
-  </ul> */}
-{/* <iframe 
-  src={item.recipe.url}
-  onMouseEnter={showMe}></iframe> */}
+{/* <iframe
+                    src={recipe.url}
+                    onMouseEnter={showMe}></iframe> */}

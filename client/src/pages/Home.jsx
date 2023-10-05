@@ -18,10 +18,10 @@ function Home() {
         </h1>
       </div>
       <NavLink to='/login'>
-        <button id="homeLogin">Login</button>
+        <button id="homeLogin" className="button">Login</button>
       </NavLink>
       <NavLink to='/search'>
-        <button id="homeSearch">Just Search</button>
+        <button id="homeSearch" className="button">Just Search</button>
       </NavLink>
     </section>
   )

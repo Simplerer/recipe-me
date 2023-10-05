@@ -28,6 +28,7 @@ function Peruse({ data, isLoading, setRecipe, user }) {
                 <h3 className="recipeTitle">{data[index].recipe.label}</h3>
                 <div className="imageHolder">
                   <img className="recipeImage" src={data[index].recipe.image} />
+                  <div className="recipeImageCover"></div>
                 </div>
                 <div className="cardBottom">
                   <p>{(data[index].recipe.cuisineType[0].slice(0, 1).toUpperCase()) + data[index].recipe.cuisineType[0].slice(1)} cuisine</p>

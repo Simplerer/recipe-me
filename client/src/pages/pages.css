@@ -92,29 +92,11 @@
 #homeLogin {
   position: absolute;
   bottom: -250px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(161, 172, 83, .4);
-  font-size: 24px;
-  font-weight: 600;
-  color:#8eafae;
-  width: 300px;
   height: 80px;
-  cursor: pointer;
   margin: 20px 0;
-  border-radius: 8px;
   box-shadow: 4px 4px 20px #8eafae;
-  transition: all ease .3s;
   animation: buttonsIn 1200ms ease-in 2s forwards;
-  padding: 12px 0;
   opacity: 0;
-
-  &:hover {
-    transform: scale(1.02);
-    color: #d7f5f5;
-  }
 }
 
 #homeLogin {
@@ -203,31 +185,11 @@
 }
 
 #createBtn, #loginBtn {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(161, 172, 83, .4);
-  font-size: 24px;
-  font-weight: 600;
-  color:#8eafae;
-  width: 300px;
-  height: 40px;
-  cursor: pointer;
   margin: 20px 0;
-  border-radius: 8px;
-  box-shadow: 4px 4px 20px;
-  transition: all ease .3s;
-  padding: 12px 0;
 }
 
 #loginBtn {
   width: 200px;
-}
-
-#loginBtn:hover, #createBtn:hover {
-  transform: scale(1.02);
-  color: #d7f5f5;
 }
 
 #errorMessage {
@@ -305,12 +267,24 @@
   max-width: 300px;
   box-shadow: 0 0 30px 2px var(--text);
   border-radius: 16px;
+  position: relative;
 }
 
 .recipeImage {
   object-fit: cover;
   border-radius: 16px;
   transition: 300ms ease-out;
+}
+
+.recipeImageCover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  background-color: #00000020;
+  border-radius: 16px;
 }
 
 .cardBottom {
@@ -351,7 +325,7 @@
 .searchBox {
   position: absolute;
   left: 50%;
-  translate: -50% 80px;
+  translate: -50% 30px;
   border: var(--text) 3px solid;
   padding: 16px;
   border-radius: 22px;
@@ -392,75 +366,89 @@
 ------------------ */
 
 #singleRecipe {
-  display: flex;
-  flex-direction: column;
-  /* background-color: #46492e83; */
-  padding: 20px;
-  /* background: var(--shadow); */
 }
 
-#singleRecipeBackground {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: #9cac2627;
-  backdrop-filter: blur(10px);
-  z-index: -1;
+#singleRecipeInner {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  padding: 30px;
+  border: solid 3px #6d7e92a1;
+  max-width: 800px;
+  margin-right: 0 auto;
+  background-color: #6d7e92a1;
+  border-radius: 24px;
   box-shadow: var(--shadow);
 }
 
-#singleRecipeContentTop {
-  display: grid;
-  grid-template-columns: 30% 56%;
-  gap: 4%;
-  align-items: center;
-  padding: 20px 0;
+#singleRecipeImageContainer {
+  position: relative;
 }
 
 #singleRecipeImage {
   border-radius: 12px;
+  aspect-ratio: 1/1;
+  box-shadow: 2px 2px 20px #000;
 }
 
-#singleRecipeTopRight,
-#singleRecipeContentBotom {
+#singleRecipeImageCover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  background-color: #00000020;
+  border-radius: 12px;
+}
+
+.singleRecipeRight {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  text-align: center;
+  justify-content: space-between;
+  padding: 0 30px;
 }
 
-#singleRecipeIngredients {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  row-gap: 10px;
+.singleRecipeRight h2 {
+  font-size: 32px;
+  color: var(--text);
+  padding: 0 0 60px;
 }
 
-#singleRecipe h1 {
-  font-size: 40px;
-  font-weight: 600;
-  color: #1de4e485;
+.singleRecipeInformation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  padding: 0 30px;
 }
 
-#singleRecipe h2 {
-  font-size: 30px;
-  font-weight: 600;
+#singleRecipeBottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin: 0 auto;
+  padding: 30px 0 0;
 }
 
-#singleRecipe h3 {
-  font-size: 20px;
-  font-weight: 600;
+#singleRecipeBackdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #52085f36;
+  z-index: 20;
 }
 
-#singleRecipe p {
-  font-size: 18px;
-  font-weight: 400;
+.singleRecipeModal {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  z-index: 30;
 }
-
-#singleRecipe ul {
-  list-style: none;
-}
-

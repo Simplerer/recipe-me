@@ -44,7 +44,7 @@ function Header({ loggedIn, setLoggedIn }) {
                 <>
                   <li onClick={logout}>Logout</li>
                   <li>Profile</li>
-                  <li>Share</li>
+                  <NavLink to='/search'><li>Just Search</li></NavLink>
                 </>
                 :
                 <>
