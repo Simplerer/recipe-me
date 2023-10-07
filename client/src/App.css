@@ -37,6 +37,7 @@ body {
 }
 
 .button {
+  appearance: none;
   border-radius: 8px;
   box-shadow: 4px 4px 20px;
   transition: all ease .3s;

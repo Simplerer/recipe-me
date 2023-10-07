@@ -365,9 +365,6 @@
     Single Recipe
 ------------------ */
 
-#singleRecipe {
-}
-
 #singleRecipeInner {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -379,6 +376,45 @@
   background-color: #6d7e92a1;
   border-radius: 24px;
   box-shadow: var(--shadow);
+  position: relative;
+}
+
+#saveRecipeBtn {
+  position: absolute;
+  font-size: 40px;
+  display: block;
+  max-width: fit-content;
+  max-height: fit-content;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  border: none;
+  color: rgb(220 207 207);
+  background-color: transparent;
+  translate: -3px -1px;
+}
+
+#recipeSavedMessage {
+  padding: 60px 30px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  z-index: 30;
+  background-color: #530b0bb8;
+  font-size: 32px;
+  border-radius: 32px;
+  color: rgb(220 207 207);
+  animation: 2s ease 0 1 forwards message;
+}
+
+@keyframes message {
+  0% {
+    top: 60%
+  }
+  100% {
+    top: 50%
+  }
 }
 
 #singleRecipeImageContainer {
@@ -432,7 +468,7 @@
   padding: 30px 0 0;
 }
 
-#singleRecipeBackdrop {
+.singleRecipeBackdrop {
   position: fixed;
   top: 0;
   right: 0;
@@ -451,4 +487,60 @@
   top: 50%;
   translate: -50% -50%;
   z-index: 30;
+  background-color: #530b0bb8;
+  text-align: start;
+  font-size: 32px;
+  border-radius: 32px;
+}
+
+.singleRecipeModal span {
+  color: rgb(220 207 207);
+  font-family: math;
+}
+
+.singleRecipeModal h3 {
+  color: rgb(220 207 207);
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
+.singleRecipeModal p {
+  margin-bottom: 12px;
+}
+
+#singleRecipeIngredients {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#singleRecipeIngredients.longList {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 20px;
+  row-gap: 16px;
+  width: 800px;
+}
+
+#singleRecipeIngredients.longList > * {
+  align-self: center;
+}
+
+.singleRecipeIngredient {
+font-size: 28px;
+position: relative;
+padding-left: 20px;
+}
+
+.singleRecipeIngredient::before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  translate: 0 -50%;
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: rgb(220 207 207);
+  transform: rotate(45deg);
 }

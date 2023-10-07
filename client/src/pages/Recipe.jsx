@@ -6,6 +6,8 @@ function Recipe({ recipe, user, loggedIn }) {
 
     console.log(recipe);
 
+    const [recipeSaved, setRecipeSaved] = useState(false);
+
     const [modal, setModal] = useState(null);
 
     const saveRecipe = async () => {
@@ -18,16 +20,20 @@ function Recipe({ recipe, user, loggedIn }) {
             dishType: recipe.dishType[0],
             mealType: recipe.mealType[0],
             user_id: user.id
-        }
+        };
 
         try {
-            const data = await axios.post('api/recipe', { ...createRecipe })
-            console.log('Success!')
+            const data = await axios.post('api/recipe', { ...createRecipe });
+            console.log('Success!');
 
-            const { user } = data
-            console.log(user)
+            const { user } = data;
+            console.log(user);
 
-            // navigate('/search');
+            setRecipeSaved(true);
+            setTimeout(() => {
+                setRecipeSaved(false);
+            }, 2000);
+
         } catch (err) {
             console.error(err);
         }
@@ -44,11 +50,18 @@ function Recipe({ recipe, user, loggedIn }) {
     const closeModal = () => {
         setModal(null);
     }
+    const openRecipe = (url) => {
+        window.open(url, "_blank");
+    }
 
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
 
     return (
         <section id="singleRecipe">
             <div id="singleRecipeInner">
+                {loggedIn &&
+                    <button onClick={saveRecipe} id="saveRecipeBtn" title="Add to Profile">+</button>
+                }
                 <div id="singleRecipeImageContainer">
                     <img src={recipe.image} id="singleRecipeImage" />
                     <div id="singleRecipeImageCover"></div>
@@ -57,53 +70,50 @@ function Recipe({ recipe, user, loggedIn }) {
                     <h2>{recipe.label}</h2>
                     <div className="singleRecipeInformation">
                         <button className="singleRecipeBtn button"
-                            onClick={() => {showModal('mealDetails')}}>Meal Details</button>
+                            onClick={() => { showModal('mealDetails') }}>Meal Details</button>
                         <button className="singleRecipeBtn button"
-                            onClick={() => {showModal('ingredients')}}>Ingredient List</button>
+                            onClick={() => { showModal('ingredients') }}>Ingredient List</button>
                         <button className="singleRecipeBtn button"
-                            onClick={() => {showModal('goTo')}}>Go To</button>
+                            onClick={() => { openRecipe(recipe.url) }}>Go To</button>
                     </div>
                 </div>
             </div>
             <div id="singleRecipeBottom">
                 <button onClick={goBack} className="button">Back</button>
                 <NavLink to="/search"><button className="button">Just Search</button></NavLink>
-                {/* {loggedIn &&
-                    <button onClick={saveRecipe}>Add to User File</button>
-                } */}
             </div>
             {modal !== null && (
-                <div id="singleRecipeBackdrop" onClick={closeModal}></div>
+                <div className="singleRecipeBackdrop" onClick={closeModal}></div>
             )}
             {modal === 'mealDetails' && (
                 <div className="singleRecipeModal mealDetails">
-                    <p>{recipe.calories} Calories</p>
-                    <p>Serves: {recipe.yield}</p>
-                    <p>A {recipe.cuisineType[0]} dish</p>
-                    <p>For {recipe.mealType[0]}</p>
+                    <h3>Details</h3>
+                    <p>Calories: <span>{recipe.calories.toFixed(2)}</span></p>
+                    <p>Serves: <span>{recipe.yield}</span></p>
+                    <p>{vowels.includes(recipe.cuisineType[0].slice(0, 1)) ? 'An' : 'A'} <span>{recipe.cuisineType[0]}</span> dish</p>
+                    <span>For <span>{recipe.mealType[0]}</span></span>
                 </div>
             )}
             {modal === 'ingredients' && (
                 <div className="singleRecipeModal ingredients">
-                    <ul id="singleRecipeIngredients">
+                    <h3>Ingredients</h3>
+                    <ul id="singleRecipeIngredients" className={recipe.ingredientLines.length > 10 ? 'longList' : ''}>
                         {recipe.ingredientLines.map((el, index) => (
-                            <li key={index}>{el}</li>
+                            <li key={index} className="singleRecipeIngredient">{el}</li>
                         ))}
                     </ul>
                 </div>
             )}
-            {modal === 'goTo' && (
-                <div className="singleRecipeModal goTo">
-                    <iframe src={recipe.url}></iframe>
+            {recipeSaved && (
+                <div>
+                    <div className="singleRecipeBackdrop" onClick={closeModal}></div>
+                    <div id="recipeSavedMessage">Recipe Saved!</div>
                 </div>
-            )}
+            )
+            }
         </section>
     )
 
 };
 
 export default Recipe;
-
-{/* <iframe
-                    src={recipe.url}
-                    onMouseEnter={showMe}></iframe> */}
