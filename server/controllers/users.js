@@ -106,6 +106,34 @@ router.delete('/recipe/:id', async (req, res) => {
   }
 });
 
+// for deleting batches of recipes
+
+// router.delete('/delete-multiple', async (req, res) => {
+//   try {
+//     const { ids } = req.body; // Assuming you have an array of IDs in the request body
+
+//     // Use Sequelize's destroy method with the where option to delete multiple items
+//     const result = await YourModel.destroy({
+//       where: {
+//         id: {
+//           [Op.in]: ids, // Use the Op.in operator to specify multiple IDs
+//         },
+//       },
+//     });
+
+//     if (result > 0) {
+//       // If one or more records were deleted
+//       res.status(200).json({ message: 'Items deleted successfully' });
+//     } else {
+//       // If no records were deleted (IDs not found)
+//       res.status(404).json({ message: 'No items found for deletion' });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// });
+
 
 // --------- Friendship Routes ------------------------- //
 

@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
 // import { QueryClientProvider, QueryClient } from 'react-query';
 import './App.css'
 import Peruse from './pages/Peruse';
-import API from './pages/API';
 import Header from './components/Header';
-import Login from './pages/login';
+import Login from './pages/Login';
 import Search from './components/Search';
 import Recipe from './pages/Recipe';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
+import Profile from './pages/Profile';
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [recipe, setRecipe] = useState([]);
 
   return (
     <main id='main'>
       <Router>
-        
-          <Header
-            loggedIn={loggedIn}
-            setLoggedIn={setLoggedIn} />
+
+        <Header
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn} />
 
         <Routes>
 
@@ -33,39 +32,46 @@ function App() {
             element={<Home />} />
 
           <Route path='/admin'
-          element={<Admin />} />
+            element={<Admin />} />
 
           <Route
             path='/login'
-            element={<Login
-              setUser={setUser}
-              setLoggedIn={setLoggedIn}
-              userData={user} />} />
+            element={
+              <Login
+                setUser={setUser}
+                setLoggedIn={setLoggedIn}
+                userData={user} />} />
 
           <Route
             path='/peruse'
-            element={<Peruse
-              user={user}
-              loggedIn={loggedIn}
-              data={data}
-              isLoading={isLoading}
-              setRecipe={setRecipe}
-              recipe={recipe} />} />
+            element={
+              <Peruse
+                user={user}
+                loggedIn={loggedIn}
+                data={data}
+                setRecipe={setRecipe}
+                recipe={recipe} />} />
 
           <Route
             path='/search'
-            element={<Search
-              isLoading={setIsLoading}
-              setData={setData} />} />
+            element={
+              <Search
+                setData={setData} />} />
 
           <Route
             path='/recipe'
-            element={<Recipe
-              recipe={recipe}
-              loggedIn={loggedIn}
-              user={user} />} />
+            element={
+              <Recipe
+                recipe={recipe}
+                loggedIn={loggedIn}
+                user={user} />} />
 
-          <Route path='/two' element={<API />} />
+          <Route
+            path='/profile'
+            element={
+              <Profile
+                user={user}
+                setRecipe={setRecipe} />} />
 
         </Routes>
       </Router>

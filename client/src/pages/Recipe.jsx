@@ -7,8 +7,8 @@ function Recipe({ recipe, user, loggedIn }) {
     console.log(recipe);
 
     const [recipeSaved, setRecipeSaved] = useState(false);
-
     const [modal, setModal] = useState(null);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const saveRecipe = async () => {
 
@@ -33,6 +33,7 @@ function Recipe({ recipe, user, loggedIn }) {
             setTimeout(() => {
                 setRecipeSaved(false);
             }, 2000);
+            setIsDisabled(true);
 
         } catch (err) {
             console.error(err);
@@ -60,7 +61,8 @@ function Recipe({ recipe, user, loggedIn }) {
         <section id="singleRecipe">
             <div id="singleRecipeInner">
                 {loggedIn &&
-                    <button onClick={saveRecipe} id="saveRecipeBtn" title="Add to Profile">+</button>
+                    <button onClick={saveRecipe} id="saveRecipeBtn"
+                     title="Add to Profile" disabled={isDisabled} >+</button>
                 }
                 <div id="singleRecipeImageContainer">
                     <img src={recipe.image} id="singleRecipeImage" />

@@ -26,7 +26,7 @@ function Header({ loggedIn, setLoggedIn }) {
         <div id="mainItems">
           <div id="siteName">
             <NavLink to='/'>
-            <h1>Recipe Me</h1>
+              <h1>Recipe Me</h1>
             </NavLink>
           </div>
           <div id="menuDropdownIcon" onClick={openMenu}>
@@ -43,13 +43,21 @@ function Header({ loggedIn, setLoggedIn }) {
                 ?
                 <>
                   <li onClick={logout}>Logout</li>
-                  <li>Profile</li>
-                  <NavLink to='/search'><li>Just Search</li></NavLink>
+                  <NavLink to='/profile'>
+                    <li>Profile</li>
+                  </NavLink>
+                  <NavLink to='/search'>
+                    <li>Just Search</li>
+                  </NavLink>
                 </>
                 :
                 <>
-                  <NavLink to='/login'><li>Login</li></NavLink>
-                  <NavLink to='/search'><li>Just Search</li></NavLink>
+                  <NavLink to='/login'>
+                    <li>Login</li>
+                  </NavLink>
+                  <NavLink to='/search'>
+                    <li>Just Search</li>
+                  </NavLink>
                 </>
               }
             </ul>

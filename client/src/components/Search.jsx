@@ -5,7 +5,7 @@ import './components.css';
 import { useNavigate } from "react-router-dom";
 
 
-function Search({ setData, isLoading }) {
+function Search({ setData }) {
 
   const navigate = useNavigate();
   const [search, setSearch] = useState({
@@ -17,11 +17,9 @@ function Search({ setData, isLoading }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    isLoading(true)
 
     await axios.post(`api/dish`, { ...search }).then((res) => {
       setData(res.data.data)
-      isLoading(false)
       setSearch({
         query: null,
         ingAmount: null,

@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from 'axios';
 import './pages.css';
 
 
-function Peruse({ data, isLoading, setRecipe, user }) {
+function Peruse({ data, setRecipe, user }) {
 
   const [index, setIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   console?.log(data)
   console?.log(user)
+
+  useEffect(() => {
+    data.length > 0 ? setIsLoading(false) : setIsLoading(true) ;
+  }, []);
+
 
 
   if (isLoading) {
