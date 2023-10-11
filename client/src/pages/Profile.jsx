@@ -17,7 +17,7 @@ function Profile({ user, setRecipe }) {
     axios.get(`api/user/${user.id}`)
       .then(res => {
         console.log(res);
-        clearRepeats(res.data.recipes);
+        noRepeats(res.data.recipes);
         setIsLoading(false);
       })
       .catch(err => {
@@ -26,7 +26,19 @@ function Profile({ user, setRecipe }) {
 
   }, []);
 
-  const clearRepeats = (recipes) => {
+  const deleteRecipe = async (id) => {
+
+    try {
+      await axios.delete(`api/recipe/${id}`)
+      setUserRecipes((prevUserRecipes) => prevUserRecipes.filter(recipe => recipe.id !== id));
+      console.log('deleted');
+    } catch (err) {
+      console.error(err);
+    }
+
+  }
+
+  const noRepeats = (recipes) => {
 
     const uniqueRecipes = recipes.filter((recipe, index, self) => {
       // Find the index of the first occurrence of the current recipe's dishId
@@ -37,6 +49,7 @@ function Profile({ user, setRecipe }) {
     });
 
     setUserRecipes(uniqueRecipes);
+
   }
 
 
@@ -50,16 +63,21 @@ function Profile({ user, setRecipe }) {
     <section id='profilePage'>
       <h2>Hey!</h2>
       <h3>{user.username}</h3>
-      <button onClick={() => console.log(userInfo)}>Console Info</button>
-      <div id='profileRecipes'>
+      <button onClick={() => console.log(userRecipes)}>Console Info</button>
+      <div id='profileRecipes'
+        style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
         {userRecipes.map((el, index) => (
-          <NavLink
-            to='/recipe'
-            onClick={() => setRecipe(el)} key={index}>
-            <div>
+          <div style={{ display: 'flex', gap: '20px', padding: '5px' }}>
+            <NavLink
+              to='/recipe'
+              onClick={() => setRecipe(el)} key={index}>
               <div>{el.dishName}</div>
-            </div>
-          </NavLink>
+            </NavLink>
+            <button
+              onClick={() => deleteRecipe(el.id)}
+              style={{ display: 'grid', placeContent: 'center', padding: '5px 10px' }}>Delete This!</button>
+            <p>{el.id}</p>
+          </div>
         ))}
       </div>
     </section>
@@ -70,9 +88,6 @@ function Profile({ user, setRecipe }) {
 export default Profile;
 
 // Here is what I need, build out looks
-// add delete functionality for user
-// add multiple deletion for admin, get rid of all test repeats
-// add ability to remove from list on recipe page?
 // go back and design layout at 100% zoom, got some space issues
 // add breakpoints
 

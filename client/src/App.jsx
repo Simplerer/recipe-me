@@ -19,13 +19,13 @@ function App() {
   const [recipe, setRecipe] = useState([]);
 
   return (
-    <main id='main'>
-      <Router>
+    <Router>
 
-        <Header
-          loggedIn={loggedIn}
-          setLoggedIn={setLoggedIn} />
+      <Header
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn} />
 
+      <main id='main'>
         <Routes>
 
           <Route path='/'
@@ -74,8 +74,8 @@ function App() {
                 setRecipe={setRecipe} />} />
 
         </Routes>
-      </Router>
-    </main>
+      </main>
+    </Router>
   )
 
 }
