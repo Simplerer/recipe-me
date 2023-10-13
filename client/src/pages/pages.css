@@ -3,33 +3,19 @@
 ------------------ */
 
 #homebase {
-  position: relative;
-  margin: auto;
-  padding: 100px 100px;
+  /* position: relative; */
+  /* margin: auto; */
+  padding: 90px 90px;
   box-shadow: var(--shadow);
   border-radius: 8px;
   display: flex;
   justify-content: center;
 }
 
-#homeBackground {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
-  font-size: 120px;
-  text-shadow: 0 0 5px #ffffff8A;
-}
-
-#homeBackground span {
-  font-size: 60px;
-}
-
 #homeRecipe {
   position: absolute;
-  top: -190px;
+  top: 10%;
   font-size: 120px;
-  width: 400%;
 }
 
 @keyframes recipeIn {
@@ -60,15 +46,15 @@
 }
 
 #homeRecipe span:nth-child(2) {
-  animation-delay: 0.3s;
+  animation-delay: .3s;
 }
 
 #homeRecipe span:nth-child(3) {
-  animation-delay: 0.6s;
+  animation-delay: .6s;
 }
 
 #homeRecipe span:nth-child(4) {
-  animation-delay: 0.9s;
+  animation-delay: .9s;
 }
 
 #homeRecipe span:nth-child(5) {
@@ -87,24 +73,35 @@
   animation-delay: 0s;
 }
 
+#homeBackground {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  font-size: 120px;
+  text-shadow: 0 0 5px #ffffff8A;
+}
+
+#homeBackground span {
+  font-size: 60px;
+}
+
+#homeButtons {
+  position: absolute;
+  bottom: 8%;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
 
 #homeSearch,
 #homeLogin {
-  position: absolute;
-  bottom: -250px;
   height: 80px;
   margin: 20px 0;
   box-shadow: 4px 4px 20px #8eafae;
   animation: buttonsIn 1200ms ease-in 2s forwards;
   opacity: 0;
-}
-
-#homeLogin {
-  right: 200px;
-}
-
-#homeSearch {
-  left: 200px;
 }
 
 @keyframes buttonsIn {
@@ -124,27 +121,15 @@
      Login   
 ---------------- */
 
-.sectionTitle {
-  font-size: 60px;
-}
-
-#login {
+#loginForm {
   border-bottom: solid 2px #a1ac53;
   border-top: solid 2px #a1ac53;
-  height: 400px;
   width: 400px;
-  padding: 24px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.inputBox {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  gap: 30px;
 }
 
 .input {
@@ -155,7 +140,7 @@
   font-size: 24px;
   font-weight: 600;
   background-color: rgba(231, 112, 206, 0.1);
-  margin: 20px 0;
+  margin: 0 auto;
   border: solid 1px #a1ac53;
   box-shadow: 2px 2px 15px #0d0e05;
   border-radius: 12px;
@@ -165,28 +150,19 @@
   }
 }
 
-.label {
-  position: absolute;
+.input::placeholder {
   font-size: 24px;
   font-weight: 600;
-  pointer-events: none;
+  color:#a1ac53
 }
 
-#btnBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#btnBox h2 {
+#loginForm h2 {
   font-size: 30px;
-  margin: 10px;
 }
 
 #createBtn,
 #loginBtn {
-  margin: 20px 0;
+  margin: 0 auto;
 }
 
 #loginBtn {
@@ -212,22 +188,28 @@
   color: #d7f5f5;
 }
 
-
 /* -------------------
     Recipe Cards
 ------------------ */
 
 #recipePage {
-  margin: auto;
   position: relative;
-  padding: 50px;
+}
+
+#recipePage .recipeTitle,
+#recipePage p {
+  transition: color .8s ease, color 1.2s ease;
+
+  &:hover {
+    color: rgb(245, 203, 149);
+  }
 }
 
 .outerBox {
   background-color: #6d7e92a1;
   padding: 20px;
   border-radius: 16px;
-  min-width: 600px;
+  min-width: 500px;
   cursor: pointer;
   transition: 300ms ease-out;
   box-shadow: var(--shadow);
@@ -237,18 +219,8 @@
   }
 }
 
-.outerBox h3,
-p {
-  transition: color .8s ease, color 1.2s ease;
-
-  &:hover {
-    color: rgb(245, 203, 149);
-  }
-}
-
 .recipeCard {
   display: flex;
-  margin: 0 auto;
   flex-direction: column;
   align-items: center;
   padding: 10px;
@@ -263,12 +235,12 @@ p {
   font-size: 28px;
   line-height: 30px;
   font-weight: 600;
-  margin: 30px 0;
+  margin: 20px 0;
   max-width: 400px;
 }
 
 .imageHolder {
-  max-width: 300px;
+  max-width: 274px;
   box-shadow: 0 0 30px 2px var(--text);
   border-radius: 16px;
   position: relative;
@@ -296,12 +268,12 @@ p {
   font-size: 20px;
   line-height: 22px;
   font-weight: 600;
-  margin: 10px 0 20px;
+  margin: 14px 0 20px;
 }
 
 .cardBottom p {
   margin: 6px;
-  font-size: 110%;
+  font-size: 22px;
 }
 
 .nextBtnBox,
@@ -321,17 +293,14 @@ p {
 }
 
 .nextBtnBox {
-  right: -80px;
+  right: -20%;
 }
 
 .lastBtnBox {
-  left: -80px;
+  left: -20%;
 }
 
 .searchBox {
-  position: absolute;
-  left: 50%;
-  translate: -50% 30px;
   border: var(--text) 3px solid;
   padding: 16px;
   border-radius: 22px;
@@ -343,6 +312,7 @@ p {
   gap: 18px;
   max-width: 220px;
   width: 100%;
+  margin: 30px auto 0;
 
   &:hover {
     transform: scale(1.01);

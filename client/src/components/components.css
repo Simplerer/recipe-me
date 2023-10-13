@@ -4,56 +4,43 @@
 ------------------ */
 
 #header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 8%;
-  width: 100%;
   border-bottom: 2px solid #a1ac53;
-  padding: 14px 0 0;
+  padding: 14px 30px 0;
 }
 
 #headerItems {
-  position: relative;
   display: flex;
   align-items: flex-end;
-  width: 100%;
-  height: 100%;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 #mainItems {
-  position: absolute;
-  width: 33%;
-  left: 4%;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 16px;
 }
 
 #siteName {
-  font-size: 400%;
+  font-size: 50px;
   font-family: Tahoma (sans-serif);
-  margin-right: 4%;
 }
 
 #menuDropdownIcon {
   cursor: pointer;
-  font-size: 150%;
+  font-size: 20px;
 }
 
 #menuDropdown {
-  position: absolute;
-  right: 10%;
-  bottom: 0;
   cursor: pointer;
-  font-size: 150%;
+  font-size: 20px;
 }
 
 #menuDropdownList {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  gap: 10px;
 
 }
 
@@ -95,50 +82,39 @@
   }
 }
 
-@media (max-width: 1080px) {
-
-  #mainItems {
-    width: 50%;
-  }
-
-}
-
-@media (max-width: 900px) {
-
-  #menuDropdown {
-    right: 15%;
-  }
-
-}
-
 /* --------------  
     Search Bar  
 ------------------- */
 
 #search {
-  display: grid;
-  place-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .searchBar {
   border-bottom: solid 2px #a1ac53;
   border-top: solid 2px #a1ac53;
   height: 40vh;
-  width: 60vw;
-  display: flex;
-  flex-direction: column;
-  padding: 50px 0;
+  width: 50vw;
+  padding: 40px;
   max-width: 600px;
+  display: grid;
+  place-content: center;
 }
 
-.searchBar .button {
+#searchForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+#searchForm .button {
   margin: 0 auto;
-  translate: 0 100%;
 }
 
 #searchField {
   width: 40vw;
-  height: 50px;
   max-width: 500px;
 }
 
@@ -147,10 +123,10 @@
 }
 
 #middleSearch {
-  position: absolute;
-  bottom: 14%;
  display: flex;
- justify-content: space-around;
+ justify-content: space-between;
+ align-items: center;
+ gap: 80px;
  width: 100%;
 }
 
@@ -175,10 +151,11 @@
   }
 }
 
+.dropdowns option {
+  font-size: 16px;
+  padding: 4px 0;
+}
+
 #optional {
   font-size: 40px;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  translate: -50%;
 }

@@ -1,0 +1,13 @@
+To Finish
+
+design profile page, maybe scrolling through recipes?
+add something interesting
+what typ eof recipe you like most etc.???
+
+sideways mobile and then regular mobile breakpoints.
+
+Add more error handling on login/signup, why the error dude?
+
+test run functionality and look for anything that doesn't work everytime: fix
+
+heroku load up

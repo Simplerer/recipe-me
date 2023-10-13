@@ -87,10 +87,4 @@ function Profile({ user, setRecipe }) {
 
 export default Profile;
 
-// Here is what I need, build out looks
-// go back and design layout at 100% zoom, got some space issues
-// add breakpoints
 
-// test run functionality and look for anything that doesn't work everytime: fix
-
-// heroku load up

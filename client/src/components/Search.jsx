@@ -39,7 +39,8 @@ function Search({ setData }) {
     <section id="search">
       <h1 className="sectionTitle">Retrieve Recipes</h1>
       <div className="searchBar">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}
+        id="searchForm">
           <input
             type="text"
             className="input"
@@ -47,8 +48,8 @@ function Search({ setData }) {
             name="query"
             placeholder="Query"
             onChange={handleOnChange} />
-            <button className="button"
-              type="submit">Search</button>
+          <button className="button"
+            type="submit">Search</button>
           <div id="middleSearch">
             <input
               type="text"
@@ -59,9 +60,9 @@ function Search({ setData }) {
               onChange={handleOnChange} />
             <Dropdowns handleChange={handleOnChange} />
           </div>
-          <h2 id="optional">Optionals</h2>
         </form>
       </div>
+      <h2 id="optional">Optionals</h2>
     </section>
   )
 };

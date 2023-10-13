@@ -6,7 +6,7 @@ import './pages.css';
 
 
 function Login({ setLoggedIn, setUser, userData }) {
-  
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [tryAgain, setTryAgain] = useState(false);
@@ -23,7 +23,7 @@ function Login({ setLoggedIn, setUser, userData }) {
       const { data } = await axios.post('api/session/login', {
         ...formData
       })
-      
+
       const { user } = data
       setUser(user);
       setLoggedIn(true);
@@ -57,7 +57,7 @@ function Login({ setLoggedIn, setUser, userData }) {
           navigate('/search');
         })
     } catch (err) {
-        console.error(err);
+      console.error(err);
       setErrorMessage(true);
     }
   };
@@ -78,8 +78,6 @@ function Login({ setLoggedIn, setUser, userData }) {
   const byeLabel = (e) => {
     setTryAgain(false);
     setErrorMessage(false);
-    let box = e.target.closest('.inputBox').querySelector('.label');
-    box.style.display = 'none';
   }
 
   const hiLabel = (e) => {
@@ -91,65 +89,55 @@ function Login({ setLoggedIn, setUser, userData }) {
 
 
   return (
-    <>
-    <h1 className="sectionTitle">Login</h1>
-      <section id="login">
-        <div>
-          <form onSubmit={handleSubmit}>
-            <div className="inputBox">
-              <label className="label" htmlFor='username'>Username</label>
-              <input
-                type="text"
-                name="username"
-                className="input"
-                onChange={handleChange}
-                onFocus={byeLabel}
-                onBlur={hiLabel}
-                value={formData.username} />
-            </div>
-            <div className="inputBox">
-              <label className="label" htmlFor='password'>Password</label>
-              <input
-                type="password"
-                className="input"
-                name="password"
-                onChange={handleChange}
-                onFocus={byeLabel}
-                onBlur={hiLabel}
-                value={formData.password} />
-            </div>
-            <div id="btnBox">
-              <button
-                id="loginBtn"
-                className="button"
-                type="submit">Login</button>
-              <h2>If not Signed Up</h2>
-              <button
-                id="createBtn"
-                className="button"
-                type="button"
-                onClick={createUser}>Create an Account</button>
-            </div>
-          </form>
+    <section id="login">
+      <h1 className="sectionTitle">Login</h1>
+      <form onSubmit={handleSubmit} id="loginForm">
+        <label className="label" htmlFor='username' hidden></label>
+        <input
+          type="text"
+          name="username"
+          className="input"
+          placeholder="Username"
+          onChange={handleChange}
+          onFocus={byeLabel}
+          value={formData.username} />
+        <label className="label" htmlFor='password' hidden></label>
+        <input
+          type="password"
+          className="input"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+          onFocus={byeLabel}
+          value={formData.password} />
+        <button
+          id="loginBtn"
+          className="button"
+          type="submit">Login</button>
+        <h2>If not Signed Up</h2>
+        <button
+          id="createBtn"
+          className="button"
+          type="button"
+          onClick={createUser}>Create an Account</button>
+      </form>
+      {tryAgain &&
+        <div id="errorMessage">
+          <p
+            onClick={() => setTryAgain(false)}
+            id="errorExit">| X |</p>
+          <p id="errorMessage">Fill out all the fields please!</p>
         </div>
-      </section>
-      {tryAgain && 
-      <div id="errorMessage">
-        <p 
-        onClick={() => setTryAgain(false)}
-        id="errorExit">| X |</p>
-        <p id="errorMessage">Fill out all the fields please!</p>
+      }
+      {errorMessage &&
+        <div id="errorMessage">
+          <p
+            onClick={() => setErrorMessage(false)}
+            id="errorExit">| X |</p>
+          <p>There seems to have been a problem</p>
         </div>
-        }
-      {errorMessage && 
-      <div id="errorMessage">
-        <p 
-        onClick={() => setErrorMessage(false)}
-        id="errorExit">| X |</p>
-        <p>There seems to have been a problem</p>
-        </div>
-        }
-    </>
+      }
+    </section>
   )
 }
 

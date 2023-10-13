@@ -24,19 +24,8 @@ img, button {
 
 body {
   background-color: var(--body);
-  display: grid;
-  place-content: center;
-  min-height: 100vh;
   color: var(--text);
-  overflow: hidden;
-  text-align: center;
-}
-
-#main {
-  position: relative;
-  /* display: grid;
-  place-content: center;
-  margin-top: 8vh; */
+  /* overflow: hidden; */
 }
 
 .button {
@@ -56,9 +45,21 @@ body {
   width: 300px;
   height: 40px;
   cursor: pointer;
-
+  
   &:hover {
     transform: scale(1.02);
     color: #d7f5f5;
   }
+}
+
+#main {
+  position: relative;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  height: calc(100vh - 66px);
+}
+
+.sectionTitle {
+  font-size: 60px;
 }

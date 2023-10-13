@@ -30,11 +30,3 @@ function Home() {
 }
 
 export default Home;
-
-// redid the css here are some notes
-
-// - main is now under the header and around the pages
-// - move grid to main and take off absolute off of allllll the items!
-// - box sahadow that I love has been coming from the empty pages with the absolute items on top,
-//        find how to get same effect with items relatively placed
-// - overflow issues may be from the odd  positioning
