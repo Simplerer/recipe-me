@@ -1,31 +1,82 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from "react-router-dom";
 import axios from 'axios';
 import './pages.css';
+import { useNavigate } from "react-router-dom";
 
 function Profile({ user, setRecipe }) {
 
   console?.log(user);
+  const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
   const [userRecipes, setUserRecipes] = useState([]);
+  const [userList, setUserList] = useState([]);
 
   console?.log(user)
 
+
+  // on mount will run both functions to get all users and specific users recipes
   useEffect(() => {
 
-    axios.get(`api/user/${user.id}`)
+    getRecipes();
+    loadUsers();
+
+  }, []);
+
+
+  // gets all recipes saved to User's profile
+  const getRecipes = async () => {
+
+    await axios.get(`api/user/${user.id}`)
       .then(res => {
-        console.log(res);
+        console.log('userRecipes: ', res);
         noRepeats(res.data.recipes);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+
+  }
+
+  // gives a list of all users of the site
+  const loadUsers = async () => {
+
+    await axios.get(`api/user`)
+      .then(res => {
+        console.log('allUsers: ', res.data);
+        gatherUsers(res.data);
         setIsLoading(false);
       })
       .catch(err => {
         console.error(err);
       })
 
-  }, []);
+  }
 
+  // takes info from loadUsers and returns only userNames   -------------  may need to add ID now that I think about it
+  const gatherUsers = (people) => {
+    const group = [];
+    for (let person of people) {
+      group.push(person.username)
+    }
+    setUserList(group);
+  }
+
+
+  // takes saved dishId to rehit api, populating the recipe page
+  const gatherRecipe = async (id) => {
+    try {
+      await axios.get(`api/dish/${id}`)
+        .then((res) => {
+          setRecipe(res.data.data.recipe);
+          navigate('/recipe')
+        })
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  // takes recipe id to remove from database
   const deleteRecipe = async (id) => {
 
     try {
@@ -38,20 +89,20 @@ function Profile({ user, setRecipe }) {
 
   }
 
+  //sorts through recipe list, makes sure user has no doubles
   const noRepeats = (recipes) => {
 
-    const uniqueRecipes = recipes.filter((recipe, index, self) => {
+    // self here is representing the array recipes, not each recipe
+    const uniqueRecipes = recipes.filter((item, index, self) => {
       // Find the index of the first occurrence of the current recipe's dishId
-      const firstIndex = self.findIndex(r => r.dishId === recipe.dishId);
+      const firstIndex = self.findIndex(recipe => recipe.dishId === item.dishId);
       // Check if the current index is the same as the first index
       // If they are the same, it means it's the first occurrence and should be included
       return index === firstIndex;
     });
 
     setUserRecipes(uniqueRecipes);
-
   }
-
 
   if (isLoading) {
     return (
@@ -59,28 +110,52 @@ function Profile({ user, setRecipe }) {
     )
   }
 
+
+  // reusable Item for recipes
+  function Item({ recipes }) {
+
+    const [isOpen, setIsOpen] = useState(false);
+    const openDropdown = () => {
+      setIsOpen(!isOpen);
+    }
+
+    return (
+      <div id='profileRecipes'>
+        {recipes.map((el, index) => (
+          <div className='profileItem' key={index}>
+            <div className='profileItemInfo'>
+              <img src={el?.image} alt='dish image' style={{ display: 'none' }} />
+              <div>
+                <div>{el.dishName}</div>
+                <div className={`profileItemDropdownToggle ${isOpen ? 'open' : ''}`} onClick={openDropdown}>+</div>
+              </div>
+            </div>
+            <div className={`profileItemDropdownInfo ${isOpen ? 'open' : ''}`}>
+              <div>
+                <button className='profileItemButton' onClick={() => gatherRecipe(el.dishId)}>Check It</button>
+                <button className='profileItemButton' onClick={() => deleteRecipe(el.id)}>Chuck It</button>
+              </div>
+            </div>
+          </div>
+        ))
+        }
+      </div>
+    )
+  }
+
   return (
     <section id='profilePage'>
-      <h2>Hey!</h2>
-      <h3>{user.username}</h3>
-      <button onClick={() => console.log(userRecipes)}>Console Info</button>
-      <div id='profileRecipes'
-        style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-        {userRecipes.map((el, index) => (
-          <div style={{ display: 'flex', gap: '20px', padding: '5px' }}>
-            <NavLink
-              to='/recipe'
-              onClick={() => setRecipe(el)} key={index}>
-              <div>{el.dishName}</div>
-            </NavLink>
-            <button
-              onClick={() => deleteRecipe(el.id)}
-              style={{ display: 'grid', placeContent: 'center', padding: '5px 10px' }}>Delete This!</button>
-            <p>{el.id}</p>
-          </div>
-        ))}
+      <h1 className="sectionTitle">{user.username}'s Stuff</h1>
+      <div id='profileStuff'>
+        <div id='profileUserList'>
+          {userList.map((el, index) => (
+            <p key={index}>{el}</p>
+          ))
+          }
+        </div>
+        <Item recipes={userRecipes} />
       </div>
-    </section>
+    </section >
   )
 
 };
