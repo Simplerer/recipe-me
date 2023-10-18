@@ -114,23 +114,31 @@ function Profile({ user, setRecipe }) {
   // reusable Item for recipes
   function Item({ recipes }) {
 
-    const [isOpen, setIsOpen] = useState(false);
-    const openDropdown = () => {
-      setIsOpen(!isOpen);
+    // returns an array of false the same length of recipes
+    const [isOpen, setIsOpen] = useState(recipes.map(() => false));
+    const openDropdown = (index) => {
+
+      // copy array and makes changes, the reset with new info
+      const openStates = [...isOpen];
+      openStates[index] = !openStates[index];
+      setIsOpen(openStates);
     }
+
+  
 
     return (
       <div id='profileRecipes'>
         {recipes.map((el, index) => (
-          <div className='profileItem' key={index}>
+          <div className={`profileItem ${isOpen[index] ? 'open' : ''}`} key={index}>
             <div className='profileItemInfo'>
-              <img src={el?.image} alt='dish image' style={{ display: 'none' }} />
-              <div>
+              <div className='profileItemInfoTitle'>
                 <div>{el.dishName}</div>
-                <div className={`profileItemDropdownToggle ${isOpen ? 'open' : ''}`} onClick={openDropdown}>+</div>
+                <div className={`profileItemDropdownToggle ${isOpen[index] ? 'open' : ''}`} onClick={() => openDropdown(index)}>+</div>
               </div>
+              <img src={el.image} alt='dish image' 
+              className='profileItemInfoImage' />
             </div>
-            <div className={`profileItemDropdownInfo ${isOpen ? 'open' : ''}`}>
+            <div className={`profileItemDropdownInfo ${isOpen[index] ? 'open' : ''}`}>
               <div>
                 <button className='profileItemButton' onClick={() => gatherRecipe(el.dishId)}>Check It</button>
                 <button className='profileItemButton' onClick={() => deleteRecipe(el.id)}>Chuck It</button>
