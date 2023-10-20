@@ -550,48 +550,60 @@
   position: relative;
 }
 
+#profileUserList {
+}
+
 #profileRecipes {
-  max-width: 400px;
+  max-width: 600px;
   overflow-x: auto;
   display: flex;
-  align-items: flex-start;
   gap: 30px;
   padding: 20px;
 }
 
 .profileItem {
-  min-width: 200px;
-  padding: 10px 20px;
   border: solid 1px #6d7e923f;
   border-radius: 24px;
   background-color: #6d7e92;
   display: flex;
-  align-items: center;
+  min-width: 240px;
   transition: min-width ease .5s;
+  padding: 20px;
 }
 
-/* .profileItem.open {
-  min-width: 400px;
-} */
+.profileItem.open {
+  min-width: 374px;
+}
 
 .profileItemInfo {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 200px;
-  padding: 20px;
 }
 
 .profileItemInfoTitle {
   font-size: 20px;
-  text-align: left;
+  max-width: 240px;
+  margin: auto;
+  font-weight: 500;
+}
+
+.profileItemInfoImage {
   display: grid;
-  grid-template-columns: 1fr 40px;
+  grid-template-columns: 200px 20px;
+  gap: 20px;
+}
+
+.profileItemInfoImage img {
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
 }
 
 .profileItemDropdownToggle {
   font-size: 36px;
   max-width: fit-content;
+  height: fit-content;
   margin: 0 auto;
   transition: transform ease .5s,
     scale ease .5s;
@@ -603,13 +615,6 @@
   }
 }
 
-.profileItemInfoImage {
-  max-width: 100px;
-  aspect-ratio: 1/1;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-}
-
 .profileItemDropdownToggle.open {
   transform: rotate(45deg);
 }
@@ -618,7 +623,8 @@
   display: grid;
   grid-template-columns: 0fr;
   transition: grid-template-columns ease .5s;
-  min-width: 200px;
+  align-self: flex-end;
+  margin-bottom: 60px;
 }
 
 .profileItemDropdownInfo > div {
@@ -649,9 +655,10 @@
   font-size: 24px;
   font-weight: 600;
   color: #8eafae;
-  width: 300px;
+  width: 130px;
   height: 40px;
   cursor: pointer;
+  ;
 
   &:hover {
     transform: scale(1.02);

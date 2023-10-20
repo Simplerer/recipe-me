@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './components.css';
 
@@ -16,6 +17,7 @@ function Header({ loggedIn, setLoggedIn }) {
       .then((res) => {
         console.log(res)
         setLoggedIn(false)
+        navigate('/login')
       })
   }
 

@@ -15,6 +15,11 @@ function Profile({ user, setRecipe }) {
   console?.log(user)
 
 
+  // const [isOpen, setIsOpen] = useState(false);
+  //   const openDropdown = () => {
+  //     setIsOpen(!isOpen);
+  //   }
+
   // on mount will run both functions to get all users and specific users recipes
   useEffect(() => {
 
@@ -111,7 +116,6 @@ function Profile({ user, setRecipe }) {
   }
 
 
-  // reusable Item for recipes
   function Item({ recipes }) {
 
     // returns an array of false the same length of recipes
@@ -124,19 +128,18 @@ function Profile({ user, setRecipe }) {
       setIsOpen(openStates);
     }
 
-  
+
 
     return (
       <div id='profileRecipes'>
         {recipes.map((el, index) => (
           <div className={`profileItem ${isOpen[index] ? 'open' : ''}`} key={index}>
             <div className='profileItemInfo'>
-              <div className='profileItemInfoTitle'>
-                <div>{el.dishName}</div>
+              <div className='profileItemInfoTitle'>{el.dishName}</div>
+              <div className='profileItemInfoImage'>
+                <img src={el.image} alt='dish image' />
                 <div className={`profileItemDropdownToggle ${isOpen[index] ? 'open' : ''}`} onClick={() => openDropdown(index)}>+</div>
               </div>
-              <img src={el.image} alt='dish image' 
-              className='profileItemInfoImage' />
             </div>
             <div className={`profileItemDropdownInfo ${isOpen[index] ? 'open' : ''}`}>
               <div>
@@ -148,6 +151,7 @@ function Profile({ user, setRecipe }) {
         ))
         }
       </div>
+    
     )
   }
 
