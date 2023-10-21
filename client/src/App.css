@@ -28,6 +28,39 @@ body {
   /* overflow: hidden; */
 }
 
+/* * * * * * * * * * *
+---- Scroll Bar -------
+* * * * * * * * * * * */
+
+::-webkit-scrollbar {
+  width: 40px;
+  /* background-color: #00000017; */
+  border-radius: 16px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--text);
+  border-radius: 16px;
+}
+
+
+/* * * * * * * * * * *
+-- Reusable Elements --
+* * * * * * * * * * * */
+
+#main {
+  position: relative;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  height: calc(100vh - 66px);
+}
+
+.sectionTitle {
+  font-size: 60px;
+}
+
 .button {
   appearance: none;
   border-radius: 8px;
@@ -50,27 +83,4 @@ body {
     transform: scale(1.02);
     color: #d7f5f5;
   }
-}
-
-#main {
-  position: relative;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  height: calc(100vh - 66px);
-}
-
-.sectionTitle {
-  font-size: 60px;
-}
-
-::-webkit-scrollbar {
-  width: 40px;
-  background-color: #00000017;
-  border-radius: 0 0 16px 16px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--text);
-  border-radius: 0 0 16px 16px;
 }

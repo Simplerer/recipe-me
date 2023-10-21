@@ -32,7 +32,7 @@ function Recipe({ recipe, user, loggedIn }) {
             setRecipeSaved(true);
             setTimeout(() => {
                 setRecipeSaved(false);
-            }, 2000);
+            }, 1500);
             setIsDisabled(true);
 
         } catch (err) {

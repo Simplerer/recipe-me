@@ -600,6 +600,10 @@
   box-shadow: var(--shadow);
 }
 
+.profileItemInfoImageContainer {
+  position: relative;
+}
+
 .profileItemDropdownToggle {
   font-size: 36px;
   max-width: fit-content;

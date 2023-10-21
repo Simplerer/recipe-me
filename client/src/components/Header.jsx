@@ -7,6 +7,7 @@ import './components.css';
 function Header({ loggedIn, setLoggedIn }) {
 
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const openMenu = () => {
     setOpen(!open)

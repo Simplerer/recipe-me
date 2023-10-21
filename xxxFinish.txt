@@ -11,3 +11,84 @@ Add more error handling on login/signup, why the error dude?
 test run functionality and look for anything that doesn't work everytime: fix
 
 heroku load up
+
+
+
+
+Notes for search checks
+
+To gauge how long loading has taken in your component and trigger a 
+redirect if loading takes too long, you can use a 
+combination of the useEffect hook, timers, and state management. 
+Here's a step-by-step approach to implement this:
+
+Create a state variable to track loading progress and a threshold for how long is considered "too long."
+
+
+const [isLoading, setIsLoading] = useState(true);
+const loadingThreshold = 5000; // Set your threshold in milliseconds (e.g., 5 seconds).
+
+Use a useEffect to start a timer when loading begins (when isLoading is true). 
+If the timer exceeds the threshold, you can trigger the redirection.
+
+
+useEffect(() => {
+  let timer;
+  
+  if (isLoading) {
+    // Set a timer to trigger the redirection if loading takes too long.
+    timer = setTimeout(() => {
+      setIsLoading(false); // Assuming that setting this flag will trigger the redirection.
+    }, loadingThreshold);
+  } else {
+    clearTimeout(timer); // Clear the timer if loading completes before the threshold.
+  }
+
+  // Cleanup the timer when the component unmounts.
+  return () => {
+    clearTimeout(timer);
+  };
+}, [isLoading]);
+
+When your component finishes loading (e.g., when you get the data you need), 
+set isLoading to false. This will cancel the timer set in the previous step.
+
+// Inside your data loading logic (or wherever loading completes):
+// For example, when fetching data using a useEffect:
+useEffect(() => {
+  fetchData().then((data) => {
+    setIsLoading(false); // Loading is complete.
+    // Process the data.
+  });
+}, []);
+
+
+Implement the redirection logic in the same useEffect where you set isLoading to false:
+
+useEffect(() => {
+  let timer;
+
+  if (isLoading) {
+    // Set a timer to trigger the redirection if loading takes too long.
+    timer = setTimeout(() => {
+      setIsLoading(false); // Assuming that setting this flag will trigger the redirection.
+    }, loadingThreshold);
+  } else {
+    clearTimeout(timer); // Clear the timer if loading completes before the threshold.
+  }
+
+  // Cleanup the timer when the component unmounts.
+  return () => {
+    clearTimeout(timer);
+  };
+
+  if (!isLoading) {
+    // Redirection logic goes here. For example, use the "navigate" function.
+    navigate('/other-route');
+  }
+}, [isLoading]);
+
+
+This code will allow you to gauge how long the loading has taken, and if it exceeds
+ the defined threshold, it will trigger the redirection. Be sure to customize 
+ the threshold value to fit your specific use case.

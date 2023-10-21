@@ -15,8 +15,6 @@ function Peruse({ data, setRecipe, user }) {
     data.length > 0 ? setIsLoading(false) : setIsLoading(true);
   }, []);
 
-
-
   if (isLoading) {
     return <h2>Loading...</h2>
   }
