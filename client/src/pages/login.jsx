@@ -133,7 +133,7 @@ function Login({ setLoggedIn, setUser, userData }) {
         <div id="errorMessage">
           <p
             onClick={() => setErrorMessage(false)}
-            id="errorExit">| X |</p>
+            >| X |</p>
           <p>There seems to have been a problem</p>
         </div>
       }

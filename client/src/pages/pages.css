@@ -116,6 +116,47 @@
 
 }
 
+@media (max-width: 900px) {
+
+  #homebase {
+    padding: 50px 50px;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #homeRecipe {
+    top: 8%;
+    font-size: 70px;
+  }
+  
+  #homeRecipe span {
+    margin: 0 8px;
+  }
+  
+  #homeBackground {
+    font-size: 70px;
+  }
+  
+  #homeBackground span {
+    font-size: 30px;
+  }
+  
+  #homeButtons {
+    bottom: 10%;
+  }
+  
+  
+  #homeSearch,
+  #homeLogin {
+    height: 100%;
+    width: 200px;
+    margin:0;
+  }
+
+}
+
 
 /*----------------
      Login   
@@ -186,6 +227,63 @@
 #errorExit:hover {
   transform: scale(1.02);
   color: #d7f5f5;
+}
+
+@media (max-width: 900px) {
+
+  #loginForm {
+    border-bottom: none;
+    border-top: none;
+    width: 100%;
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 30px;
+    row-gap: 80px;
+    position: relative;
+  }
+  
+  .input {
+    width: unset;
+    height: 100%;
+    font-size: 18px;
+    padding: 8px 0;
+  }
+  
+  .input::placeholder {
+    font-size: 18px;
+  }
+  
+  #loginForm h2 {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+  
+  #createBtn,
+  #loginBtn {
+    margin: 0;
+  }
+  
+  #loginBtn {
+    width: unset;
+  }
+  
+  #errorMessage {
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+    margin-top: 0;
+  }
+  
+  #errorExit {
+    margin: 0;
+  }
+
 }
 
 /* -------------------
@@ -538,6 +636,20 @@
 
 #profileStuff {
   display: grid;
+  place-content: center;
+  padding: 30px;
+  border: solid 3px #6d7e92a1;
+  max-width: 800px;
+  background-color: #6d7e92a1;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+/* this is for adding user search */
+
+/* #profileStuff {
+  display: grid;
   grid-template-columns: 18% 80%;
   gap: 2%;
   align-items: center;
@@ -548,10 +660,10 @@
   border-radius: 24px;
   box-shadow: var(--shadow);
   position: relative;
-}
+} */
 
-#profileUserList {
-}
+/* #profileUserList {
+} */
 
 #profileRecipes {
   max-width: 600px;
@@ -631,7 +743,7 @@
   margin-bottom: 60px;
 }
 
-.profileItemDropdownInfo > div {
+.profileItemDropdownInfo>div {
   overflow: hidden;
   display: flex;
   flex-direction: column;

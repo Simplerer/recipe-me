@@ -159,12 +159,22 @@ function Profile({ user, setRecipe }) {
     <section id='profilePage'>
       <h1 className="sectionTitle">{user.username}'s Stuff</h1>
       <div id='profileStuff'>
+
+        
+        {/* 
+
+          For adding a searchablelist of other users
+
         <div id='profileUserList'>
           {userList.map((el, index) => (
             <p key={index}>{el}</p>
           ))
           }
         </div>
+
+         */}
+
+
         <Item recipes={userRecipes} />
       </div>
     </section >

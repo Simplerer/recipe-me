@@ -82,6 +82,30 @@
   }
 }
 
+@media (max-width: 900px) {
+  
+  #siteName {
+    font-size: 24px;
+  }
+  
+  #menuDropdownIcon {
+    font-size: 18px;
+  }
+  
+  #menuDropdown {
+    font-size: 18px;
+  }
+
+  #menuDropdownList {
+    gap: 30px;
+  }
+  
+  .openDropdown li {
+    padding: 0;
+  }
+
+}
+
 /* --------------  
     Search Bar  
 ------------------- */
