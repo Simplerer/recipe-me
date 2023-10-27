@@ -81,8 +81,8 @@ function Recipe({ recipe, user, loggedIn }) {
                 </div>
             </div>
             <div id="singleRecipeBottom">
-                <button onClick={goBack} className="button">Back</button>
-                <NavLink to="/search"><button className="button">Just Search</button></NavLink>
+                <button onClick={goBack} className="button backButton">Back</button>
+                <NavLink to="/search"><button className="button searchButton">Just Search</button></NavLink>
             </div>
             {modal !== null && (
                 <div className="singleRecipeBackdrop" onClick={closeModal}></div>

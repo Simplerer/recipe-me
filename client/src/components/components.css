@@ -99,6 +99,10 @@
   #menuDropdownList {
     gap: 30px;
   }
+
+  .openDropdown li {
+    transition: none;
+  }
   
   .openDropdown li {
     padding: 0;
@@ -182,4 +186,61 @@
 
 #optional {
   font-size: 40px;
+}
+
+@media (max-width: 900px) {
+  
+  .searchBar {
+    border-bottom: none;
+    border-top: none;
+    height: 100%;
+    width: 100%;
+    padding: 40px 0;
+    max-width: unset;
+  }
+  
+  #searchForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  #searchForm .button {
+    max-width: 50%;
+    order: 3;
+  }
+  
+  #searchField {
+    width: 60vw;
+  }
+  
+  #middleSearch {
+   gap: 40px;
+   justify-content: center;
+  }
+
+  #ingredientField {
+    font-size: 18px;
+    height: 80%;
+  }
+  
+  #dropdownBox {
+    flex-direction: row;
+  }
+  
+  .dropdowns {
+    max-width: 150px;
+    font-size: 18px;
+  }
+  
+  .dropdowns option {
+    font-size: 16px;
+    padding: 4px 0;
+  }
+  
+  #optional {
+    display: none;
+  }
+
 }

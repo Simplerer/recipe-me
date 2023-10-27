@@ -13,6 +13,17 @@ test run functionality and look for anything that doesn't work everytime: fix
 heroku load up
 
 
+-----------  CSS notes  -------------------
+
+overlay for profile images
+
+need to go over all mobile and make regular mobile
+
+change input for # of ingredients for search to only collect numbers
+
+
+
+
 
 
 Notes for search checks

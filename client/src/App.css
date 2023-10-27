@@ -25,7 +25,6 @@ img, button {
 body {
   background-color: var(--body);
   color: var(--text);
-  /* overflow: hidden; */
 }
 
 /* * * * * * * * * * *
@@ -34,7 +33,6 @@ body {
 
 ::-webkit-scrollbar {
   width: 40px;
-  /* background-color: #00000017; */
   border-radius: 16px;
   height: 12px;
 }
@@ -42,6 +40,14 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: var(--text);
   border-radius: 16px;
+}
+
+@media (max-width: 800px) {
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
 }
 
 
