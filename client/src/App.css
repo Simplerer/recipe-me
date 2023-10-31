@@ -126,3 +126,11 @@ body {
   }
 
 }
+
+@media (max-width: 500px) {
+
+  #main {
+    height: calc(100vh - 52px);
+  }
+
+}

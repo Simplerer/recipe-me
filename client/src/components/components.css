@@ -41,7 +41,6 @@
 #menuDropdownList {
   display: flex;
   gap: 10px;
-
 }
 
 #menuDropdownList li:hover {
@@ -101,11 +100,47 @@
   }
 
   .openDropdown li {
-    transition: none;
+    transition: unset;
+    /* animation: unset; */
   }
   
   .openDropdown li {
     padding: 0;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  #header {
+    padding: 20px 20px 0;
+  }
+  
+  #mainItems {
+    gap: 10px;
+  }
+  
+  #siteName {
+    font-size: 30px;
+  }
+  
+  #menuDropdownIcon {
+    font-size: 16px;
+  }
+  
+  #menuDropdown {
+    font-size: 16px;
+  }
+  
+  #menuDropdownList {
+    gap: 14px;
+  }
+  
+  .openDropdown li {
+    padding: 0;
+    transition: unset;
+    border-radius: 0;
+    /* animation: unset; */
   }
 
 }

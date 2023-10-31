@@ -3,8 +3,6 @@
 ------------------ */
 
 #homebase {
-  /* position: relative; */
-  /* margin: auto; */
   padding: 90px 90px;
   box-shadow: var(--shadow);
   border-radius: 8px;
@@ -119,7 +117,7 @@
 @media (max-width: 900px) {
 
   #homebase {
-    padding: 50px 50px;
+    padding: 50px;
     box-shadow: var(--shadow);
     border-radius: 8px;
     display: flex;
@@ -153,6 +151,42 @@
     height: 100%;
     width: 200px;
     margin:0;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+
+  #homebase {
+    padding: 90px;
+  }
+  
+  #homeRecipe {
+    font-size: 80px;
+    top: 10%;
+  }
+  
+  #homeRecipe span {
+    margin: 0 8px;
+  }
+  
+  #homeBackground span {
+    font-size: 60px;
+  }
+  
+  #homeButtons {
+    bottom: 13%;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  
+  #homeSearch,
+  #homeLogin {
+    height: 40px;
+    margin: 0;
+    box-shadow: 4px 4px 10px #8eafae;
   }
 
 }
@@ -285,6 +319,78 @@
   }
 
 }
+
+@media (max-width: 500px) {
+
+  #loginForm {
+    border-bottom: solid 2px #a1ac53;
+    border-top: solid 2px #a1ac53;
+    width: 400px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .input {
+    width: 200px;
+    height: 52px;
+    text-align: center;
+    color: #a1ac53;
+    font-size: 24px;
+    font-weight: 600;
+    background-color: rgba(231, 112, 206, 0.1);
+    margin: 0 auto;
+    border: solid 1px #a1ac53;
+    box-shadow: 2px 2px 15px #0d0e05;
+    border-radius: 12px;
+  
+    &:focus {
+      scale: 1.02;
+    }
+  }
+  
+  .input::placeholder {
+    font-size: 24px;
+    font-weight: 600;
+    color: #a1ac53
+  }
+  
+  #loginForm h2 {
+    font-size: 30px;
+  }
+  
+  #createBtn,
+  #loginBtn {
+    margin: 0 auto;
+  }
+  
+  #loginBtn {
+    width: 200px;
+  }
+  
+  #errorMessage {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    font-size: 30px;
+    margin-top: 5px;
+  }
+  
+  #errorExit {
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all ease .3s;
+  }
+  
+  #errorExit:hover {
+    transform: scale(1.02);
+    color: #d7f5f5;
+  }
+
+}
+
 
 /* -------------------
     Recipe Cards
