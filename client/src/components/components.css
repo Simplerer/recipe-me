@@ -1,4 +1,3 @@
-
 /* --------------
     Header   
 ------------------ */
@@ -82,15 +81,15 @@
 }
 
 @media (max-width: 900px) {
-  
+
   #siteName {
     font-size: 24px;
   }
-  
+
   #menuDropdownIcon {
     font-size: 18px;
   }
-  
+
   #menuDropdown {
     font-size: 18px;
   }
@@ -101,9 +100,8 @@
 
   .openDropdown li {
     transition: unset;
-    /* animation: unset; */
   }
-  
+
   .openDropdown li {
     padding: 0;
   }
@@ -114,28 +112,32 @@
 
   #header {
     padding: 20px 20px 0;
+    position: relative;
   }
-  
+
   #mainItems {
     gap: 10px;
   }
-  
+
   #siteName {
     font-size: 30px;
   }
-  
+
   #menuDropdownIcon {
     font-size: 16px;
   }
-  
+
   #menuDropdown {
     font-size: 16px;
   }
-  
+
   #menuDropdownList {
     gap: 14px;
+    position: absolute;
+    top: 120%;
+    left: 10%;
   }
-  
+
   .openDropdown li {
     padding: 0;
     transition: unset;
@@ -181,16 +183,17 @@
   max-width: 500px;
 }
 
-#searchField::placeholder, #ingredientField::placeholder {
-  color:#a1ac53
+#searchField::placeholder,
+#ingredientField::placeholder {
+  color: #a1ac53
 }
 
 #middleSearch {
- display: flex;
- justify-content: space-between;
- align-items: center;
- gap: 80px;
- width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+  width: 100%;
 }
 
 #dropdownBox {
@@ -204,11 +207,11 @@
   color: #a1ac53;
   font-size: 24px;
   font-weight: 600;
-  background-color:rgba(231, 112, 206, 0.1);
+  background-color: rgba(231, 112, 206, 0.1);
   margin: 4px;
   border-radius: 8px;
   box-shadow: 4px 4px 20px black;
-  
+
   &:focus {
     scale: 1.02;
   }
@@ -224,7 +227,7 @@
 }
 
 @media (max-width: 900px) {
-  
+
   .searchBar {
     border-bottom: none;
     border-top: none;
@@ -233,49 +236,80 @@
     padding: 40px 0;
     max-width: unset;
   }
-  
+
   #searchForm {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 40px;
   }
-  
+
   #searchForm .button {
     max-width: 50%;
     order: 3;
   }
-  
+
   #searchField {
     width: 60vw;
   }
-  
+
   #middleSearch {
-   gap: 40px;
-   justify-content: center;
+    gap: 40px;
+    justify-content: center;
   }
 
   #ingredientField {
     font-size: 18px;
     height: 80%;
   }
-  
+
   #dropdownBox {
     flex-direction: row;
   }
-  
+
   .dropdowns {
     max-width: 150px;
     font-size: 18px;
   }
-  
-  .dropdowns option {
-    font-size: 16px;
-    padding: 4px 0;
-  }
-  
+
   #optional {
     display: none;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .searchBar {
+    padding: 60px 0;
+  }
+
+  #searchForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  #searchForm .button {
+    max-width: 60%;
+    max-height: 50px;
+  }
+
+  #searchField {
+    width: 100%;
+    height: 40px;
+  }
+
+  #middleSearch {
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .dropdowns {
+    max-width: 150px;
+    font-size: 18px;
   }
 
 }

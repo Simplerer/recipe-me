@@ -133,4 +133,8 @@ body {
     height: calc(100vh - 52px);
   }
 
+  .sectionTitle::after {
+    width: 120%;
+  }
+
 }

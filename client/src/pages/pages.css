@@ -123,34 +123,34 @@
     display: flex;
     justify-content: center;
   }
-  
+
   #homeRecipe {
     top: 8%;
     font-size: 70px;
   }
-  
+
   #homeRecipe span {
     margin: 0 8px;
   }
-  
+
   #homeBackground {
     font-size: 70px;
   }
-  
+
   #homeBackground span {
     font-size: 30px;
   }
-  
+
   #homeButtons {
     bottom: 10%;
   }
-  
-  
+
+
   #homeSearch,
   #homeLogin {
     height: 100%;
     width: 200px;
-    margin:0;
+    margin: 0;
   }
 
 }
@@ -161,27 +161,27 @@
   #homebase {
     padding: 90px;
   }
-  
+
   #homeRecipe {
     font-size: 80px;
     top: 10%;
   }
-  
+
   #homeRecipe span {
     margin: 0 8px;
   }
-  
+
   #homeBackground span {
     font-size: 60px;
   }
-  
+
   #homeButtons {
     bottom: 13%;
     flex-direction: column;
     gap: 40px;
   }
-  
-  
+
+
   #homeSearch,
   #homeLogin {
     height: 40px;
@@ -277,18 +277,18 @@
     row-gap: 80px;
     position: relative;
   }
-  
+
   .input {
     width: unset;
     height: 100%;
     font-size: 18px;
     padding: 8px 0;
   }
-  
+
   .input::placeholder {
     font-size: 18px;
   }
-  
+
   #loginForm h2 {
     font-size: 20px;
     position: absolute;
@@ -296,16 +296,16 @@
     left: 50%;
     translate: -50% -50%;
   }
-  
+
   #createBtn,
   #loginBtn {
     margin: 0;
   }
-  
+
   #loginBtn {
     width: unset;
   }
-  
+
   #errorMessage {
     flex-direction: row-reverse;
     align-items: center;
@@ -313,7 +313,7 @@
     font-size: 20px;
     margin-top: 0;
   }
-  
+
   #errorExit {
     margin: 0;
   }
@@ -323,67 +323,41 @@
 @media (max-width: 500px) {
 
   #loginForm {
-    border-bottom: solid 2px #a1ac53;
-    border-top: solid 2px #a1ac53;
-    width: 400px;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 30px 0;
     gap: 30px;
+    grid-template-columns: 1fr;
+
   }
-  
+
   .input {
-    width: 200px;
     height: 52px;
-    text-align: center;
-    color: #a1ac53;
-    font-size: 24px;
-    font-weight: 600;
-    background-color: rgba(231, 112, 206, 0.1);
-    margin: 0 auto;
-    border: solid 1px #a1ac53;
-    box-shadow: 2px 2px 15px #0d0e05;
-    border-radius: 12px;
-  
-    &:focus {
-      scale: 1.02;
-    }
   }
-  
-  .input::placeholder {
-    font-size: 24px;
-    font-weight: 600;
-    color: #a1ac53
+
+  .input:nth-child(4) {
+    margin-bottom: 40px;
   }
-  
+
   #loginForm h2 {
     font-size: 30px;
+    position: static;
+    translate: 0 10%;
   }
-  
+
   #createBtn,
   #loginBtn {
-    margin: 0 auto;
+    width: 100%;
   }
-  
-  #loginBtn {
-    width: 200px;
-  }
-  
+
   #errorMessage {
-    display: flex;
     flex-direction: column-reverse;
-    justify-content: center;
     font-size: 30px;
-    margin-top: 5px;
+    margin-top: 10px;
   }
-  
+
   #errorExit {
     margin-top: 10px;
-    cursor: pointer;
-    transition: all ease .3s;
   }
-  
+
   #errorExit:hover {
     transform: scale(1.02);
     color: #d7f5f5;
@@ -543,12 +517,12 @@
 }
 
 @media (max-width: 900px) {
-  
+
   .outerBox {
     padding: 10px;
     min-width: 500px;
   }
-  
+
   .recipeCard {
     position: relative;
     display: grid;
@@ -558,7 +532,7 @@
     padding: 20px 0;
     background: none;
   }
-  
+
   .recipeTitle {
     place-self: center;
     font-size: 22px;
@@ -566,11 +540,11 @@
     margin: 0;
     max-width: 200px;
   }
-  
+
   .imageHolder {
     max-width: 180px;
   }
-  
+
   .cardBottom {
     font-size: 16px;
     line-height: 100%;
@@ -579,25 +553,25 @@
     left: 4%;
     bottom: 4%;
   }
-  
+
   .cardBottom p {
     margin: 0;
     font-size: 16px;
   }
-  
+
   .nextBtnBox,
   .lastBtnBox {
     width: 40px;
   }
-  
+
   .nextBtnBox {
     right: -20%;
   }
-  
+
   .lastBtnBox {
     left: -20%;
   }
-  
+
   .searchBox {
     border: var(--text) 2px solid;
     padding: 6px;
@@ -605,17 +579,81 @@
     max-width: 168px;
     margin: 20px auto 0;
   }
-  
+
   .searchBox.noResults {
     width: 300px;
   }
-  
+
   .searchBox img {
     width: 16px;
   }
-  
+
   .searchBox p {
     font-size: 16px;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  #recipePage {
+    translate: 0 -15%;
+  }
+
+  .outerBox {
+    padding: 30px;
+    min-width: 300px;
+  }
+
+  .recipeCard {
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+  }
+
+  .recipeTitle {
+    max-width: 260px;
+  }
+
+  .imageHolder {
+    max-width: 200px;
+    justify-self: center;
+  }
+
+  .cardBottom {
+    position: static;
+  }
+
+  .cardBottom p {
+    font-size: 20px;
+  }
+
+  .nextBtnBox,
+  .lastBtnBox {
+    width: 54px;
+    top: unset;
+    bottom: -30%;
+  }
+
+  .nextBtnBox {
+    right: 16%;
+  }
+
+  .lastBtnBox {
+    left: 16%;
+  }
+
+  .searchBox {
+    margin-top: 40px;
+  }
+
+  .searchBox.noResults {
+    width: 300px;
+  }
+
+  .searchBox img {
+    width: 22px;
   }
 
 }
@@ -820,16 +858,16 @@
     max-width: 500px;
     padding: 50px 40px 16px;
   }
-  
+
   #singleRecipeImageContainer {
     max-width: 180px;
     place-self: center;
   }
-  
+
   .singleRecipeRight {
     padding: 0 10px;
   }
-  
+
   .singleRecipeRight h2 {
     font-size: 24px;
     padding: 0;
@@ -839,7 +877,7 @@
     translate: -50%;
     width: 100%;
   }
-  
+
   .singleRecipeInformation {
     gap: 20px;
     padding: 0 20px;
@@ -859,7 +897,7 @@
     font-size: 16px;
     height: auto;
     padding: 8px 10px;
-  } 
+  }
 
   .backButton {
     left: 4%;
@@ -867,37 +905,98 @@
 
   .searchButton {
     right: 4%;
-}
-  
+  }
+
   .singleRecipeModal {
     font-size: 28px;
   }
-  
+
   .singleRecipeModal h3 {
     margin-bottom: 20px;
   }
-  
+
   .singleRecipeModal p {
     margin-bottom: 12px;
   }
-  
+
   #singleRecipeIngredients {
     gap: 16px;
   }
-  
+
   #singleRecipeIngredients.longList {
     row-gap: 14px;
     width: 600px;
   }
-  
+
   .singleRecipeIngredient {
     font-size: 18px;
     padding-left: 16px;
   }
-  
+
   .singleRecipeIngredient::before {
     width: 6px;
     height: 6px;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  #singleRecipe {
+    max-width: 95%;
+    margin: auto;
+  }
+
+  #saveRecipeBtn {
+    font-size: 40px;
+    top: 40%;
+    right: 3%;
+  }
+
+  #singleRecipeInner {
+    padding: 80px 20px 20px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  #singleRecipeImageContainer {
+    max-width: 200px;
+    place-self: center;
+  }
+
+  .singleRecipeRight h2 {
+    max-width: 350px;
+  }
+
+  .singleRecipeInformation {
+    flex-wrap: nowrap;
+    gap: 15px;
+    padding: 0;
+  }
+
+  .singleRecipeBtn {
+    padding: 12px;
+    height: 64px;
+  }
+
+  #singleRecipeBottom {
+    padding-top: 60px;
+  }
+
+  .backButton,
+  .searchButton {
+    position: static;
+  }
+
+  .singleRecipeModal {
+    font-size: 28px;
+    width: 80%;
+  }
+
+  #singleRecipeIngredients.longList {
+    gap: 10px;
+    row-gap: 14px;
+    width: unset;
   }
 
 }
@@ -1062,22 +1161,22 @@
     max-width: 600px;
     margin-top: 10px;
   }
-  
+
   #profileRecipes {
     gap: 20px;
     padding: 0 10px 10px;
   }
-  
+
   .profileItem {
     min-width: 184px;
     padding: 10px;
     gap: 8px;
   }
-  
+
   .profileItem.open {
     min-width: 354px;
   }
-  
+
   .profileItemInfo {
     gap: 10px;
   }
@@ -1087,21 +1186,21 @@
     text-align: start;
     margin: auto 0;
   }
-  
+
   .profileItemInfoImage {
     display: grid;
     grid-template-columns: 1fr 20px;
     gap: 10px;
   }
-  
+
   .profileItemInfoImage img {
     max-width: 150px;
   }
-  
+
   .profileItemInfoImageContainer {
     position: relative;
   }
-  
+
   .profileItemDropdownToggle {
     font-size: 36px;
     max-width: fit-content;
@@ -1111,16 +1210,16 @@
       scale ease .5s;
     cursor: pointer;
     margin-right: 20px;
-  
+
     &:hover {
       scale: 1.2;
     }
   }
-  
+
   .profileItemDropdownToggle.open {
     transform: rotate(45deg);
   }
-  
+
   .profileItemDropdownInfo {
     display: grid;
     grid-template-columns: 0fr;
@@ -1128,21 +1227,21 @@
     align-self: flex-end;
     margin-bottom: 60px;
   }
-  
+
   .profileItemDropdownInfo>div {
     overflow: hidden;
     display: flex;
     flex-direction: column;
   }
-  
+
   .profileItemDropdownInfo.open {
     grid-template-columns: 1fr;
   }
-  
+
   .profileItemDropdownInfo button:first-child {
     margin-bottom: 10px;
   }
-  
+
   .profileItemButton {
     appearance: none;
     border-radius: 8px;
@@ -1161,11 +1260,89 @@
     height: 40px;
     cursor: pointer;
     ;
-  
+
     &:hover {
       transform: scale(1.02);
       color: #d7f5f5;
     }
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  #profileStuff {
+    padding: 20px;
+    border: none;
+    max-width: 330px;
+    margin: 30px auto 0;
+  }
+
+  #profileRecipes {
+    flex-direction: column;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .profileItem {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .profileItem.open {
+    min-width: unset;
+    gap: 40px;
+  }
+
+  .profileItemInfo {
+    gap: 20px;
+  }
+
+  .profileItemInfoTitle {
+    padding: 10px 0 0 10px;
+    text-align: center;
+  }
+
+  .profileItemInfoImage {
+    grid-template-columns: 1fr;
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .profileItemInfoImage img {
+    max-width: 200px;
+    justify-self: center;
+    box-shadow: 2px 2px 100px 1px rgb(99, 97, 97);
+  }
+
+  .profileItemDropdownToggle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    translate: -50% -50%;
+  }
+
+  .profileItemDropdownInfo {
+    grid-template-columns: unset;
+    transition: grid-template-rows ease .5s;
+    grid-template-rows: 0fr;
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  .profileItemDropdownInfo.open {
+    grid-template-columns: unset;
+    grid-template-rows: 1fr;
+  }
+
+  .profileItemDropdownInfo button:first-child {
+    margin-bottom: 20px;
+  }
+
+  .profileItemButton {
+    color: #bbc7c6;
+    width: 150px;
+    height: 60px;
   }
 
 }
