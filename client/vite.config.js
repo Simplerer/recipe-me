@@ -24,7 +24,8 @@ export default defineConfig({
 
 // run build when ready to deploy. Should have dist folder ready. Take dist folder and copy whole folder into server folder.
 
-// app.use(express.static(path.join(__dirname, 'public'))); change to app.use(express.static('dist'))
+app.use(express.static('dist')); 
+// change to app.use(express.static('dist'))
 
 // when the frontend is ready I can run only local host and get the application running wiht just the dist. If any changes need to be made however I will need to delete dist folder, make changes, and then rebuild 
 
