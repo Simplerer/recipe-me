@@ -29,11 +29,10 @@ app.use(session(sess));
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 
+
+// This is the original path
 // app.use(express.static(path.join(__dirname, 'public')));
-
-
 app.use(express.static(path.join(__dirname, 'dist')));
-// app.use(express.static('dist'))
 
 app.use(controllers);
 

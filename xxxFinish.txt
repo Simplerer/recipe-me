@@ -12,3 +12,13 @@ heroku load up
 - input for # of ingredients for search to only collect numbers
 
 - Add more error handling on login/signup, why the error dude?
+
+
+
+
+
+WHEN SERVING A VITE PROJECT YOU NEED TO MAKE SURE DIST IS AVAILABLE AND NOT IN GITIGNORE
+
+ALSO DIST SHOULD BE COPIED TO SERVER FILE
+
+CHANGE THE PATH APPROPRIATELY TOO
