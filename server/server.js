@@ -28,7 +28,8 @@ const sess = {
 app.use(session(sess));
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('dist'))
 
 app.use(controllers);
 
