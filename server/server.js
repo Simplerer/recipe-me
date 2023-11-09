@@ -40,3 +40,10 @@ app.use(controllers);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening ${PORT}`));
 });
+
+
+// https://dev.to/juhanakristian/basics-of-react-server-side-rendering-with-expressjs-phd
+
+// https://vitejs.dev/guide/ssr.html
+
+// https://github.com/vitejs/vite-plugin-react/blob/main/playground/ssr-react/server.js
