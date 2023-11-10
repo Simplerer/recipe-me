@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import './pages.css';
+import leftArrow from "/src/assets/images/arrow-left.ico"
+import rightArrow from "/src/assets/images/arrow-right.ico";
+import caret from "/src/assets/images/arrow.svg";
 
 
 function Peruse({ data, setRecipe, user }) {
@@ -46,9 +49,9 @@ function Peruse({ data, setRecipe, user }) {
         <>
           <NavLink to='/search'>
             <div className="searchBox">
-              <img src="\src\assets\images\arrow.svg" alt="caret" />
+              <img src={caret} alt="caret" />
               <p>Search Again</p>
-              <img src="\src\assets\images\arrow.svg" alt="caret" />
+              <img src={caret} alt="caret" />
             </div>
           </NavLink>
         </>
@@ -56,9 +59,9 @@ function Peruse({ data, setRecipe, user }) {
         <>
           <NavLink to='/search'>
             <div className="searchBox noResults">
-              <img src="\src\assets\images\arrow.svg" alt="caret" />
+              <img src={caret} alt="caret" />
               <p>No Results!</p>
-              <img src="\src\assets\images\arrow.svg" alt="caret" />
+              <img src={caret} alt="caret" />
             </div>
           </NavLink></>
       }
@@ -66,7 +69,7 @@ function Peruse({ data, setRecipe, user }) {
         ?
         <>
           <div className="nextBtnBox" onClick={() => setIndex(index + 1)}>
-            <img src="/src/assets/images/arrow-right.ico" alt="navigation arrow" />
+            <img src={rightArrow} alt="navigation arrow" />
           </div>
         </>
         :
@@ -76,7 +79,7 @@ function Peruse({ data, setRecipe, user }) {
         ?
         <>
           <div className="lastBtnBox" onClick={() => setIndex(index - 1)}>
-            <img src="\src\assets\images\arrow-left.ico" alt="navigation arrow" />
+            <img src={leftArrow} alt="navigation arrow" />
           </div>
         </>
         :

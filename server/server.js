@@ -32,6 +32,8 @@ app.use(express.urlencoded({ extended: false }));
 
 // This is the original path
 // app.use(express.static(path.join(__dirname, 'public')));
+
+// this is post build
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(controllers);

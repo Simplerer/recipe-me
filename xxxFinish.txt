@@ -2,7 +2,7 @@ To Finish
 
 test run functionality and look for anything that doesn't work everytime: fix
 
-heroku load up
+fix broken images, need to be served up
 
 
 ----------  Error Notes  ---------------------------

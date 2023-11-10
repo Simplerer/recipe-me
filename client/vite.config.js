@@ -11,6 +11,7 @@ export default defineConfig({
 })
 
 
-// run build when ready to deploy. Should have dist folder ready. Take dist folder and copy whole folder into server folder.
+// run build when ready to deploy. This is done in client
+// Should have dist folder ready. Take dist folder and copy whole folder into server folder.
 
 // app.use(express.static(path.join(__dirname, 'public'))); change to app.use(express.static('dist'))
