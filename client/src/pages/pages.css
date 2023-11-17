@@ -244,21 +244,20 @@
   width: 200px;
 }
 
-#errorMessage {
+.errorMessage {
   display: flex;
-  flex-direction: column-reverse;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
   font-size: 30px;
-  margin-top: 5px;
 }
 
-#errorExit {
-  margin-top: 10px;
+.errorExit {
   cursor: pointer;
   transition: all ease .3s;
 }
 
-#errorExit:hover {
+.errorExit:hover {
   transform: scale(1.02);
   color: #d7f5f5;
 }
@@ -306,7 +305,7 @@
     width: unset;
   }
 
-  #errorMessage {
+  .errorMessage {
     flex-direction: row-reverse;
     align-items: center;
     gap: 20px;
@@ -314,7 +313,7 @@
     margin-top: 0;
   }
 
-  #errorExit {
+  .errorExit {
     margin: 0;
   }
 
@@ -348,17 +347,17 @@
     width: 100%;
   }
 
-  #errorMessage {
+  .errorMessage {
     flex-direction: column-reverse;
     font-size: 30px;
     margin-top: 10px;
   }
 
-  #errorExit {
+  .errorExit {
     margin-top: 10px;
   }
 
-  #errorExit:hover {
+  .errorExit:hover {
     transform: scale(1.02);
     color: #d7f5f5;
   }

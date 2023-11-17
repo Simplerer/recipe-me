@@ -11,6 +11,8 @@ function Login({ setLoggedIn, setUser, userData }) {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [tryAgain, setTryAgain] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
+  const [passwordShort, setPasswordShort] = useState(false);
+  const [errorCode, setErrorCode] = useState(null);
 
   const login = async () => {
 
@@ -20,6 +22,7 @@ function Login({ setLoggedIn, setUser, userData }) {
     }
 
     try {
+
       const { data } = await axios.post('api/session/login', {
         ...formData
       })
@@ -28,8 +31,13 @@ function Login({ setLoggedIn, setUser, userData }) {
       setUser(user);
       setLoggedIn(true);
       navigate('/search');
-    } catch {
+
+    } catch (err) {
+
+      console.log(err);
+      setErrorCode(err.response.data.message)
       setErrorMessage(true);
+
     }
   };
 
@@ -41,7 +49,7 @@ function Login({ setLoggedIn, setUser, userData }) {
     }
 
     if (formData.password.length < 8) {
-      setErrorMessage(true)
+      setPasswordShort(true)
       return
     }
 
@@ -57,7 +65,9 @@ function Login({ setLoggedIn, setUser, userData }) {
           navigate('/search');
         })
     } catch (err) {
+
       console.error(err);
+      setErrorCode(err.response.data.message)
       setErrorMessage(true);
     }
   };
@@ -122,19 +132,27 @@ function Login({ setLoggedIn, setUser, userData }) {
           onClick={createUser}>Create an Account</button>
       </form>
       {tryAgain &&
-        <div id="errorMessage">
+        <div className="errorMessage">
+          <p className="errorMessage">Fill out all the fields please!</p>
           <p
             onClick={() => setTryAgain(false)}
-            id="errorExit">| X |</p>
-          <p id="errorMessage">Fill out all the fields please!</p>
+            className="errorExit">| X |</p>
         </div>
       }
       {errorMessage &&
-        <div id="errorMessage">
+        <div className="errorMessage">
+          <p className="errorMessage">{errorCode}</p>
           <p
             onClick={() => setErrorMessage(false)}
-            >| X |</p>
-          <p>There seems to have been a problem</p>
+            className="errorExit">| X |</p>
+        </div>
+      }
+      {passwordShort &&
+        <div className="errorMessage">
+          <p className="errorMessage">Password length 8 or more please!</p>
+          <p
+            onClick={() => setPasswordShort(false)}
+            className="errorExit">| X |</p>
         </div>
       }
     </section>

@@ -62,6 +62,8 @@
   color: rgb(245, 203, 149);
   text-decoration: none;
   animation: fade-in 800ms ease-in forwards;
+  position: relative;
+  z-index: 100;
 }
 
 .closeDropdown {
@@ -96,6 +98,12 @@
 
   #menuDropdownList {
     gap: 30px;
+  }
+
+  #menuDropdownList li:hover {
+    background-color: unset;
+    box-shadow: unset;
+    color: unset;
   }
 
   .openDropdown li {

@@ -1,12 +1,13 @@
 const router = require('express').Router()
 const { User } = require('../models');
 
-// Checking if logged in -> getting user data
 
+// Checking if logged in -> getting user data
 router.get('/session/data', (req, res) => {
   res.json(req.session)
 })
 
+// create a User and start session
 router.post('/session/create', async (req, res) => {
   try {
     const user = await User.findOne({
@@ -25,6 +26,7 @@ router.post('/session/create', async (req, res) => {
       password: req.body.password,
     });
 
+    // create a session object and hand over to front end
     req.session.save(() => {
       req.session.userId = newUser.id;
       req.session.username = newUser.username;
@@ -39,6 +41,8 @@ router.post('/session/create', async (req, res) => {
   }
 });
 
+
+// login credentials and start session
 router.post('/session/login', async (req, res) => {
   try {
     const user = await User.findOne({
@@ -71,6 +75,8 @@ router.post('/session/login', async (req, res) => {
   }
 });
 
+
+// scrap session
 router.post('/session/logout', (req, res) => {
 
   if (req.session.loggedIn) {

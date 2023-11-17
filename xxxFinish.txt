@@ -1,24 +1,4 @@
-To Finish
 
-test run functionality and look for anything that doesn't work everytime: fix
-
-fix broken images, need to be served up
-
-
-----------  Error Notes  ---------------------------
-
-- clicking into a recipe from profile allows user to resave recipe
+- clicking into a recipe from profile allows user to resave recipe - this is bad
 
 - input for # of ingredients for search to only collect numbers
-
-- Add more error handling on login/signup, why the error dude?
-
-
-
-
-
-WHEN SERVING A VITE PROJECT YOU NEED TO MAKE SURE DIST IS AVAILABLE AND NOT IN GITIGNORE
-
-ALSO DIST SHOULD BE COPIED TO SERVER FILE
-
-CHANGE THE PATH APPROPRIATELY TOO

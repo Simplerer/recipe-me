@@ -6,6 +6,7 @@ const { Op } = require('sequelize');
 // --------- User Routes ------------------------- //
 
 
+// get all users
 router.get('/user', async (_req,res) => {
   try {
     const userData = await User.findAll({
@@ -18,6 +19,7 @@ router.get('/user', async (_req,res) => {
   }
 });
 
+// get one user with id
 router.get('/user/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
@@ -30,6 +32,8 @@ router.get('/user/:id', async (req, res) => {
   }
 });
 
+// Not needed, using session route to create user and start session 
+
 // router.post('/user', async (req, res) => {
 //   try {
 //     const userData = await User.create(req.body);
@@ -40,10 +44,9 @@ router.get('/user/:id', async (req, res) => {
 //   };
 // });
 
+// delete user
 router.delete('/user/:id', async (req, res) => {
   try { 
-
-    console.log('\n \n HEY!!!!! HIT THE DELETE   \n\n\n', 'req:  ', req)
 
     const userData = await User.destroy({
       where: { id: req.params.id } });
