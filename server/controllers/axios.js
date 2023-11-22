@@ -27,6 +27,7 @@ router.post('/dish', async (req, res) => {
   let cuisine;
   let meal;
 
+  // if querys are empty do not include search in url 
   ingAmount == '' ? ingr = '' : ingr = '&ingr=';
   cuisineType == '' ? cuisine = '' : cuisine = '&cuisineType=';
   mealType == '' ? meal = '' : meal = '&mealType=';

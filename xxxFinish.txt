@@ -1,4 +1,0 @@
-
-- clicking into a recipe from profile allows user to resave recipe - this is bad
-
-- input for # of ingredients for search to only collect numbers

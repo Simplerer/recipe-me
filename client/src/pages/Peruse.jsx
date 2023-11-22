@@ -1,30 +1,69 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import './pages.css';
 import leftArrow from "/src/assets/images/arrow-left.ico"
 import rightArrow from "/src/assets/images/arrow-right.ico";
 import caret from "/src/assets/images/arrow.svg";
 
 
-function Peruse({ data, setRecipe, user }) {
+function Peruse({ data, setRecipe }) {
 
   const [index, setIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [noData, setNoData] = useState(false);
 
-  console?.log(data)
-  console?.log(user)
+  let isLoadingref = useRef(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    data.length > 0 ? setIsLoading(false) : setIsLoading(true);
 
-    setTimeout(() => {
-      console.log(isLoading);
-    }, 3000)
+    // check for loaded data, loading screen if none
+    data.length > 0
+      ? setIsLoading(false)
+      : setIsLoading(true);
+
+    // check again after 4 seconds to return user if no data found
+    const timeoutId = setTimeout(() => {
+
+      data.length > 0
+        ? isLoadingref.current = false
+        : isLoadingref.current = true;
+
+      if (isLoadingref.current) {
+        console.log("No Data Found");
+        noDataLoaded();
+      }
+
+    }, 4000)
+
+    // Cleanup the timeout
+    return () => clearTimeout(timeoutId);
 
   }, []);
 
+  // 
+  const noDataLoaded = () => {
+    setNoData(true);
+    console.log("no data set");
+
+    const timeoutId = setTimeout(() => {
+      console.log("No Data reset");
+      setNoData(false)
+      navigate(-1);
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }
+
   if (isLoading) {
-    return <h2>Loading...</h2>
+    return (
+      <div>
+        <h2 id="dataLoading" className={noData ? "noData" : "" }>Loading...</h2>
+        {noData && (
+          <div id="noDataFound">No Results Found!</div>
+        )}
+      </div>
+    )
   }
 
   return (
@@ -95,47 +134,3 @@ function Peruse({ data, setRecipe, user }) {
 }
 
 export default Peruse;
-
-//  Read documentation on useRef!!!
-
-
-// import React, { useState, useEffect, useRef } from "react";
-// import { NavLink } from "react-router-dom";
-// import './pages.css';
-// import leftArrow from "/src/assets/images/arrow-left.ico"
-// import rightArrow from "/src/assets/images/arrow-right.ico";
-// import caret from "/src/assets/images/arrow.svg";
-
-// function Peruse({ data, setRecipe, user }) {
-//   const [index, setIndex] = useState(0);
-//   const isLoadingRef = useRef(true);
-
-//   useEffect(() => {
-//     if (data.length > 0) {
-//       isLoadingRef.current = false;
-//     }
-
-//     const timeoutId = setTimeout(() => {
-//       console.log(isLoadingRef.current);
-//     }, 3000);
-
-//     return () => {
-//       clearTimeout(timeoutId);
-//     };
-//   }, [data]);
-
-//   if (isLoadingRef.current) {
-//     return <h2>Loading...</h2>;
-//   }
-
-//   return (
-//     // ... rest of your component
-//   );
-// }
-
-// export default Peruse;
-
-
-// In this version, the isLoadingRef is a mutable object that won't cause re-renders when it changes. 
-// The useEffect now only captures the current value of isLoadingRef.current, and the cleanup function 
-// clears the timeout to avoid any potential memory leaks. This should help ensure that the correct value of isLoading is logged after the timeout.

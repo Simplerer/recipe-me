@@ -46,11 +46,8 @@ function App() {
             path='/peruse'
             element={
               <Peruse
-                user={user}
-                loggedIn={loggedIn}
                 data={data}
-                setRecipe={setRecipe}
-                recipe={recipe} />} />
+                setRecipe={setRecipe} />} />
 
           <Route
             path='/search'
